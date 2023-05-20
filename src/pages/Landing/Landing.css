@@ -1,0 +1,87 @@
+@import"https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+
+body {
+    font-family: Poppins,sans-serif;
+    padding: 0;
+    margin: 0
+}
+
+
+* { 
+    text-decoration: none;
+}
+
+
+
+
+.landing-comp, .landing-head, .landing-head-item, .landing-collection, .landing-collection-item {
+    display: flex;
+    align-items: center;
+}
+
+.landing-comp {
+    flex-direction: column;
+    background-color: #f7f7f7;
+    gap: 3rem;
+    padding: 5rem 7rem;
+}
+
+.landing-head {
+    gap: 1.5rem;
+}
+
+.landing-head-item {
+    background: url(../../assets/card1.jpg) top center;
+    width: 250px;
+    height: 140px;
+}
+
+
+
+.landing-item-label {
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+}
+
+.landing-sample-div {
+    background-color: #c4c4c4;
+    width: 100%;
+    height: 691px;
+}
+
+.landing-collection {
+    gap: 4rem;
+}
+
+.landing-collection-item {
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(196,196,196,.7);
+}
+
+.blank-space {
+    background-color: #fff;
+    height: 10rem;
+    width: 10rem;
+}
+
+.landing-collection-item {
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(196,196,196,.7);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
