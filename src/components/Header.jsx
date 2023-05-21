@@ -3,38 +3,38 @@ import "./Header.css";
 export function Header() {
   return (
     <>
-      <div class="header-cont">
+      <div className="header-cont">
         <h3>
-          <a class="brand-name" href="/">
+          <a className="brand-name" href="/">
             MyShopping Site
           </a>
         </h3>
 
-        <div class="header-search">
-          <i class="material-symbols-outlined"> search </i>
+        <div className="header-search">
+          <i className="material-symbols-outlined"> search </i>
           <input
             type="text"
             placeholder="Search"
-            class="search-txt"
-            spellcheck="false"
+            className="search-txt"
+            spellCheck="false"
             data-ms-editor="true"
           />
         </div>
 
-        <div class="header-profile">
-          <a class="login-button" href="/login">
+        <div className="header-profile">
+          <a className="login-button" href="/login">
             Login
           </a>
 
-          <a class="header-badge" href="/wishlist">
+          <a className="header-badge" href="/wishlist">
             <div> 0 </div>
-            <i class="material-symbols-outlined">favorite</i>
+            <i className="material-symbols-outlined">favorite</i>
           </a>
 
-          <a class="header-cart" href="/cart">
-            <div class="header-badge">
+          <a className="header-cart" href="/cart">
+            <div className="header-badge">
               <div> 0 </div>
-              <i class="material-symbols-outlined" id="shopping-cart">
+              <i className="material-symbols-outlined" id="shopping-cart">
                 shopping_cart
               </i>
             </div>

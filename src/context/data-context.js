@@ -4,16 +4,29 @@ export const DataContext = createContext();
 
 export function DataProvider({children}) { 
 
-const [ apiData, setApiData ] = useState([]); 
+const [ apiData, setApiData ] = useState({
+    product:[],
+    category:[]
+} ); 
 
 const getData = async () => { 
 try { 
+let data;
+let categoryList; 
+
 const response = await fetch("/api/products"); 
 if(response.status===200) {
-    const data = await response.json();
+    data = await response.json();
     console.log("API", data); 
-    setApiData(data); 
+ }
+
+const categoriesResponse = await fetch("/api/categories");
+if(categoriesResponse.status===200) {
+    categoryList = await categoriesResponse.json(); 
+    console.log("categorylist",categoryList); 
 }
+
+setApiData({...apiData, product: data,category: categoryList});
 
 }
 catch(error) { 

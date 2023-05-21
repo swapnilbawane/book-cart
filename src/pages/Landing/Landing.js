@@ -1,5 +1,8 @@
 import "./Landing.css"; 
+import "./LandingCategories"; 
+
 import { useData } from "../../context/data-context";
+import { LandingCategories } from "./LandingCategories";
 
 
 export function Landing() { 
@@ -9,53 +12,24 @@ export function Landing() {
 
     return (
         <> 
-        <h1> Landing app. </h1>
+<h1> Landing app. </h1>
      
+<div className="landing-comp"> 
 
-    <div className="landing-comp"> 
-
-    <div className="landing-head"> 
+<div className="landing-head"> 
     
-    {  
-    apiData?.products?.map((item) => { return (
-<>    
-<a href="/products">
-<div className="landing-head-item">
-<div className="landing-item-label"> {item.categoryName} </div>
-</div>
-</a>
-</> 
+{  
+apiData?.category?.categories?.map((item) => { return (
+<div key={item._id}>    
+<LandingCategories {...item} />
+</div> 
 );
 
 })
 
 }
 
-    {/* <a href="/products"> 
-        <div class="landing-head-item"> 
-        <div class="landing-item-label"> Men </div> 
-        </div> 
-    </a>
-
-    <a href="/products">
-        <div class="landing-head-item"> 
-        <div class="landing-item-label"> Men </div> 
-        </div> 
-    </a>
-
-     <a href="/products">
-        <div class="landing-head-item"> 
-        <div class="landing-item-label"> Men </div> 
-        </div> 
-    </a>
-
-     <a href="/products">
-        <div class="landing-head-item"> 
-        <div class="landing-item-label"> Men </div> 
-        </div> 
-    </a> */}
-
-
+    
     </div>
 
     <div className="landing-sample-div"> 
@@ -65,20 +39,20 @@ export function Landing() {
     <div className="landing-collection">
 
     <div className="landing-collection-item"> 
-        <div class="blank-space"> </div>
+        <div className="blank-space"> </div>
         <div> 
         <p> NEW ARRIVALS </p> 
-        <h3> Summer Collection </h3>  
-        <p> Check out check out winter collection this collection </p>
+        <h3> Best of Yuval Harari </h3>  
+        <p> Check out critically acclaimed books from bestselling author </p>
         </div>
         </div>
     
     <div className="landing-collection-item"> 
-            <div class="blank-space"> </div>
+            <div className="blank-space"> </div>
             <div> 
             <p> NEW ARRIVALS </p> 
-            <h3> Summer Collection </h3>  
-            <p> Check out check out winter collection this collection </p>
+            <h3> Ruskin Bond's Full Collection </h3>  
+            <p> Cosy yourself with warmth of stories by Ruskin Bond. Entire set now available. </p>
             </div>
             </div>
       

@@ -31,7 +31,7 @@ body {
 }
 
 .landing-head-item {
-    background: url(../../assets/card1.jpg) top center;
+    background: url(https://fastly.picsum.photos/id/849/250/140.jpg?hmac=h5Jy0eUg58TVDe-wPAXcGDWx_4udVgTxNmDsAo1pzms) top center;
     width: 250px;
     height: 140px;
 }
@@ -41,11 +41,12 @@ body {
 .landing-item-label {
     text-align: center;
     width: 100%;
-    background-color: #fff;
+    background-color: #ddfc2d;
 }
 
 .landing-sample-div {
     background-color: #c4c4c4;
+    background: url(https://fastly.picsum.photos/id/143/691/691.jpg?hmac=QdViX1RrLRq56SFzjxUfS0DEhyY0DUbynNmVW87AKXw);
     width: 100%;
     height: 691px;
 }
@@ -62,6 +63,7 @@ body {
 
 .blank-space {
     background-color: #fff;
+    background: url(https://fastly.picsum.photos/id/813/150/200.jpg?hmac=l6sGjg_gxurRznPExOENArkwAx03yKFnOf_B2VN6wo0);
     height: 10rem;
     width: 10rem;
 }
