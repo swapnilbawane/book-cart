@@ -41,6 +41,8 @@ console.log(error);
 
 useEffect(()=> {
 getData(); 
+if (!localStorage.getItem("isLoggedIn")) {
+    localStorage.setItem("isLoggedIn", "false");}
 },[]);
 
 return (

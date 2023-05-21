@@ -9,8 +9,12 @@ import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Products } from "./pages/Products/Products";
 import { RequiresAuth } from "./components/RequiresAuth";
+import { useAuth } from "./context/auth-context";
 
 function App() {
+  const { isLoggedIn } = useAuth();
+  console.log("is logged in:", isLoggedIn); 
+  
   return (
     <div className="App">
     <Routes> 

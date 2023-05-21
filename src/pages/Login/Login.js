@@ -1,45 +1,64 @@
 import { Header } from "../../components/Header";
+import { useAuth } from "../../context/auth-context";
+import {useLocation, useNavigate} from "react-router-dom";
 import "./Login.css"; 
 
 export function Login() { 
+
+    const {handleLogin } = useAuth();
+    const location = useLocation(); 
+    const navigate = useNavigate();
+
+    const LoginTestUser = () => { 
+        handleLogin();
+        navigate(location?.state?.from?.pathname);
+    }
+
     return(
         <> 
         <h1> Login Page. </h1>
         <Header /> 
 
-        <div class="login-cont"> 
-        <div class="login-card">
+        <div className="login-cont"> 
+        <div className="login-card">
 
             <h3> Login </h3>
 
-            <div class="login-input">
+            <div className="login-input">
                 <label> <b> Email Address </b></label>     
-                <input type="text" placeholder="adarshbalika@gmail.com" spellcheck="false" data-ms-editor="true"/>
+                <input type="text" placeholder="adarshbalika@gmail.com" spellCheck={false} data-ms-editor={true}/>
             </div>
 
-            <div class="login-input">
+            <div className="login-input">
                <label> <b> Password </b></label>     
-               <input type="text" placeholder="************" spellcheck="false" data-ms-editor="true"/>
+               <input type="text" placeholder="************" spellCheck={false} data-ms-editor={true}/>
             </div>
 
-            <div class="login-forgot-details">
-              <div class="remember-me"> 
+            <div className="login-forgot-details">
+              <div className="remember-me"> 
                 <input type="checkbox"/>
                 <label> Remember Me</label>
               </div>
 
 
-              <div class="forgot-password">
+              <div className="forgot-password">
               Forgot your Password?   
               </div>  
             </div>
 
-            <button class="card-button active-button"> Login </button>
+            <button className="card-button active-button"> Login </button>
 
-            <a href="/signup" class="create-new-account">
+            <a href="/signup" className="create-new-account">
                 Create New Account
-                <i class="material-symbols-outlined"> arrow_forward_ios </i>
+                <i className="material-symbols-outlined"> arrow_forward_ios </i>
             </a>
+ 
+           
+            <button className="card-button active-button" 
+            onClick={()=> LoginTestUser()}> 
+            Sign in as test user 
+            </button>
+
         </div>
     </div>    
         </>

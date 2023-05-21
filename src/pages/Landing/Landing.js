@@ -3,9 +3,12 @@ import "./LandingCategories";
 
 import { useData } from "../../context/data-context";
 import { LandingCategories } from "./LandingCategories";
-
+import { useAuth } from "../../context/auth-context";
 
 export function Landing() { 
+
+    const {isLoggedIn} = useAuth();
+    console.log("landing check login value:", isLoggedIn);
     
     const apiData = useData(); 
     console.log("categories",apiData);

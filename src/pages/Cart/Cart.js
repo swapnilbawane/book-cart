@@ -1,10 +1,14 @@
 import { Header } from "../../components/Header";
+import { useAuth } from "../../context/auth-context";
 import "./Cart.css"; 
 
 // TODO: Make this a protected route 
 // TODO: Have a cart context, that has cart data, add to cart will use 
 
 export function Cart() {
+    const { isLoggedIn } = useAuth();
+    console.log("cart is logged in:", isLoggedIn);
+    
     return(
         <>
         <Header /> 
