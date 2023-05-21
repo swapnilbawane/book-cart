@@ -1,19 +1,37 @@
-
 import "./Landing.css"; 
-
+import { useData } from "../../context/data-context";
 
 
 export function Landing() { 
+    
+    const apiData = useData(); 
+    console.log("categories",apiData);
+
     return (
         <> 
         <h1> Landing app. </h1>
      
 
-    <div class="landing-comp"> 
+    <div className="landing-comp"> 
 
-    <div class="landing-head"> 
+    <div className="landing-head"> 
+    
+    {  
+    apiData?.products?.map((item) => { return (
+<>    
+<a href="/products">
+<div className="landing-head-item">
+<div className="landing-item-label"> {item.categoryName} </div>
+</div>
+</a>
+</> 
+);
 
-    <a href="/products"> 
+})
+
+}
+
+    {/* <a href="/products"> 
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
@@ -35,18 +53,18 @@ export function Landing() {
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
-    </a>
+    </a> */}
 
 
     </div>
 
-    <div class="landing-sample-div"> 
+    <div className="landing-sample-div"> 
 
     </div>
     
-    <div class="landing-collection">
+    <div className="landing-collection">
 
-    <div class="landing-collection-item"> 
+    <div className="landing-collection-item"> 
         <div class="blank-space"> </div>
         <div> 
         <p> NEW ARRIVALS </p> 
@@ -55,7 +73,7 @@ export function Landing() {
         </div>
         </div>
     
-    <div class="landing-collection-item"> 
+    <div className="landing-collection-item"> 
             <div class="blank-space"> </div>
             <div> 
             <p> NEW ARRIVALS </p> 
