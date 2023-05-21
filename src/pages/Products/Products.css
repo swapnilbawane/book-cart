@@ -1,0 +1,207 @@
+@import"https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+
+body {
+    font-family: Poppins,sans-serif;
+    padding: 0;
+    margin: 0
+}
+
+* {
+    text-decoration: none;
+}
+
+.filters, .filter-head, .products, .filter-content, .price-range-num, .filter-range-input, .filter-category, .filter-radio {
+    display: flex;
+}
+
+.filters {
+    grid-area: filter;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.filter-head {
+    justify-content: space-between;
+}
+
+.filter-head span {
+    text-decoration: underline;
+}
+
+.filter-content {
+    flex-direction: column;
+}
+
+.price-range-num {
+    justify-content: space-between;
+    color: #b2b2b2;
+}
+
+.filter-range-input {
+    border-radius: 99px;
+    outline: 1px solid #9A9A9A;
+    padding: .2rem;
+}
+
+.filter-price-input {
+    width: 100%;
+}
+
+.filter-radio {
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.filter-category {
+    gap: .5rem;
+    font-size: .8rem;
+}
+
+.filter-radio {
+    flex-direction: column;
+    gap: .5rem;
+}
+
+
+/* Products area CSS starts */
+.products {
+    grid-area: products;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    background: #F7F7F7;
+}
+
+.products-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.products-head * {
+    margin: 0;
+}
+
+.products-head span {
+    font-size: .8rem;
+}
+
+.products-items {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-block: 2rem;
+}
+
+.card-img, .card-cont, .card-badge, .card-details {
+    display: flex;
+    align-items: center;
+}
+
+.card-cont, .card-details {
+    flex-direction: column;
+    width: 240px;
+}
+
+.card-img {
+    justify-content: center;
+    background: rgba(196,196,196,.5);
+    width: 13rem;
+    height: 15rem;
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+.card-badge {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 999px;
+    box-shadow: 4px 4px 4px gray;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    top: 1rem;
+    right: 1rem;
+}
+
+.card-badge .red-fav {
+    color: red;
+}
+
+i.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
+
+  i#fav.material-symbols-outlined { 
+    font-variation-settings: 'FILL' 0; 
+    color: #9a9a9a;
+
+}  
+
+.material-icons-outlined {
+    font-family: 'Material Icons Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+i.material-icons-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
+
+
+
+.card-img img {
+    height: 90%;
+    width: auto;
+}
+
+.card-details {
+    padding: 1rem 2rem;
+}
+
+.active-button {
+    background-color: #3b82f6;
+}
+
+.card-button {
+    color: #fff;
+    text-align: center;
+    padding: .5rem;
+    width: 100%;
+    border: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    background-color: #9a9a9a;
+}
+
+.pl-cont {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-areas: "filter products";
+}
+
+
+
+
+
+
+
+

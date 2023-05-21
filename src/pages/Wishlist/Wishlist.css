@@ -1,0 +1,102 @@
+@import"https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+
+body {
+    font-family: Poppins,sans-serif;
+    padding: 0;
+    margin: 0
+}
+
+* {
+    text-decoration: none;
+}
+
+
+i.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+i#fav.material-symbols-outlined { 
+    font-variation-settings: 'FILL' 0; 
+    color: #9a9a9a;
+
+}
+
+.wishlist-cont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2rem 8rem;
+}
+
+.wishlist-cont h3 {
+    text-align: center;
+    width: 100%;
+}
+
+.wishlist-list {
+    display: flex;
+    gap: 2rem;
+}
+
+.card-img, .card-cont, .card-badge, .card-details {
+    display: flex;
+    align-items: center;
+}
+
+.card-img {
+    justify-content: center;
+    background: rgba(196,196,196,.5);
+    width: 13rem;
+    height: 15rem;
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+.card-badge {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 999px;
+    box-shadow: 4px 4px 4px gray;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    top: 1rem;
+    right: 1rem;
+}
+
+.card-badge .red-fav {
+    color: red;
+}
+
+.card-img img {
+    height: 90%;
+    width: auto;
+}
+
+.card-cont, .card-details {
+    flex-direction: column;
+    width: 240px;
+}
+
+.card-details {
+    padding: 1rem 2rem;
+}
+
+.card-button {
+    color: #fff;
+    text-align: center;
+    padding: .5rem;
+    width: 100%;
+    border: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    background-color: #9a9a9a;
+}
+
+
+

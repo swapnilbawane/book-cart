@@ -1,4 +1,4 @@
-import { Header } from "../../components/Header";
+
 import "./Landing.css"; 
 
 
@@ -7,31 +7,31 @@ export function Landing() {
     return (
         <> 
         <h1> Landing app. </h1>
-        <Header /> 
+     
 
     <div class="landing-comp"> 
 
     <div class="landing-head"> 
 
-    <a href="/"> 
+    <a href="/products"> 
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
     </a>
 
-    <a href="/"> 
+    <a href="/products">
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
     </a>
 
-     <a href="/"> 
+     <a href="/products">
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
     </a>
 
-     <a href="/"> 
+     <a href="/products">
         <div class="landing-head-item"> 
         <div class="landing-item-label"> Men </div> 
         </div> 
