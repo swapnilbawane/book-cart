@@ -1,6 +1,8 @@
 import { Header } from "../../components/Header";
 import "./Cart.css"; 
 
+// TODO: Make this a protected route 
+// TODO: Have a cart context, that has cart data, add to cart will use 
 
 export function Cart() {
     return(

@@ -8,6 +8,7 @@ import { Home } from "./pages/Home/Home";
 import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Products } from "./pages/Products/Products";
+import { RequiresAuth } from "./components/RequiresAuth";
 
 function App() {
   return (
@@ -17,8 +18,21 @@ function App() {
       <Route path="/products" element={<Products />} />  
       <Route path="/login" element={<Login/> } /> 
       <Route path="/signup" element={<Signup />} /> 
-      <Route path="/cart" element={<Cart /> } /> 
-      <Route path="/wishlist" element={<Wishlist />} /> 
+
+
+      <Route path="/cart" element={
+      <RequiresAuth>
+      <Cart /> 
+      </RequiresAuth>
+      } />
+
+
+      <Route path="/wishlist" element={
+      <RequiresAuth>
+      <Wishlist />
+      </RequiresAuth>
+      } /> 
+
       <Route path="/mockman" element={<Mockman />} /> 
       </Routes>  
     </div>

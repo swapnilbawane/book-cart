@@ -6,8 +6,12 @@ export function DataProvider({children}) {
 
 const [ apiData, setApiData ] = useState({
     product:[],
-    category:[]
+    category:[],
+    cartData:[],
+    wishlistData:[]
 } ); 
+
+
 
 const getData = async () => { 
 try { 
