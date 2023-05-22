@@ -4,6 +4,7 @@ import "./LandingCategories";
 import { useData } from "../../context/data-context";
 import { LandingCategories } from "./LandingCategories";
 import { useAuth } from "../../context/auth-context";
+import { Link } from "react-router-dom";
 
 export function Landing() { 
 
@@ -25,6 +26,7 @@ export function Landing() {
 apiData?.category?.categories?.map((item) => { return (
 <div key={item._id}>    
 <LandingCategories {...item} />
+<Link to={"/category/"+item._id}> Explore </Link>
 </div> 
 );
 

@@ -11,6 +11,7 @@ import { Products } from "./pages/Products/Products";
 import { RequiresAuth } from "./components/RequiresAuth";
 import { useAuth } from "./context/auth-context";
 import { ProductDetail } from "./pages/Products/ProductDetail";
+import { CategoryDetail } from "./pages/Landing/CategoryDetail";
 
 function App() {
   const { isLoggedIn } = useAuth();
@@ -22,6 +23,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} /> 
       <Route path="/product/:_id" element={<ProductDetail /> } />  
+      <Route path="/category/:_id" element={<CategoryDetail />} /> 
       <Route path="/login" element={<Login/> } /> 
       <Route path="/signup" element={<Signup />} /> 
 
