@@ -12,7 +12,7 @@ export function Landing() {
     console.log("landing check login value:", isLoggedIn);
     
     const apiData = useData(); 
-    console.log("categories",apiData);
+    console.log("categories landing data",apiData);
 
     return (
         <> 
