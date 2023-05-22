@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"; 
+
 export function ProductCard({
     _id,
     title,
@@ -22,7 +24,7 @@ export function ProductCard({
                 </div>
 
                 <div className="card-details">
-                <div> {title} </div>
+                <div> <Link to={`/product/`+_id}> {title} </Link> </div>
                 <b> Rs.{price} </b>
                 </div>
 

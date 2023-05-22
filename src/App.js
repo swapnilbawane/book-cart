@@ -10,6 +10,7 @@ import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Products } from "./pages/Products/Products";
 import { RequiresAuth } from "./components/RequiresAuth";
 import { useAuth } from "./context/auth-context";
+import { ProductDetail } from "./pages/Products/ProductDetail";
 
 function App() {
   const { isLoggedIn } = useAuth();
@@ -19,22 +20,25 @@ function App() {
     <div className="App">
     <Routes> 
       <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />  
+      <Route path="/products" element={<Products />} /> 
+      <Route path="/product/:_id" element={<ProductDetail /> } />  
       <Route path="/login" element={<Login/> } /> 
       <Route path="/signup" element={<Signup />} /> 
 
 
       <Route path="/cart" element={
-      <RequiresAuth>
+    
+    
       <Cart /> 
-      </RequiresAuth>
+     
+      
       } />
 
 
       <Route path="/wishlist" element={
-      <RequiresAuth>
-      <Wishlist />
-      </RequiresAuth>
+     
+     <Wishlist />
+    
       } /> 
 
       <Route path="/mockman" element={<Mockman />} /> 
