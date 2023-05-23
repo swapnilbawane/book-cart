@@ -12,10 +12,11 @@ import { RequiresAuth } from "./components/RequiresAuth";
 import { useAuth } from "./context/auth-context";
 import { ProductDetail } from "./pages/Products/ProductDetail";
 import { CategoryDetail } from "./pages/Landing/CategoryDetail";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const { isLoggedIn } = useAuth();
-  console.log("is logged in:", isLoggedIn); 
+
   
   return (
     <div className="App">
@@ -44,7 +45,9 @@ function App() {
       } /> 
 
       <Route path="/mockman" element={<Mockman />} /> 
-      </Routes>  
+      </Routes> 
+
+       <ToastContainer />
     </div>
   );
 }

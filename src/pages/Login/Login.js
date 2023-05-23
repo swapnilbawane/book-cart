@@ -1,18 +1,24 @@
 import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
-import {useLocation, useNavigate} from "react-router-dom";
 import "./Login.css"; 
+import { useState } from "react";
+
+
 
 export function Login() { 
 
-    const {handleLogin } = useAuth();
-    const location = useLocation(); 
-    const navigate = useNavigate();
+    const { LoginAccount } = useAuth();
 
-    const LoginTestUser = () => { 
-        
-        handleLogin();
-        navigate(location?.state?.from?.pathname);
+    const [user, setUser] = useState({email: "", password: ""}); 
+ 
+    const updateUser = (e) => { 
+     if(e.target.name==="email") { 
+        setUser({...user, email: e.target.value});
+     }
+
+     else if (e.target.name==="password") { 
+        setUser({...user, password: e.target.value});
+     }
     }
 
     return(
@@ -27,12 +33,27 @@ export function Login() {
 
             <div className="login-input">
                 <label> <b> Email Address </b></label>     
-                <input type="text" placeholder="adarshbalika@gmail.com" spellCheck={false} data-ms-editor={true}/>
+                <input type="text" 
+                name="email" 
+                placeholder="adarshbalika@gmail.com" 
+                spellCheck={false} 
+                data-ms-editor={true} 
+                value={user.email}
+                onChange={updateUser}
+                />
             </div>
 
             <div className="login-input">
                <label> <b> Password </b></label>     
-               <input type="text" placeholder="************" spellCheck={false} data-ms-editor={true}/>
+               <input 
+               type="text" 
+               name="password" 
+               placeholder="************" 
+               spellCheck={false} 
+               data-ms-editor={true} 
+               value={user.password} 
+               onChange={updateUser}
+               />
             </div>
 
             <div className="login-forgot-details">
@@ -47,7 +68,7 @@ export function Login() {
               </div>  
             </div>
 
-            <button className="card-button active-button"> Login </button>
+            <button className="card-button active-button" onClick={()=> LoginAccount(user)}> Login </button>
 
             <a href="/signup" className="create-new-account">
                 Create New Account
@@ -56,7 +77,7 @@ export function Login() {
  
            
             <button className="card-button active-button" 
-            onClick={()=> LoginTestUser()}> 
+            onClick={console.log("clicked")}> 
             Sign in as test user 
             </button>
 

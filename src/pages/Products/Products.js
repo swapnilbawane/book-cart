@@ -6,7 +6,7 @@ import "./Products.css";
 export function Products() { 
 
     const apiData = useData(); 
-    console.log("apidata",apiData.product.products);
+    // console.log("apidata",apiData.product.products);
 
     return(
         <>

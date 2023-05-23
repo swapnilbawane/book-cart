@@ -3,8 +3,7 @@ import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
 
 export function Wishlist () { 
-    const { isLoggedIn } = useAuth();
-    console.log("wishlist is logged in:", isLoggedIn);
+   
 
     return (
         <>

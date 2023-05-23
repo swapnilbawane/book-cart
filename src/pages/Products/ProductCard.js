@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"; 
+import { useCart } from "../../context/cart-context";
 
 export function ProductCard({
     _id,
@@ -9,7 +10,12 @@ export function ProductCard({
     image
 }) { 
 
-    console.log("item", _id,title,author,price,categoryName);
+    const item = {_id,title,author,price,categoryName,image};
+    
+    // console.log("product card item value",item);
+    // console.log("item", _id,title,author,price,categoryName);
+
+    const addToCart = useCart(); 
 
     // TODO: logic if item present in cart, then button should be go to cart, else add to cart 
     // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
@@ -28,7 +34,7 @@ export function ProductCard({
                 <b> Rs.{price} </b>
                 </div>
 
-                <button className="card-button active-button"> Add to Cart</button>
+                <button className="card-button active-button" onClick={()=> addToCart(item)}> Add to Cart</button>
         </div>
         </>
     );
