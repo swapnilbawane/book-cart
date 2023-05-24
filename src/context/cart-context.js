@@ -13,22 +13,16 @@ export function CartProvider({children}) {
 
     const addToCart = async (item) => { 
 
-
        try { 
-       console.log("here in cart:",item);
-  
-       const sendProduct = { product : item};
+     
+        const sendProduct = { product : item};
        
-       console.log("sendproduct",sendProduct);
-       console.log("json", JSON.stringify(sendProduct));
-       console.log("encodedToken", encodedToken);
-
        const cartres = await fetch("/api/user/cart",{
         method: 'POST',
         body: JSON.stringify(sendProduct),
         headers: {
         'Content-Type': 'application/json',
-        'authorization': "${encodedToken}"
+        'authorization': `${encodedToken}`
         } 
        });
 

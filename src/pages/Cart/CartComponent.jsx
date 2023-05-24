@@ -3,8 +3,8 @@ import { CartCard } from "./CartCard";
 
 export function CartComponent() {
     const apiData = useData(); 
-    console.log("in the cart ApiData is:",apiData);
-    console.log(apiData.cartData.cart)
+   
+    // console.log(apiData.cartData.cart)
 
    return(
     <>

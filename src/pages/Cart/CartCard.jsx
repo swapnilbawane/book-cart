@@ -10,7 +10,6 @@ image
 }) {
 
     const item = { _id,title,author,price,categoryName,image};
-    console.log("item from cart card:",item);
 
     return(
         <>

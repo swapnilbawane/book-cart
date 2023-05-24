@@ -53,7 +53,6 @@ const wishListResponse = await fetch("/api/user/wishlist", {
   });
 if(wishListResponse.status===200) {
     wishListResponseData = await wishListResponse.json();
-    console.log("cartList",wishListResponseData); 
 } 
 
 

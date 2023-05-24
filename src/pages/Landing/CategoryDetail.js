@@ -10,13 +10,10 @@ export function CategoryDetail() {
     const apiData = useData(); 
     //console.log("categories",apiData);
     
-
     const { _id } = useParams(); 
-   
    // console.log("id from category ",_id);
 
     const urlFetch = "/api/categories/"+_id;
-
     //console.log("url",urlFetch);
 
     const [categoryData,setCategoryData]=useState([]); 
@@ -48,20 +45,20 @@ export function CategoryDetail() {
     
 
 
-    return(
-        <>
-       <Header /> 
+return(
+<>
+<Header /> 
   {
    categoryData.map((item) => { 
     return (
         <div key={item._id}> 
-<ProductCard {...item} />
+                <ProductCard {...item} />
         </div> 
     );
    })
   }
    
-       <Link to="/products"> Browse other products </Link> 
-        </>
+<Link to="/products"> Browse other products </Link> 
+</>
     );
 }

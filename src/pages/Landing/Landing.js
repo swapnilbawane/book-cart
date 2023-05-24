@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
 export function Landing() { 
 
     const {isLoggedIn} = useAuth();
-    console.log("landing check login value:", isLoggedIn);
+  
     
     const apiData = useData(); 
-    console.log("categories landing data",apiData);
 
-    return (
-        <> 
+
+return (
+<> 
 <h1> Landing app. </h1>
      
 <div className="landing-comp"> 
@@ -35,13 +35,12 @@ apiData?.category?.categories?.map((item) => { return (
 }
 
     
-    </div>
+</div>
 
-    <div className="landing-sample-div"> 
-
-    </div>
+<div className="landing-sample-div"> 
+</div>
     
-    <div className="landing-collection">
+<div className="landing-collection">
 
     <div className="landing-collection-item"> 
         <div className="blank-space"> </div>
@@ -61,10 +60,10 @@ apiData?.category?.categories?.map((item) => { return (
             </div>
             </div>
       
-    </div>
+</div>
    
-    </div>
+</div>
 
-        </> 
-    ); 
+</> 
+); 
 }
