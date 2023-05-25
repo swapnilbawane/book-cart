@@ -55,6 +55,8 @@ export function CartProvider({children}) {
 
     const removeFromCart = async(id) => { 
         try { 
+
+
            const fetchURL = "/api/user/cart/"+id;
            const cartres = await fetch(fetchURL,{
             method: 'DELETE',
@@ -77,8 +79,64 @@ export function CartProvider({children}) {
 
     }
 
+    const incrementInCart = async(id,qty) => { 
+        try { 
+            const incrementQty = { action : {type: "increment"} };
+
+            const fetchURL = "/api/user/cart/"+id;
+            const cartres = await fetch(fetchURL,{
+             method: 'POST',
+             body: JSON.stringify(incrementQty),
+             headers: {
+             'Content-Type': 'application/json',
+             'authorization': `${encodedToken}`
+             } 
+            });
+           
+            const response = await cartres.json();
+            const updatedCart = [...response.cart];
+            console.log("increment cart items updated:", updatedCart );
+         
+            setApiData({...apiData, cartData: updatedCart})
+     
+            }
+            catch(error) { 
+             console.log(error); 
+            }
+ 
+    }
+
+    const decrementInCart = async(id,qty) => { 
+        try { 
+            const decrementQty = { action : {type: "decrement"} };
+
+           if(qty>1) { 
+            const fetchURL = "/api/user/cart/"+id;
+            const cartres = await fetch(fetchURL,{
+             method: 'POST',
+             body: JSON.stringify(decrementQty),
+             headers: {
+             'Content-Type': 'application/json',
+             'authorization': `${encodedToken}`
+             } 
+            });
+           
+            const response = await cartres.json();
+            const updatedCart = [...response.cart];
+            console.log("increment cart items updated:", updatedCart );
+         
+            setApiData({...apiData, cartData: updatedCart})
+        }
+     
+            }
+            catch(error) { 
+             console.log(error); 
+            }
+ 
+    }
+
     return (
-        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity }}>
+        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity, incrementInCart, decrementInCart }}>
             {children}
         </CartContext.Provider>
     ); 

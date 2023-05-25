@@ -8,12 +8,13 @@ title,
 author,
 price,
 categoryName,
-image    
+image,
+qty    
 }) {
 
     const item = { _id,title,author,price,categoryName,image};
 
-    const { removeFromCart } = useCart();
+    const { removeFromCart, incrementInCart, decrementInCart } = useCart();
     const { addToWishlist } = useWishlist(); 
 
     return(
@@ -43,9 +44,9 @@ image
     <div className="cart-cart-quantity-cont">
      Quantity:
      <div className="cart-card-quantity">
-        <div>-</div>
-        <input type="number" value="1"/>
-        <div>+</div>
+        <div onClick={()=> decrementInCart(_id,qty)}>-</div>
+        <input type="number" value={qty}/>
+        <div onClick={()=> incrementInCart(_id,qty)}>+</div>
      </div>  
     </div>
 
