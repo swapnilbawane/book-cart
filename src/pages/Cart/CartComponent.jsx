@@ -10,7 +10,7 @@ export function CartComponent() {
     console.log("cart component cart: ", apiData.cartData.cart)
 
    return(
-    <div class="cart-component">
+    <div className="cart-component">
     
     { 
     apiData?.cartData?.map((item,index)=> { 

@@ -1,13 +1,15 @@
 import { useData } from "../../context/data-context";
+import { useCart } from "../../context/cart-context";
 
 export function CheckoutComponent() { 
 
   const { apiData } = useData(); 
-  const cartInfo = apiData.cartData;
+  const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart(); 
 
-  const totalPrice = cartInfo.reduce((acc,curr)=> acc+curr.price*curr.qty,0);
-  const discount = 10;
-  const deliveryCharges = 49; 
+  // const cartInfo = apiData.cartData;
+  // const totalPrice = cartInfo.reduce((acc,curr)=> acc+curr.price*curr.qty,0);
+  // const discount = 10;
+  // const deliveryCharges = 49; 
 
     return(
         <>
@@ -20,7 +22,7 @@ export function CheckoutComponent() {
  
      <hr/>
      <div className="cart-price-flex">
-     <p> Price (1 item) </p>
+     <p> Price ({totalQuantity} item) </p>
      <p> Rs {totalPrice} </p>    
      </div>
      <div className="cart-price-flex">

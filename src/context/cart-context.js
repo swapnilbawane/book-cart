@@ -10,6 +10,19 @@ export function CartProvider({children}) {
     const {apiData, setApiData} = useData();
     const encodedToken = localStorage.getItem("encodedToken"); 
 
+    const cartInfo = apiData?.cartData;
+    console.log("cart info",cartInfo);
+   
+    const totalPrice = Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
+    const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+curr.qty,0);
+
+    //cartInfo?.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0));
+    // Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
+    // cartInfo?.cart.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0) ?? 0;
+   
+    const discount = 10;
+    const deliveryCharges = 49; 
+
     const addToCart = async (item) => { 
 
        try { 
@@ -63,7 +76,7 @@ export function CartProvider({children}) {
     }
 
     return (
-        <CartContext.Provider value={{addToCart, removeFromCart}}>
+        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity }}>
             {children}
         </CartContext.Provider>
     ); 
