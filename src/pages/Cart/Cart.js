@@ -19,8 +19,16 @@ const { apiData } = useData();
 <div className="cart-cont"> 
 <h3> My Cart ({apiData.cartData.length>0 ? apiData.cartData.length : 0})</h3>
 <div className="cart-items">
+{
+apiData.cartData.length>0 
+?     
+<>
 <CartComponent /> 
-<CheckoutComponent />    
+<CheckoutComponent />
+</>
+: 
+<h1> Your cart is empty. </h1>
+}    
 </div>
 
 </div>
