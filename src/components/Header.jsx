@@ -5,7 +5,7 @@ import { useWishlist } from "../context/wishlist-context";
 
 export function Header() {
 
-  const {isLoggedIn, handleLogout, handleLogin, handleWishlist, handleCart} = useAuth(); 
+  const {isLoggedIn, handleLogout, handleLogin, handleWishlist, handleCart, handleHome} = useAuth(); 
 
   const { totalQuantity} = useCart(); 
   const { wishlistQuantity } = useWishlist(); 
@@ -18,7 +18,7 @@ export function Header() {
     <>
       <div className="header-cont">
         <h3>
-          <a className="brand-name" href="/">
+          <a className="brand-name" href="/" onClick={handleHome}>
             MyShopping Site
           </a>
         </h3>

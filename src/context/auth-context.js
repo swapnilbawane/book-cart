@@ -78,6 +78,18 @@ export function AuthProvider({children}) {
     navigate('/cart'); 
    }
 
+   const handleHome = (event) =>{ 
+    event.preventDefault(); 
+    console.log("Going to home page.....");
+    navigate('/'); 
+   }
+
+   const handleHomeCategories = (event) =>{ 
+    event.preventDefault(); 
+    console.log("Going to home page.....");
+    navigate('/products'); 
+   }
+
    const handleRememberMe = (event, user) => { 
       if(event.target.checked) {
         localStorage.setItem("email",user.email );
@@ -121,7 +133,7 @@ export function AuthProvider({children}) {
   }
 
     return(
-      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser, handleLogin, handleWishlist, handleCart}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser, handleLogin, handleWishlist, handleCart, handleHome, handleHomeCategories}}>
         {children}
       </AuthContext.Provider>
     );

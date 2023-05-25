@@ -22,17 +22,30 @@ export function ProductCard({
     // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
 
     const { apiData } = useData(); 
+
     const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
-    console.log("isPresent",isPresentInCart);
+    console.log("isPresent in cart:",isPresentInCart);
+
+    const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
+    console.log("isPresent in wishlist:",isPresentInWishlist);
+
+    
+
     const navigate = useNavigate(); 
+
+
     
     return (
         <>
         <div className="card-cont">
             <div className="card-img">
                 <div className="card-badge">
-                    {/* here if the item is present in wishlist show empty heart else show full heart */}
-                <i className="red-fav material-symbols-outlined">favorite</i>  
+                   
+                {
+                  isPresentInWishlist === -1   
+                ? <i className="red-fav material-symbols-outlined">favorite</i>
+                : <i className="red-fav material-symbols-outlined" id="red-fill">favorite</i>
+                }  
                 </div> 
                 <img src={image} alt="testimg" />   
                 </div>
