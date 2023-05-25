@@ -31,6 +31,7 @@ export function ProductCard({
         <div className="card-cont">
             <div className="card-img">
                 <div className="card-badge">
+                    {/* here if the item is present in wishlist show empty heart else show full heart */}
                 <i className="red-fav material-symbols-outlined">favorite</i>  
                 </div> 
                 <img src={image} alt="testimg" />   
