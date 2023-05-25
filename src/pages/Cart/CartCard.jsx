@@ -15,7 +15,7 @@ image
     const { removeFromCart } = useCart();
 
     return(
-        <>
+   <>
    <div className="cart-card-cont">
    
    <div className="cart-card-img">
@@ -55,8 +55,11 @@ image
     <button 
     className="cart-card-button"
     onClick={()=> removeFromCart(_id)}
-    > Remove From Cart </button>  
-    <button className="cart-card-wishlist"> Move To Wishlist </button>  
+    > Remove From Cart </button> 
+
+    <button className="cart-card-wishlist"
+    
+    > Move To Wishlist </button>  
     
    </div>
     
