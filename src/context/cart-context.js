@@ -16,9 +16,11 @@ export function CartProvider({children}) {
     const totalPrice = Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+curr.qty,0);
 
+    // Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     //cartInfo?.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0));
     // Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     // cartInfo?.cart.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0) ?? 0;
+    // [...cartInfo].reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
    
     const discount = 10;
     const deliveryCharges = 49; 
