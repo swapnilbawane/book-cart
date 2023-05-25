@@ -19,6 +19,7 @@ export function ProductCard({
 
     // TODO: logic if item present in cart, then button should be go to cart, else add to cart 
     // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
+    
     return (
         <>
         <div className="card-cont">

@@ -4,10 +4,9 @@ import "./Login.css";
 import { useState } from "react";
 
 
-
 export function Login() { 
 
-    const { LoginAccount } = useAuth();
+    const { loginAccount } = useAuth();
 
     const [user, setUser] = useState({email: "", password: ""}); 
  
@@ -68,7 +67,7 @@ export function Login() {
               </div>  
             </div>
 
-            <button className="card-button active-button" onClick={()=> LoginAccount(user)}> Login </button>
+            <button className="card-button active-button" onClick={()=> loginAccount(user)}> Login </button>
 
             <a href="/signup" className="create-new-account">
                 Create New Account
@@ -77,7 +76,7 @@ export function Login() {
  
            
             <button className="card-button active-button" 
-            onClick={console.log("clicked")}> 
+            onClick={()=> console.log("clicked")}> 
             Sign in as test user 
             </button>
 

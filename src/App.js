@@ -2,17 +2,21 @@ import "./App.css";
 import React from "react"; 
 import { Routes, Route, Link } from "react-router-dom"; 
 import Mockman from "mockman-js";
+
 import { Login } from "./pages/Login/Login.js";
 import { Signup } from "./pages/Signup/Signup";
 import { Home } from "./pages/Home/Home";
 import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Products } from "./pages/Products/Products";
+
 import { RequiresAuth } from "./components/RequiresAuth";
 import { useAuth } from "./context/auth-context";
+
 import { ProductDetail } from "./pages/Products/ProductDetail";
 import { CategoryDetail } from "./pages/Landing/CategoryDetail";
-import { ToastContainer, toast } from 'react-toastify';
+
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -28,6 +32,7 @@ function App() {
       <Route path="/login" element={<Login/> } /> 
       <Route path="/signup" element={<Signup />} /> 
 
+      {/* // protected routes */}
 
       <Route path="/cart" element={
     
@@ -38,16 +43,18 @@ function App() {
       } />
 
 
-      <Route path="/wishlist" element={
+    <Route path="/wishlist" element={
      
      <Wishlist />
     
-      } /> 
+    } /> 
 
-      <Route path="/mockman" element={<Mockman />} /> 
-      </Routes> 
+    <Route path="/mockman" element={<Mockman />} /> 
+    
+    </Routes> 
 
-       <ToastContainer />
+    <ToastContainer />
+
     </div>
   );
 }

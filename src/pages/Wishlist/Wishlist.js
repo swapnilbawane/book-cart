@@ -5,11 +5,12 @@ import { useAuth } from "../../context/auth-context";
 export function Wishlist () { 
    
 
-    return (
-        <>
-        <Header /> 
+return (
+<>
 
-        <div class="wishlist-cont">
+<Header /> 
+
+<div class="wishlist-cont">
 
     <h3> My wishlist</h3>
     
@@ -49,7 +50,7 @@ export function Wishlist () {
 
     </div>
 
-    </div>
-        </>
-    );
+</div>
+</>
+);
 }

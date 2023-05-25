@@ -1,14 +1,17 @@
 
 import { useContext, useState, createContext } from "react";
-import {useNavigate} from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import {useLocation, useNavigate} from "react-router-dom";
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext();
 
 export function AuthProvider({children}) { 
 
+  const [isLoggedIn ,setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate(); 
+  const location = useLocation(); 
 
   const showToastMessage = () => { 
       toast.success('Logged in !', {
@@ -16,7 +19,7 @@ export function AuthProvider({children}) {
   });
   }
 
-   const LoginAccount = async (user) => { 
+   const loginAccount = async (user) => { 
       try {
          const creds = { 
           email: user.email,
@@ -31,22 +34,35 @@ export function AuthProvider({children}) {
          const { encodedToken } = await res.json();
          showToastMessage();
          localStorage.setItem("encodedToken",encodedToken); 
+         
+         
+         if(location?.state?.from?.pathname==="/wishlist") {
+          navigate('/wishlist');
+        } 
+         else if(location?.state?.from?.pathname==="/cart") { 
+          navigate('/cart');
+         }
+         else navigate('/products');
 
-         navigate('/products');
-
-
-
+         setIsLoggedIn(true); 
       }
       catch(error) { 
-
+       console.log(error);
       }
    }
 
 
+   const handleLogout = (event) => { 
+    event.preventDefault();
+    console.log("Logging out....");
+    setIsLoggedIn(false);   
+    navigate('/');
+   }
 
+   
 
     return(
-      <AuthContext.Provider value={{LoginAccount}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout}}>
         {children}
       </AuthContext.Provider>
     );

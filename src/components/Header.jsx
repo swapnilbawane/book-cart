@@ -1,6 +1,15 @@
 import "./Header.css"; 
+import { useAuth } from "../context/auth-context";
 
 export function Header() {
+
+  const {isLoggedIn, handleLogout, handleLogin} = useAuth(); 
+
+
+  console.log("login status", isLoggedIn);
+
+  
+
   return (
     <>
       <div className="header-cont">
@@ -22,9 +31,11 @@ export function Header() {
         </div>
 
         <div className="header-profile">
-          <a className="login-button" href="/login">
-            Login
-          </a>
+
+          { isLoggedIn 
+          ? <a className="login-button" href="/products" onClick={handleLogout}> Logout </a> 
+          :  <a className="login-button" href="/login" onClick={handleLogin}> Login </a>
+          }
 
           <a className="header-badge" href="/wishlist">
             <div> 0 </div>
