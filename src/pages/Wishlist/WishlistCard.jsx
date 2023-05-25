@@ -1,3 +1,4 @@
+import { useWishlist } from "../../context/wishlist-context";
 import "./Wishlist.css";
 
 
@@ -10,7 +11,7 @@ export function WishlistCard({
     image 
 }) { 
 
-    
+   const { deleteFromWishlist } = useWishlist(); 
 
     return(
         <>
@@ -29,6 +30,9 @@ export function WishlistCard({
             </div>
 
             <button class="card-button"> Add To Cart </button>
+            <button 
+            onClick={()=> deleteFromWishlist(_id)}
+            > Remove from wishlist </button>
         </div>
         </>
     );

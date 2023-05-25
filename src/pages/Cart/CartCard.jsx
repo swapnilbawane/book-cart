@@ -1,4 +1,5 @@
 import { useCart } from "../../context/cart-context";
+import { useWishlist } from "../../context/wishlist-context";
 
 
 export function CartCard({
@@ -13,6 +14,7 @@ image
     const item = { _id,title,author,price,categoryName,image};
 
     const { removeFromCart } = useCart();
+    const { addToWishlist } = useWishlist(); 
 
     return(
    <>
@@ -58,7 +60,7 @@ image
     > Remove From Cart </button> 
 
     <button className="cart-card-wishlist"
-    
+    onClick={()=> addToWishlist(item)}
     > Move To Wishlist </button>  
     
    </div>

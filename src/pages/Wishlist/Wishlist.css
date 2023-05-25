@@ -99,4 +99,12 @@ i#fav.material-symbols-outlined {
 }
 
 
+.wishlist-component { 
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
+h1 { 
+    text-align: center;
+}

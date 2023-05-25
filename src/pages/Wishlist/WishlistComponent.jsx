@@ -15,7 +15,7 @@ export function WishlistComponent() {
 
         <div class="wishlist-component">
         {
-        apiData?.wishlistData?.wishlist?.map((item,index) => {
+        apiData?.wishlistData?.map((item,index) => {
             return (
                 <div key={item._id+index}>
                      <WishlistCard {...item} />    
