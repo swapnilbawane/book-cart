@@ -34,8 +34,10 @@ body {
     width: 421px;
 }
 
+/* header search */
 .header-search i.material-symbols-outlined {
     font-size: 1.2rem;
+    color: #9a9a9a;
 }
 
 .header-search input {
@@ -78,4 +80,12 @@ body {
 
 .header-cart, .header-cart label {
     cursor: pointer;
+}
+
+i#shopping-cart.material-symbols-outlined { 
+    color: #9a9a9a;
+}
+
+i#fav.material-symbols-outlined { 
+    color: #9a9a9a;
 }

@@ -128,26 +128,29 @@ body {
     color: red;
 }
 
-#red-fill { 
-    font-variation-settings:
-    'FILL' 1
-}
 
 i.material-symbols-outlined {
     font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+    color: red;
+  }
+
+  i#red-fill.material-symbols-outlined { 
+    font-variation-settings: 
     'FILL' 1,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 48
-  }
-
-  i#fav.material-symbols-outlined { 
-    font-variation-settings: 'FILL' 0; 
-    color: #9a9a9a;
+    'opsz' 48; 
+    color: red;
 
 }  
 
-.material-icons-outlined {
+
+
+/* .material-icons-outlined {
     font-family: 'Material Icons Outlined';
     font-weight: normal;
     font-style: normal;
@@ -168,7 +171,7 @@ i.material-icons-outlined {
     'wght' 400,
     'GRAD' 0,
     'opsz' 48
-  }
+  } */
 
 
 

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"; 
 import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
+import { useWishlist } from "../../context/wishlist-context";
 
 export function ProductCard({
     _id,
@@ -17,6 +18,7 @@ export function ProductCard({
     // console.log("item", _id,title,author,price,categoryName);
 
     const {addToCart} = useCart(); 
+    const {addToWishlist} = useWishlist();
 
     // TODO: logic if item present in cart, then button should be go to cart, else add to cart 
     // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
@@ -43,8 +45,8 @@ export function ProductCard({
                    
                 {
                   isPresentInWishlist === -1   
-                ? <i className="red-fav material-symbols-outlined">favorite</i>
-                : <i className="red-fav material-symbols-outlined" id="red-fill">favorite</i>
+                ? <i className="material-symbols-outlined" onClick={()=> addToWishlist(item)}>favorite</i>
+                : <i className="material-symbols-outlined" id="red-fill" onClick={()=> console.log("wishlisted 2")}>favorite</i>
                 }  
                 </div> 
                 <img src={image} alt="testimg" />   

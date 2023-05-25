@@ -24,7 +24,7 @@ export function Header() {
         </h3>
 
         <div className="header-search">
-          <i className="material-symbols-outlined"> search </i>
+          <i className="material-symbols-outlined" id="search"> search </i>
           <input
             type="text"
             placeholder="Search"
@@ -43,7 +43,7 @@ export function Header() {
 
           <a className="header-badge" href="/wishlist"onClick={handleWishlist}>
             <div> {wishlistQuantity} </div>
-            <i className="material-symbols-outlined">favorite</i>
+            <i className="material-symbols-outlined" id="fav">favorite</i>
           </a>
 
           <a className="header-cart" href="/cart" onClick={handleCart}>

@@ -16,20 +16,20 @@ export function WishlistCard({
     return(
         <>
 
-        <div class="card-cont">
-            <div class="card-img">
-                <div class="card-badge">
-                 <i class="red-fav material-symbols-outlined"> favorite </i>
+        <div className="card-cont">
+            <div className="card-img">
+                <div className="card-badge">
+                 <i className="red-fav material-symbols-outlined"> favorite </i>
                 </div>
                 <img src={image} alt="cards"/>
             </div>
 
-            <div class="card-details">
+            <div className="card-details">
                 <div> {title} </div>
                 <b> Rs. {price} </b>
             </div>
 
-            <button class="card-button"> Add To Cart </button>
+            <button className="card-button"> Add To Cart </button>
             <button 
             onClick={()=> deleteFromWishlist(_id)}
             > Remove from wishlist </button>
