@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import { useCart } from "../../context/cart-context";
+import { useData } from "../../context/data-context";
 
 export function ProductCard({
     _id,
@@ -19,6 +20,11 @@ export function ProductCard({
 
     // TODO: logic if item present in cart, then button should be go to cart, else add to cart 
     // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
+
+    const { apiData } = useData(); 
+    const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
+    console.log("isPresent",isPresentInCart);
+    const navigate = useNavigate(); 
     
     return (
         <>
@@ -35,7 +41,10 @@ export function ProductCard({
                 <b> Rs.{price} </b>
                 </div>
 
-                <button className="card-button active-button" onClick={()=> addToCart(item)}> Add to Cart</button>
+                { isPresentInCart === -1 
+                ? <button className="card-button active-button" onClick={()=> addToCart(item)}> Add to Cart</button>
+                : <button className="card-button active-button" onClick={()=> navigate('/cart')}> Go to Cart</button>
+                }
         </div>
         </>
     );
