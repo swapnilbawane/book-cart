@@ -1,15 +1,29 @@
 import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
 import "./Login.css"; 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export function Login() { 
 
-    const { loginAccount } = useAuth();
+    const { loginAccount, handleRememberMe, handleTestUser } = useAuth();
 
     const [user, setUser] = useState({email: "", password: ""}); 
- 
+
+    // useEffect(()=> {
+
+    //     const savedEmail = localStorage.getItem("email");
+    //     const savedPassword = localStorage.getItem("password");
+
+    //     if(savedEmail & savedPassword) { 
+    //         setUser({...user, email: savedEmail, password: savedPassword}); 
+    //     }
+
+    // },[]);
+    
+
+   
+    
     const updateUser = (e) => { 
      if(e.target.name==="email") { 
         setUser({...user, email: e.target.value});
@@ -19,6 +33,8 @@ export function Login() {
         setUser({...user, password: e.target.value});
      }
     }
+
+
 
     return(
         <> 
@@ -57,7 +73,10 @@ export function Login() {
 
             <div className="login-forgot-details">
               <div className="remember-me"> 
-                <input type="checkbox"/>
+                <input 
+                type="checkbox"
+                onChange={(event) => handleRememberMe(event,user)}
+                />
                 <label> Remember Me</label>
               </div>
 
@@ -76,7 +95,7 @@ export function Login() {
  
            
             <button className="card-button active-button" 
-            onClick={()=> console.log("clicked")}> 
+            onClick={()=> handleTestUser()}> 
             Sign in as test user 
             </button>
 

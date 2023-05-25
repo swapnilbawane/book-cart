@@ -59,10 +59,50 @@ export function AuthProvider({children}) {
     navigate('/');
    }
 
-   
+   const handleRememberMe = (event, user) => { 
+      if(event.target.checked) {
+        localStorage.setItem("email",user.email );
+        localStorage.setItem("password", user.password);
+      }
+
+   }
+
+  const handleTestUser = async () => { 
+    console.log("handle test user")
+    try {
+      const creds = { 
+       email: "adarshbalika@gmail.com",
+       password: "adarshbalika"
+      }
+       
+      const res = await fetch("/api/auth/login", {
+      method: 'POST',
+      body: JSON.stringify(creds)   
+      });
+      
+      const { encodedToken } = await res.json();
+      showToastMessage();
+      localStorage.setItem("encodedToken",encodedToken); 
+      
+      
+      if(location?.state?.from?.pathname==="/wishlist") {
+       navigate('/wishlist');
+     } 
+      else if(location?.state?.from?.pathname==="/cart") { 
+       navigate('/cart');
+      }
+      else navigate('/products');
+
+      setIsLoggedIn(true); 
+   }
+   catch(error) { 
+    console.log(error);
+   }
+
+  }
 
     return(
-      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser}}>
         {children}
       </AuthContext.Provider>
     );
