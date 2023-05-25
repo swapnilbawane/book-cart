@@ -17,7 +17,7 @@ return (
 
     <h3> My wishlist</h3>
     
-    <div class="wishlist-list">
+    <div className="wishlist-list">
     { 
 
      apiData.wishlistData.length>0 

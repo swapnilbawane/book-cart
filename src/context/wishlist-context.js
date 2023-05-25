@@ -8,6 +8,10 @@ export function WishlistProvider ( {children} ) {
     const {apiData, setApiData} = useData();
     const encodedToken = localStorage.getItem("encodedToken"); 
 
+    const wishlistInfo = apiData?.wishlistData;
+   console.log("wishlist info: ", wishlistInfo);
+    const wishlistQuantity = Array.from(wishlistInfo).reduce((acc,curr)=> acc+1,0);
+
     const addToWishlist = async (item) => { 
         try { 
      
@@ -63,7 +67,7 @@ export function WishlistProvider ( {children} ) {
     }
 
    return (
-    <WishlistContext.Provider value={{addToWishlist, deleteFromWishlist}}>
+    <WishlistContext.Provider value={{addToWishlist, deleteFromWishlist, wishlistQuantity}}>
         {children}
     </WishlistContext.Provider>
    ); 

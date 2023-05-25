@@ -1,10 +1,14 @@
 import "./Header.css"; 
 import { useAuth } from "../context/auth-context";
+import { useCart } from "../context/cart-context";
+import { useWishlist } from "../context/wishlist-context";
 
 export function Header() {
 
   const {isLoggedIn, handleLogout, handleLogin, handleWishlist, handleCart} = useAuth(); 
 
+  const { totalQuantity} = useCart(); 
+  const { wishlistQuantity } = useWishlist(); 
 
   console.log("login status", isLoggedIn);
 
@@ -38,13 +42,13 @@ export function Header() {
           }
 
           <a className="header-badge" href="/wishlist"onClick={handleWishlist}>
-            <div> 0 </div>
+            <div> {wishlistQuantity} </div>
             <i className="material-symbols-outlined">favorite</i>
           </a>
 
           <a className="header-cart" href="/cart" onClick={handleCart}>
             <div className="header-badge">
-              <div> 0 </div>
+              <div> {totalQuantity} </div>
               <i className="material-symbols-outlined" id="shopping-cart">
                 shopping_cart
               </i>
