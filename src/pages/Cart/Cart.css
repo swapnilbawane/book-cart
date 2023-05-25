@@ -171,8 +171,11 @@ i#fav2.material-symbols-outlined {
     margin: 0;
 }
 
-
-
+.cart-component { 
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
 
 

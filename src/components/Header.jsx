@@ -3,7 +3,7 @@ import { useAuth } from "../context/auth-context";
 
 export function Header() {
 
-  const {isLoggedIn, handleLogout} = useAuth(); 
+  const {isLoggedIn, handleLogout, handleLogin, handleWishlist, handleCart} = useAuth(); 
 
 
   console.log("login status", isLoggedIn);
@@ -34,15 +34,15 @@ export function Header() {
 
           { isLoggedIn 
           ? <a className="login-button" href="/products" onClick={handleLogout}> Logout </a> 
-          :  <a className="login-button" href="/login"> Login </a>
+          :  <a className="login-button" href="/login" onClick={handleLogin}> Login </a>
           }
 
-          <a className="header-badge" href="/wishlist">
+          <a className="header-badge" href="/wishlist"onClick={handleWishlist}>
             <div> 0 </div>
             <i className="material-symbols-outlined">favorite</i>
           </a>
 
-          <a className="header-cart" href="/cart">
+          <a className="header-cart" href="/cart" onClick={handleCart}>
             <div className="header-badge">
               <div> 0 </div>
               <i className="material-symbols-outlined" id="shopping-cart">

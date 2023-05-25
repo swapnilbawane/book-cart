@@ -70,7 +70,7 @@ getData();
 },[]);
 
 return (
-<DataContext.Provider value={apiData}>
+<DataContext.Provider value={{apiData, setApiData}}>
     {children}
 </DataContext.Provider>
 

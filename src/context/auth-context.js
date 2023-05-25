@@ -34,6 +34,7 @@ export function AuthProvider({children}) {
          const { encodedToken } = await res.json();
          showToastMessage();
          localStorage.setItem("encodedToken",encodedToken); 
+         console.log("type", typeof encodedToken);
          
          
          if(location?.state?.from?.pathname==="/wishlist") {
@@ -57,6 +58,24 @@ export function AuthProvider({children}) {
     console.log("Logging out....");
     setIsLoggedIn(false);   
     navigate('/');
+   }
+
+   const handleLogin = (event) => { 
+    event.preventDefault(); 
+    console.log("Logging in.....");
+    navigate('/login'); 
+   }
+
+   const handleWishlist = (event) => { 
+    event.preventDefault(); 
+    console.log("Going to wishlist.....");
+    navigate('/wishlist');
+   }
+
+   const handleCart = (event) =>{ 
+    event.preventDefault(); 
+    console.log("Going to cart.....");
+    navigate('/cart'); 
    }
 
    const handleRememberMe = (event, user) => { 
@@ -83,7 +102,7 @@ export function AuthProvider({children}) {
       const { encodedToken } = await res.json();
       showToastMessage();
       localStorage.setItem("encodedToken",encodedToken); 
-      
+      console.log("type testuser", typeof encodedToken);
       
       if(location?.state?.from?.pathname==="/wishlist") {
        navigate('/wishlist');
@@ -102,7 +121,7 @@ export function AuthProvider({children}) {
   }
 
     return(
-      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser, handleLogin, handleWishlist, handleCart}}>
         {children}
       </AuthContext.Provider>
     );

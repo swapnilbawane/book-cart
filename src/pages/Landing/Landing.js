@@ -11,7 +11,7 @@ export function Landing() {
     const {isLoggedIn} = useAuth();
   
     
-    const apiData = useData(); 
+    const {apiData} = useData(); 
 
 
 return (

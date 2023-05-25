@@ -5,7 +5,7 @@ import "./Products.css";
 
 export function Products() { 
 
-    const apiData = useData(); 
+    const {apiData} = useData(); 
     // console.log("apidata",apiData.product.products);
 
     return(

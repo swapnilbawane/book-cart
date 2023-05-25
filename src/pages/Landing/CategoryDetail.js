@@ -7,7 +7,7 @@ import { useData } from "../../context/data-context";
 
 
 export function CategoryDetail() {
-    const apiData = useData(); 
+    const {apiData} = useData(); 
     //console.log("categories",apiData);
     
     const { _id } = useParams(); 

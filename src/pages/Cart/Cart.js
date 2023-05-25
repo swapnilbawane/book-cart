@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
+import { useData } from "../../context/data-context";
 import "./Cart.css";
 import { CartComponent } from "./CartComponent"; 
 import { CheckoutComponent } from "./CheckoutComponent";
@@ -8,13 +9,15 @@ import { CheckoutComponent } from "./CheckoutComponent";
 // TODO: Have a cart context, that has cart data, add to cart will use 
 
 export function Cart() {
-       
+     
+const { apiData } = useData();     
+
     return(
 <>
 <Header /> 
         
 <div className="cart-cont"> 
-<h3> My Cart (1)</h3>
+<h3> My Cart ({apiData.cartData.length>0 ? apiData.cartData.length : 0})</h3>
 <div className="cart-items">
 <CartComponent /> 
 <CheckoutComponent />    

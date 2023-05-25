@@ -6,9 +6,8 @@ export const CartContext = createContext();
 
 export function CartProvider({children}) { 
 
-    const [itemData, setItem] = useState(null);
 
-    const apiData = useData();
+    const {apiData, setApiData} = useData();
     const encodedToken = localStorage.getItem("encodedToken"); 
 
     const addToCart = async (item) => { 
@@ -25,10 +24,12 @@ export function CartProvider({children}) {
         'authorization': `${encodedToken}`
         } 
        });
-
+      
+       const response = await cartres.json();
+       const updatedCart = [...response.cart];
+       console.log("cart items updated:", updatedCart );
     
-
-    //    setItem(item);
+       setApiData({...apiData, cartData: updatedCart})
 
        }
        catch(error) { 
@@ -37,13 +38,32 @@ export function CartProvider({children}) {
 
     }
 
-    useEffect(()=> {
-        addToCart(itemData);
-    }, []); 
+    const removeFromCart = async(id) => { 
+        try { 
+           const fetchURL = "/api/user/cart/"+id;
+           const cartres = await fetch(fetchURL,{
+            method: 'DELETE',
+            headers: {
+            'Content-Type': 'application/json',
+            'authorization': `${encodedToken}`
+            } 
+           });
+          
+           const response = await cartres.json();
+           const updatedCart = [...response.cart];
+           console.log("cart items updated:", updatedCart );
+        
+           setApiData({...apiData, cartData: updatedCart})
+    
+           }
+           catch(error) { 
+            console.log(error); 
+           }
 
+    }
 
     return (
-        <CartContext.Provider value={addToCart}>
+        <CartContext.Provider value={{addToCart, removeFromCart}}>
             {children}
         </CartContext.Provider>
     ); 

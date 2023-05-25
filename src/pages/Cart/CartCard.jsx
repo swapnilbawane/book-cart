@@ -1,3 +1,4 @@
+import { useCart } from "../../context/cart-context";
 
 
 export function CartCard({
@@ -10,6 +11,8 @@ image
 }) {
 
     const item = { _id,title,author,price,categoryName,image};
+
+    const { removeFromCart } = useCart();
 
     return(
         <>
@@ -49,7 +52,10 @@ image
 
     </div>
 
-    <button className="cart-card-button"> Remove From Cart </button>  
+    <button 
+    className="cart-card-button"
+    onClick={()=> removeFromCart(_id)}
+    > Remove From Cart </button>  
     <button className="cart-card-wishlist"> Move To Wishlist </button>  
     
    </div>
