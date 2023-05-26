@@ -3,9 +3,12 @@ import { useCart } from "../../context/cart-context";
 
 export function CheckoutComponent() { 
 
+  
+
   const { apiData } = useData(); 
   const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart(); 
 
+  console.log("cart:",apiData.cartData);
   // const cartInfo = apiData.cartData;
   // const totalPrice = cartInfo.reduce((acc,curr)=> acc+curr.price*curr.qty,0);
   // const discount = 10;
@@ -42,7 +45,7 @@ export function CheckoutComponent() {
      <p>You will save Rs {discount} on this order </p>
      <button className="cart-card-button active-button"> Place Order</button>
  </div>
-   : <h1> Error adding to cart. Remove items and add again. </h1>
+   : <h1> Error adding to cart. Remove item from cart and try again. </h1>
     }
    
 

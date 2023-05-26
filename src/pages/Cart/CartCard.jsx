@@ -2,6 +2,7 @@ import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
 import { useWishlist } from "../../context/wishlist-context";
 import {useNavigate} from "react-router-dom";
+import { useState } from "react";
 
 export function CartCard({
 _id,
@@ -13,19 +14,20 @@ image,
 qty    
 }) {
 
-   
+    // const [qtyValue, setQtyValue] = useState(1);
+
     const navigate = useNavigate();
     const item = { _id,title,author,price,categoryName,image};
 
-    const { removeFromCart, incrementInCart, decrementInCart, qtyValue, setQtyValue } = useCart();
+    const { removeFromCart, incrementInCart, decrementInCart} = useCart();
     const { addToWishlist } = useWishlist(); 
 
    const { apiData } = useData(); 
 
    const isPresentInWishlist = Array.from(apiData.wishlistData).findIndex((product)=> product._id === item._id);
-   console.log(isPresentInWishlist,"present status") 
+//    console.log(isPresentInWishlist,"present status") 
    
-   console.log(isPresentInWishlist<0);
+//    console.log(isPresentInWishlist<0);
 
 
     const moveToWishlist = async (item) => { 
@@ -66,9 +68,9 @@ qty
     <div className="cart-cart-quantity-cont">
      Quantity:
      <div className="cart-card-quantity">
-        <div onClick={()=> decrementInCart(_id,qty, qtyValue, setQtyValue )}>-</div>
-        <input type="number" value={qtyValue}/>
-        <div onClick={()=> incrementInCart(_id,qty, qtyValue, setQtyValue)}>+</div>
+        <div onClick={()=> decrementInCart(_id,qty)}>-</div>
+        <input type="number" value={qty}/>
+        <div onClick={()=> incrementInCart(_id,qty)}>+</div>
      </div>  
     </div>
 

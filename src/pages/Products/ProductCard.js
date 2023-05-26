@@ -44,7 +44,7 @@ export function ProductCard({
                 <div className="card-badge">
                    
                 {
-                  isPresentInWishlist === -1   
+                  isPresentInWishlist === -1 
                 ? <i className="material-symbols-outlined" onClick={()=> addToWishlist(item)}>favorite</i>
                 : <i className="material-symbols-outlined" id="red-fill" onClick={()=> console.log("wishlisted 2")}>favorite</i>
                 }  

@@ -1,11 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { useData } from "./data-context";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
 
 export const CartContext = createContext(); 
 
 export function CartProvider({children}) { 
 
+   const navigate = useNavigate(); 
 
     const {apiData, setApiData} = useData();
     const encodedToken = localStorage.getItem("encodedToken"); 
@@ -25,7 +27,7 @@ export function CartProvider({children}) {
     const discount = 10;
     const deliveryCharges = 49; 
 
-    const [qtyValue, setQtyValue] = useState(1);
+   
 
     const addToCart = async (item) => { 
 
@@ -81,7 +83,7 @@ export function CartProvider({children}) {
 
     }
 
-    const incrementInCart = async(id,qty,qtyValue, setQtyValue) => { 
+    const incrementInCart = async(id,qty) => { 
         try { 
             const incrementQty = { action : {type: "increment"} };
 
@@ -99,14 +101,14 @@ export function CartProvider({children}) {
             const updatedCart = [...response.cart];
             // console.log("increment cart items updated:", updatedCart );
 
-            const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
+            // const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
 
-            console.log("qtyV+",Array.from(updatedCart).find((product)=>product._id===id).qty);
+            // console.log("qtyV+",Array.from(updatedCart).find((product)=>product._id===id).qty);
 
 
             setApiData({...apiData, cartData: updatedCart});
 
-            setQtyValue(()=> qtyV);
+            // setQtyValue(()=> qtyV);
      
             }
             catch(error) { 
@@ -115,15 +117,16 @@ export function CartProvider({children}) {
  
     }
 
-    const decrementInCart = async(id,qty, qtyValue, setQtyValue) => { 
+    const decrementInCart = async(id,qty) => { 
         try { 
             const decrementQty = { action : {type: "decrement"} };
 
-           if(qtyValue===0 || qtyValue===-1)
+           if(qty===0 || qty===-1)
            { 
-            removeFromCart(id);
+            // removeFromCart(id);
+            navigate('/products');
            } 
-           else if(qtyValue>1 && qtyValue>0) { 
+           else if(qty>1 && qty>0) { 
             const fetchURL = "/api/user/cart/"+id;
             const cartres = await fetch(fetchURL,{
              method: 'POST',
@@ -138,13 +141,13 @@ export function CartProvider({children}) {
             const updatedCart = [...response.cart];
             // console.log("increment cart items updated:", updatedCart );
           
-            const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
+            // const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
 
-            console.log("qtyV-",Array.from(updatedCart).find((product)=>product._id===id).qty);
+            // console.log("qtyV-",Array.from(updatedCart).find((product)=>product._id===id).qty);
 
             setApiData({...apiData, cartData: updatedCart});
             
-            setQtyValue(()=> qtyV);
+            // setQtyValue(()=> qtyV);
             
         }
      
@@ -156,7 +159,7 @@ export function CartProvider({children}) {
     }
 
     return (
-        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity, incrementInCart, decrementInCart,qtyValue, setQtyValue }}>
+        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity, incrementInCart, decrementInCart}}>
             {children}
         </CartContext.Provider>
     ); 

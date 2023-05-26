@@ -14,17 +14,25 @@ export function CartComponent() {
     
     { 
     apiData?.cartData?.map((item,index)=> { 
-        return (item.qty>0) 
-        ? 
-        (<div key={item._id+index}>
+      return (
+      <div key={item._id+index}>
                     <CartCard {...item} />
-            </div>) 
-        : null 
-        
-        
+            </div> 
+            );
+   
+    
     })
     }
    
     </div> 
    );  
 }
+
+// 
+{ /*  apiData?.cartData?.map((item,index)=> { 
+    return (item.qty>0) 
+    ? 
+    (<div key={item._id+index}>
+                <CartCard {...item} />
+        </div>) 
+    : null  */ }  
