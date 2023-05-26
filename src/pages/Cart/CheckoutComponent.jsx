@@ -15,7 +15,7 @@ export function CheckoutComponent() {
         <>
     
     { 
-    apiData.cartData.length>0 
+    apiData.cartData.length>0 && ( totalPrice-discount-deliveryCharges > 0) 
     ? <div className="cart-price-details-card">
     
      <h4> PRICE DETAILS </h4>
@@ -42,7 +42,7 @@ export function CheckoutComponent() {
      <p>You will save Rs {discount} on this order </p>
      <button className="cart-card-button active-button"> Place Order</button>
  </div>
-   : null
+   : <h1> Error adding to cart. Remove items and add again. </h1>
     }
    
 

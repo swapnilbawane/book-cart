@@ -14,7 +14,7 @@ export function CartProvider({children}) {
     // console.log("cart info",cartInfo);
    
     const totalPrice = Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
-    const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+curr.qty,0);
+    const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+ (curr.qty > 0 ? curr.qty : 0),0);
 
     // Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     //cartInfo?.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0));
@@ -24,6 +24,8 @@ export function CartProvider({children}) {
    
     const discount = 10;
     const deliveryCharges = 49; 
+
+    const [qtyValue, setQtyValue] = useState(1);
 
     const addToCart = async (item) => { 
 
@@ -79,7 +81,7 @@ export function CartProvider({children}) {
 
     }
 
-    const incrementInCart = async(id,qty) => { 
+    const incrementInCart = async(id,qty,qtyValue, setQtyValue) => { 
         try { 
             const incrementQty = { action : {type: "increment"} };
 
@@ -96,8 +98,15 @@ export function CartProvider({children}) {
             const response = await cartres.json();
             const updatedCart = [...response.cart];
             // console.log("increment cart items updated:", updatedCart );
-         
-            setApiData({...apiData, cartData: updatedCart})
+
+            const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
+
+            console.log("qtyV+",Array.from(updatedCart).find((product)=>product._id===id).qty);
+
+
+            setApiData({...apiData, cartData: updatedCart});
+
+            setQtyValue(()=> qtyV);
      
             }
             catch(error) { 
@@ -106,11 +115,15 @@ export function CartProvider({children}) {
  
     }
 
-    const decrementInCart = async(id,qty) => { 
+    const decrementInCart = async(id,qty, qtyValue, setQtyValue) => { 
         try { 
             const decrementQty = { action : {type: "decrement"} };
 
-           if(qty>1) { 
+           if(qtyValue===0 || qtyValue===-1)
+           { 
+            removeFromCart(id);
+           } 
+           else if(qtyValue>1 && qtyValue>0) { 
             const fetchURL = "/api/user/cart/"+id;
             const cartres = await fetch(fetchURL,{
              method: 'POST',
@@ -124,8 +137,15 @@ export function CartProvider({children}) {
             const response = await cartres.json();
             const updatedCart = [...response.cart];
             // console.log("increment cart items updated:", updatedCart );
-         
-            setApiData({...apiData, cartData: updatedCart})
+          
+            const qtyV = Array.from(updatedCart).find((product)=>product._id===id).qty;
+
+            console.log("qtyV-",Array.from(updatedCart).find((product)=>product._id===id).qty);
+
+            setApiData({...apiData, cartData: updatedCart});
+            
+            setQtyValue(()=> qtyV);
+            
         }
      
             }
@@ -136,7 +156,7 @@ export function CartProvider({children}) {
     }
 
     return (
-        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity, incrementInCart, decrementInCart }}>
+        <CartContext.Provider value={{addToCart, removeFromCart, totalPrice, discount, deliveryCharges, totalQuantity, incrementInCart, decrementInCart,qtyValue, setQtyValue }}>
             {children}
         </CartContext.Provider>
     ); 

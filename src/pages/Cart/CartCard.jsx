@@ -13,10 +13,11 @@ image,
 qty    
 }) {
 
+   
     const navigate = useNavigate();
     const item = { _id,title,author,price,categoryName,image};
 
-    const { removeFromCart, incrementInCart, decrementInCart } = useCart();
+    const { removeFromCart, incrementInCart, decrementInCart, qtyValue, setQtyValue } = useCart();
     const { addToWishlist } = useWishlist(); 
 
    const { apiData } = useData(); 
@@ -65,9 +66,9 @@ qty
     <div className="cart-cart-quantity-cont">
      Quantity:
      <div className="cart-card-quantity">
-        <div onClick={()=> decrementInCart(_id,qty)}>-</div>
-        <input type="number" value={qty}/>
-        <div onClick={()=> incrementInCart(_id,qty)}>+</div>
+        <div onClick={()=> decrementInCart(_id,qty, qtyValue, setQtyValue )}>-</div>
+        <input type="number" value={qtyValue}/>
+        <div onClick={()=> incrementInCart(_id,qty, qtyValue, setQtyValue)}>+</div>
      </div>  
     </div>
 
