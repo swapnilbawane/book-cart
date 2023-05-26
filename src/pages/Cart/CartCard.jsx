@@ -1,6 +1,7 @@
 import { useCart } from "../../context/cart-context";
+import { useData } from "../../context/data-context";
 import { useWishlist } from "../../context/wishlist-context";
-
+import {useNavigate} from "react-router-dom";
 
 export function CartCard({
 _id,
@@ -12,10 +13,30 @@ image,
 qty    
 }) {
 
+    const navigate = useNavigate();
     const item = { _id,title,author,price,categoryName,image};
 
     const { removeFromCart, incrementInCart, decrementInCart } = useCart();
     const { addToWishlist } = useWishlist(); 
+
+   const { apiData } = useData(); 
+
+   const isPresentInWishlist = Array.from(apiData.wishlistData).findIndex((product)=> product._id === item._id);
+   console.log(isPresentInWishlist,"present status") 
+   
+   console.log(isPresentInWishlist<0);
+
+
+    const moveToWishlist = async (item) => { 
+        
+    
+       if(isPresentInWishlist === -1 ) {
+        addToWishlist(item);
+        }
+
+        // await removeFromCart(item._id);
+        
+    }
 
     return(
    <>
@@ -60,9 +81,15 @@ qty
     onClick={()=> removeFromCart(_id)}
     > Remove From Cart </button> 
 
-    <button className="cart-card-wishlist"
-    onClick={()=> addToWishlist(item)}
-    > Move To Wishlist </button>  
+    { isPresentInWishlist<0 
+      ?  <button className="cart-card-wishlist"
+    onClick={()=> moveToWishlist(item)}
+    > Move To Wishlist </button>
+    :   <button className="cart-card-wishlist"
+    onClick={()=> navigate('/wishlist')}
+    > Go To Wishlist </button>
+    
+    }
     
    </div>
     

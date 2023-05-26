@@ -26,10 +26,10 @@ export function ProductCard({
     const { apiData } = useData(); 
 
     const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
-    console.log("isPresent in cart:",isPresentInCart);
+    // console.log("isPresent in cart:",isPresentInCart);
 
     const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
-    console.log("isPresent in wishlist:",isPresentInWishlist);
+    // console.log("isPresent in wishlist:",isPresentInWishlist);
 
     
 

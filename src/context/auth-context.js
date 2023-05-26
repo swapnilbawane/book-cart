@@ -34,7 +34,7 @@ export function AuthProvider({children}) {
          const { encodedToken } = await res.json();
          showToastMessage();
          localStorage.setItem("encodedToken",encodedToken); 
-         console.log("type", typeof encodedToken);
+        //  console.log("type", typeof encodedToken);
          
          
          if(location?.state?.from?.pathname==="/wishlist") {
@@ -55,38 +55,38 @@ export function AuthProvider({children}) {
 
    const handleLogout = (event) => { 
     event.preventDefault();
-    console.log("Logging out....");
+    // console.log("Logging out....");
     setIsLoggedIn(false);   
     navigate('/');
    }
 
    const handleLogin = (event) => { 
     event.preventDefault(); 
-    console.log("Logging in.....");
+    // console.log("Logging in.....");
     navigate('/login'); 
    }
 
    const handleWishlist = (event) => { 
     event.preventDefault(); 
-    console.log("Going to wishlist.....");
+    // console.log("Going to wishlist.....");
     navigate('/wishlist');
    }
 
    const handleCart = (event) =>{ 
     event.preventDefault(); 
-    console.log("Going to cart.....");
+    // console.log("Going to cart.....");
     navigate('/cart'); 
    }
 
    const handleHome = (event) =>{ 
     event.preventDefault(); 
-    console.log("Going to home page.....");
+    // console.log("Going to home page.....");
     navigate('/'); 
    }
 
    const handleHomeCategories = (event) =>{ 
     event.preventDefault(); 
-    console.log("Going to home page.....");
+    /* console.log("Going to home page....."); */
     navigate('/products'); 
    }
 
@@ -99,7 +99,7 @@ export function AuthProvider({children}) {
    }
 
   const handleTestUser = async () => { 
-    console.log("handle test user")
+    // console.log("handle test user")
     try {
       const creds = { 
        email: "adarshbalika@gmail.com",
@@ -114,7 +114,7 @@ export function AuthProvider({children}) {
       const { encodedToken } = await res.json();
       showToastMessage();
       localStorage.setItem("encodedToken",encodedToken); 
-      console.log("type testuser", typeof encodedToken);
+      // console.log("type testuser", typeof encodedToken);
       
       if(location?.state?.from?.pathname==="/wishlist") {
        navigate('/wishlist');

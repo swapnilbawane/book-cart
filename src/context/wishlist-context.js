@@ -9,7 +9,7 @@ export function WishlistProvider ( {children} ) {
     const encodedToken = localStorage.getItem("encodedToken"); 
 
     const wishlistInfo = apiData?.wishlistData;
-   console.log("wishlist info: ", wishlistInfo);
+//    console.log("wishlist info: ", wishlistInfo);
     const wishlistQuantity = Array.from(wishlistInfo).reduce((acc,curr)=> acc+1,0);
 
     const addToWishlist = async (item) => { 
@@ -28,7 +28,7 @@ export function WishlistProvider ( {children} ) {
           
            const response = await wishlistRes.json();
            const updatedWishlist = [...response.wishlist];
-           console.log("wishlist items updated:", updatedWishlist );
+        //    console.log("wishlist items updated:", updatedWishlist );
         
            setApiData({...apiData, wishlistData: updatedWishlist})
     
@@ -41,7 +41,7 @@ export function WishlistProvider ( {children} ) {
 
     const deleteFromWishlist = async (id) => { 
 
-        console.log("delete from wishlist");
+        // console.log("delete from wishlist");
       
         try { 
             const fetchURL = "/api/user/wishlist/"+id;
@@ -55,7 +55,7 @@ export function WishlistProvider ( {children} ) {
            
             const response = await wishlistRes.json();
             const updatedWishlist = [...response.wishlist];
-            console.log("cart items updated:", updatedWishlist );
+            // console.log("cart items updated:", updatedWishlist );
          
             setApiData({...apiData, wishlistData: updatedWishlist})
      

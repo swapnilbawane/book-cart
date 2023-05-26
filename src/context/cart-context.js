@@ -11,7 +11,7 @@ export function CartProvider({children}) {
     const encodedToken = localStorage.getItem("encodedToken"); 
 
     const cartInfo = apiData?.cartData;
-    console.log("cart info",cartInfo);
+    // console.log("cart info",cartInfo);
    
     const totalPrice = Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+curr.qty,0);
@@ -42,7 +42,7 @@ export function CartProvider({children}) {
       
        const response = await cartres.json();
        const updatedCart = [...response.cart];
-       console.log("cart items updated:", updatedCart );
+    //    console.log("cart items updated:", updatedCart );
     
        setApiData({...apiData, cartData: updatedCart})
 
@@ -68,7 +68,7 @@ export function CartProvider({children}) {
           
            const response = await cartres.json();
            const updatedCart = [...response.cart];
-           console.log("cart items updated:", updatedCart );
+        //    console.log("cart items updated:", updatedCart );
         
            setApiData({...apiData, cartData: updatedCart})
     
@@ -95,7 +95,7 @@ export function CartProvider({children}) {
            
             const response = await cartres.json();
             const updatedCart = [...response.cart];
-            console.log("increment cart items updated:", updatedCart );
+            // console.log("increment cart items updated:", updatedCart );
          
             setApiData({...apiData, cartData: updatedCart})
      
@@ -123,7 +123,7 @@ export function CartProvider({children}) {
            
             const response = await cartres.json();
             const updatedCart = [...response.cart];
-            console.log("increment cart items updated:", updatedCart );
+            // console.log("increment cart items updated:", updatedCart );
          
             setApiData({...apiData, cartData: updatedCart})
         }

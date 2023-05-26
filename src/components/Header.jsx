@@ -10,7 +10,7 @@ export function Header() {
   const { totalQuantity} = useCart(); 
   const { wishlistQuantity } = useWishlist(); 
 
-  console.log("login status", isLoggedIn);
+  // console.log("login status", isLoggedIn);
 
   
 
