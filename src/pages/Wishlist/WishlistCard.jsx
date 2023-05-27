@@ -29,8 +29,8 @@ export function WishlistCard({
                 <b> Rs. {price} </b>
             </div>
 
-            <button className="card-button"> Add To Cart </button>
-            <button 
+            {/* <button className="card-button"> Add To Cart </button> */}
+            <button className="card-button"
             onClick={()=> deleteFromWishlist(_id)}
             > Remove from wishlist </button>
         </div>

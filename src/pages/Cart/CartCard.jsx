@@ -68,7 +68,7 @@ qty
     <div className="cart-cart-quantity-cont">
      Quantity:
      <div className="cart-card-quantity">
-        <div onClick={()=> decrementInCart(_id,qty)}>-</div>
+        <div onClick={()=> decrementInCart(_id,qty)}>{qty>1 ? "-" : null}</div>
         <input type="number" value={qty}/>
         <div onClick={()=> incrementInCart(_id,qty)}>+</div>
      </div>  

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export function Login() { 
 
-    const { loginAccount, handleRememberMe, handleTestUser } = useAuth();
+    const { loginAccount, handleRememberMe, handleTestUser, handleSignup } = useAuth();
 
     const [user, setUser] = useState({email: "", password: ""}); 
 
@@ -72,32 +72,36 @@ export function Login() {
             </div>
 
             <div className="login-forgot-details">
-              <div className="remember-me"> 
+              {/* <div className="remember-me"> 
                 <input 
                 type="checkbox"
                 onChange={(event) => handleRememberMe(event,user)}
                 />
                 <label> Remember Me</label>
-              </div>
+              </div> */}
 
 
               <div className="forgot-password">
-              Forgot your Password?   
+              <span> Forgot your Password? </span>   
               </div>  
             </div>
 
             <button className="card-button active-button" onClick={()=> loginAccount(user)}> Login </button>
 
-            <a href="/signup" className="create-new-account">
+            <button className="card-button active-button" 
+            onClick={()=> handleTestUser()}> 
+            Sign in as test user 
+            </button>
+
+            <a href="/signup" className="create-new-account"
+            onClick={()=> handleSignup()}
+            >
                 Create New Account
                 <i className="material-symbols-outlined"> arrow_forward_ios </i>
             </a>
  
            
-            <button className="card-button active-button" 
-            onClick={()=> handleTestUser()}> 
-            Sign in as test user 
-            </button>
+            
 
         </div>
     </div>    

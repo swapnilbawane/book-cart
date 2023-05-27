@@ -1,39 +1,91 @@
 import { Header } from "../../components/Header";
+import { useAuth } from "../../context/auth-context";
+import { useState } from "react";
 
 export function Signup() {
+    
+    const { handleTestUser, handleLogin, signUpAccount } = useAuth();
+    
+    const [newUser, setNewUser] = useState( 
+        {email: "", password: ""}
+    );
+    
+    const updateNewUser = (e) => { 
+        if(e.target.name==="email") { 
+           setNewUser({...newUser, email: e.target.value});
+        }
+   
+        else if (e.target.name==="password") { 
+           setNewUser({...newUser, password: e.target.value});
+        }
+       }
+
+
     return (
         <>
         <Header /> 
-        <div class="login-cont"> 
-        <div class="login-card">
+        <div className="login-cont"> 
+        <div className="login-card">
 
             <h3> Signup </h3>
 
-            <div class="login-input">
+            <div className="login-input">
                 <label> <b> Email Address </b></label>     
-                <input type="text" placeholder="adarshbalika@gmail.com" spellcheck="false" data-ms-editor="true"/>
+                <input 
+                type="text"
+                name="email" 
+                placeholder="adarshbalika@gmail.com" 
+                spellCheck={false} 
+                data-ms-editor={true}
+                value={newUser.email}
+                onChange={updateNewUser}
+                />
             </div>
 
-            <div class="login-input">
+            <div className="login-input">
                <label> <b> Password </b></label>     
-               <input type="text" placeholder="************" spellcheck="false" data-ms-editor="true"/>
+               <input 
+               type="text" 
+               name="password"
+               placeholder="************" 
+               spellcheck="false" 
+               data-ms-editor="true"
+               value={newUser.password}
+               onChange={updateNewUser}
+               />
             </div>
 
-            <div class="login-forgot-details">
-              <div class="remember-me"> 
+            {/* <div className="login-forgot-details">
+              <div className="remember-me"> 
                 <input type="checkbox" />
                 <label> I accept all Terms & Conditions </label>
-              </div>
+              </div> */}
 
 
-            </div>
+            {/* </div> */}
 
-            <button class="card-button active-button"> Create New Account </button>
+            <button className="card-button active-button"
+            onClick={()=> signUpAccount(newUser)}
+            > 
+            Create New Account 
+            </button>
 
-            <a href="/signup" class="create-new-account">
+            <button 
+            className="card-button active-button" 
+            onClick={()=> handleTestUser()}> 
+            Sign in as test user 
+            </button>
+            
+            <a href="/login" 
+            className="create-new-account" 
+            onClick={handleLogin}>
                 Already have an account
-                <i class="material-symbols-outlined"> arrow_forward_ios </i>
+                <i className="material-symbols-outlined"> 
+                arrow_forward_ios 
+                </i>
             </a>
+
+            
         </div>
     </div> 
         </>
