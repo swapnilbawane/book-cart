@@ -13,7 +13,7 @@ return (
 
 <Header /> 
 
-<div class="wishlist-cont">
+<div className="wishlist-cont">
 
     <h3> My wishlist</h3>
     

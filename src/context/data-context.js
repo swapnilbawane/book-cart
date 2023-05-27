@@ -49,6 +49,7 @@ const wishListResponse = await fetch("/api/user/wishlist", {
     headers: {
       'Content-Type': 'application/json',
       'authorization': encodedToken
+      
     }
   });
 if(wishListResponse.status===200) {
@@ -60,7 +61,7 @@ setApiData({...apiData, product: data,category: categoryList, cartData: cartList
 
 }
 catch(error) { 
-console.log(error); 
+<h1> You encountered an error. We regret about it. We'll fix it soon. Reach out to us at abc@gmail.com </h1>
 }
 
 }
