@@ -48,7 +48,7 @@ export function Signup() {
                type="text" 
                name="password"
                placeholder="************" 
-               spellcheck="false" 
+               spellCheck="false" 
                data-ms-editor="true"
                value={newUser.password}
                onChange={updateNewUser}
