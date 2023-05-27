@@ -13,6 +13,9 @@ export function Landing() {
     
     const {apiData} = useData(); 
 
+    // console.log("apiData category length",apiData.category.length);
+    // console.log("apiData categories length",apiData.category.categories.length);
+
 
 return (
 <> 
@@ -22,7 +25,11 @@ return (
 
 <div className="landing-head"> 
     
-{  
+{
+apiData?.category?.categories 
+?    
+<div>
+{ 
 apiData?.category?.categories?.map((item) => { return (
 <div key={item._id}>    
 <LandingCategories {...item} />
@@ -32,6 +39,9 @@ apiData?.category?.categories?.map((item) => { return (
 
 })
 
+}
+</div>
+: <h1> Loading categories.. Please wait.. </h1>
 }
 
     
