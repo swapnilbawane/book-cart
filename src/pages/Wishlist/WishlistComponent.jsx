@@ -1,7 +1,7 @@
 import "./Wishlist.css"; 
 import { useData } from "../../context/data-context";
 import { WishlistCard } from "./WishlistCard";
-
+import { LoadingWishlist } from "./LoadingWishlist";
 
 export function WishlistComponent() { 
 
@@ -13,17 +13,28 @@ export function WishlistComponent() {
 
     return(
 
-        <div class="wishlist-component">
-        {
-        apiData?.wishlistData?.map((item,index) => {
-            return (
-                <div key={item._id+index}>
-                     <WishlistCard {...item} />    
-                </div>
-            );
-        })
+      
+          
+            <div className="wishlist-component">
 
-        }
-        </div>
+           {     
+            apiData?.wishlistData ? 
+           <>
+           {
+            apiData?.wishlistData?.map((item,index) => {
+                return (
+                    <div key={item._id+index}>
+                         <WishlistCard {...item} />    
+                    </div>
+                );
+            })
+    
+            }
+            </>
+            : <LoadingWishlist />
+            }
+            </div>    
+
+        
     ); 
 }

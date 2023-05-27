@@ -2,6 +2,7 @@ import { Header } from "../../components/Header";
 import { ProductCard } from "./ProductCard";
 import { useData } from "../../context/data-context";
 import "./Products.css"; 
+import { LoadingProducts } from "./LoadingProducts";
 
 export function Products() { 
 
@@ -120,37 +121,45 @@ export function Products() {
 
 
                         {/* <!-- products start  --> */}
+                         
+                        { /// condition start 
+                        apiData?.product?.products ? 
                         <div className="products">
-                                    {/* <!-- 1. product heads starts --> */}
-                                            <div className="products-head">
-                                                <h3> Showing All Products </h3>
-                                                <span> (Showing 20 Products) </span>
-                                            </div>
-                                    {/* <!-- 1. prodcut heads ends --> */}
 
-                                    {/* <!-- 2. products items starts --> */}
+                            
+{/* <!-- 1. product heads starts --> */}
+        <div className="products-head">
+            <h3> Showing All Products </h3>
+            <span> (Showing 20 Products) </span>
+        </div>
+{/* <!-- 1. prodcut heads ends --> */}
 
-                                            <div className="products-items">
-                                              
+{/* <!-- 2. products items starts --> */}
 
-                                            {
-                                               apiData?.product?.products?.map((item)=> {
-                                                return(
-                                                    <div key={item._id}>
-                                                        <ProductCard {...item} /> 
-                                                    </div>
-                                                );
-                                               })             
+        <div className="products-items">
+          
 
-                                            }
-                                               
-                                    
+        {
+           apiData?.product?.products?.map((item)=> {
+            return(
+                <div key={item._id}>
+                    <ProductCard {...item} /> 
+                </div>
+            );
+           })             
 
-                                            </div>
+        }
+           
 
-                                    {/* <!-- 2. products items ends  --> */}
+
+        </div>
+
+{/* <!-- 2. products items ends  --> */}
 
                         </div>
+                        : <LoadingProducts />
+                        } // condition end 
+                        
                         {/* <!-- products over  --> */}
                         
     {/* <!-- pl cont over  --> */}

@@ -5,6 +5,7 @@ import { useData } from "../../context/data-context";
 import "./Cart.css";
 import { CartComponent } from "./CartComponent"; 
 import { CheckoutComponent } from "./CheckoutComponent";
+import { LoadingCart } from "./LoadingCart";
 
 // TODO: Make this a protected route 
 // TODO: Have a cart context, that has cart data, add to cart will use 
@@ -19,8 +20,16 @@ const { totalQuantity }  = useCart();
 <Header /> 
         
 <div className="cart-cont"> 
+
+{
+
+apiData.cartData 
+? 
+<>
 <h3> My Cart ({totalQuantity})</h3>
 {/* apiData.cartData.length>0 ? apiData.cartData.length : 0 */}
+
+
 <div className="cart-items">
 {
 apiData.cartData.length>0 
@@ -34,6 +43,10 @@ apiData.cartData.length>0
 }    
 </div>
 
+</> 
+: 
+<LoadingCart /> 
+}
 </div>
 </>
     );
