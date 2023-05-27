@@ -8,7 +8,7 @@ import { DataProvider } from "./context/data-context";
 import { AuthProvider } from "./context/auth-context";
 import { CartProvider } from "./context/cart-context";
 import { WishlistProvider } from "./context/wishlist-context";
-import { ErrorProvider } from "./context/error-context";
+import { ErrorProvider } from "./APIErrorManagement/error-context";
 
 // Call make Server
 makeServer();
@@ -16,11 +16,12 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter> 
+    <ErrorProvider>
     <DataProvider> 
     <AuthProvider>
     <CartProvider>
     <WishlistProvider>
-    <ErrorProvider>
+    
 
     
 
@@ -28,11 +29,12 @@ ReactDOM.render(
 
     
     
-    </ErrorProvider> 
+    
     </WishlistProvider>
     </CartProvider>
     </AuthProvider>
     </DataProvider>
+    </ErrorProvider> 
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

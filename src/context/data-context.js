@@ -1,4 +1,5 @@
 import { useState, useContext, createContext, useEffect } from "react"; 
+import { useErrorContextApp } from "../APIErrorManagement/error-context";
 
 export const DataContext = createContext(); 
 
@@ -11,6 +12,9 @@ const [ apiData, setApiData ] = useState({
     wishlistData:[]
 } ); 
 
+const { error, setError } = useErrorContextApp();
+console.log("error category",error.category);
+
 
 const getData = async () => { 
 try { 
@@ -19,20 +23,37 @@ let categoryList;
 let cartList;
 let wishListResponseData;
 
-const response = await fetch("/api/products"); 
-if(response.status===200) {
-    data = await response.json();
- }
+try {
+  const response = await fetch("/api/products"); 
+  if(response.status===200) {
+      data = await response.json();
+   }
+   else { 
+    setError({...error, products: "Cannot fetch products, Network is down. Try again later."});
+   }
+}
+catch(productsError) { 
+  setError({...error, products: "Cannot fetch products data, Error in fetching backend data. Please contact administrator."});
+}
 
-const categoriesResponse = await fetch("/api/categories");
+
+try {
+  const categoriesResponse = await fetch("/api/categories");
 if(categoriesResponse.status===200) {
-    categoryList = await categoriesResponse.json(); 
-   
+    categoryList = await categoriesResponse.json();   
+}
+else { 
+ setError({...error, category: "Cannot fetch categories, Network is down. Try again later."});
+}
+}
+catch(categoriesError) {
+  setError({...error, category: "Cannot fetch categories data, Error in fetching backend data. Please contact administrator."});
 }
 
 const encodedToken = localStorage.getItem("encodedToken"); 
 
-const cartResponse = await fetch("/api/user/cart", {
+try { 
+  const cartResponse = await fetch("/api/user/cart", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -40,28 +61,45 @@ const cartResponse = await fetch("/api/user/cart", {
     }
   });
 if(cartResponse.status===200) {
-    cartList = await cartResponse.json();
-     
+    cartList = await cartResponse.json();   
 }  
+else { 
+  setError({...error, cart: "Cannot fetch cart data, Network is down. Try again later."});
+ }
+}
+catch(cartError) { 
+  setError({...error, cart: "Cannot fetch cart data, Error in fetching backend data. Please contact administrator."});
+}
 
-const wishListResponse = await fetch("/api/user/wishlist", {
+try { 
+  const wishListResponse = await fetch("/api/user/wishlist", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'authorization': encodedToken
-      
+
     }
   });
 if(wishListResponse.status===200) {
     wishListResponseData = await wishListResponse.json();
 } 
+else { 
+  setError({...error, wishlist: "Cannot fetch wishlist data, Network is down. Try again later."});
+ }
+
+}
+catch(wishlistError) {
+  setError({...error, wishlist: "Cannot fetch wishlist data, Error in fetching backend data. Please contact administrator."});
+}
+
+
 
 
 setApiData({...apiData, product: data,category: categoryList, cartData: cartList, wishlistData: wishListResponseData});
 
 }
 catch(error) { 
-<h1> You encountered an error. We regret about it. We'll fix it soon. Reach out to us at abc@gmail.com </h1>
+console.log("error in api endpoint:",error);
 }
 
 }
