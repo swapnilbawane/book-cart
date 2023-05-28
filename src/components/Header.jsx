@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export function Header() {
 
-  const {isLoggedIn, handleWishlist, handleCart, handleLogout} = useAuth(); 
+  const {isLoggedIn, handleLogout} = useAuth(); 
 
   const { totalQuantity} = useCart(); 
   const { wishlistQuantity } = useWishlist(); 

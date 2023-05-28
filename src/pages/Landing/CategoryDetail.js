@@ -14,23 +14,24 @@ export function CategoryDetail() {
 
     const [categoryData,setCategoryData]=useState([]); 
 
-    const getCategoryData = async() => { 
-        try { 
-           const res = await fetch(urlFetch);
-           const categoryIndividual = await res.json();      
-           const filterValue = categoryIndividual.category.categoryName;
-           const filterData = apiData.product.products.filter((item)=> item.categoryName === filterValue); 
-           setCategoryData(filterData);
-        }
-        catch(error) { 
-            console.log(error); 
-        }
-    }
-
 
     useEffect(()=> { 
+        const getCategoryData = async() => { 
+            try { 
+               const res = await fetch(urlFetch);
+               const categoryIndividual = await res.json();      
+               const filterValue = categoryIndividual.category.categoryName;
+               const filterData = apiData.product.products.filter((item)=> item.categoryName === filterValue); 
+               setCategoryData(filterData);
+            }
+            catch(error) { 
+                console.log(error); 
+            }
+        }
+
+
         getCategoryData(); 
-    },[]);
+    },[apiData.product.products,urlFetch]);
     
 
    
