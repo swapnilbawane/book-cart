@@ -3,19 +3,11 @@ import { useCart } from "../../context/cart-context";
 
 export function CheckoutComponent() { 
 
-  
-
   const { apiData } = useData(); 
   const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart(); 
 
-  console.log("cart:",apiData.cartData);
-  // const cartInfo = apiData.cartData;
-  // const totalPrice = cartInfo.reduce((acc,curr)=> acc+curr.price*curr.qty,0);
-  // const discount = 10;
-  // const deliveryCharges = 49; 
-
     return(
-        <>
+    <>
     
     { 
     apiData.cartData.length>0 && ( totalPrice-discount-deliveryCharges > 0) 
@@ -48,8 +40,6 @@ export function CheckoutComponent() {
    : <h1> Error adding to cart. Remove item from cart and try again. </h1>
     }
    
-
-
-        </>
+    </>
     );
 }
