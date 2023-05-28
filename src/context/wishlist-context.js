@@ -9,10 +9,9 @@ export function WishlistProvider ( {children} ) {
     const encodedToken = localStorage.getItem("encodedToken"); 
 
     const wishlistInfo = apiData?.wishlistData;
-    // const wishlistInfo = [];
-    // restore point  const wishlistInfo = apiData?.wishlistData;
-//    console.log("wishlist info: ", wishlistInfo);
-    const wishlistQuantity = wishlistInfo.reduce((acc,curr)=> acc+1,0);
+   
+    // const wishlistQuantity = wishlistInfo.reduce((acc,curr)=> acc+1,0);
+    const wishlistQuantity = wishlistInfo.length;
 
     const addToWishlist = async (item) => { 
         try { 
@@ -30,7 +29,6 @@ export function WishlistProvider ( {children} ) {
           
            const response = await wishlistRes.json();
            const updatedWishlist = [...response.wishlist];
-        //    console.log("wishlist items updated:", updatedWishlist );
         
            setApiData({...apiData, wishlistData: updatedWishlist})
     
@@ -41,10 +39,7 @@ export function WishlistProvider ( {children} ) {
 
     }
 
-    const deleteFromWishlist = async (id) => { 
-
-        // console.log("delete from wishlist");
-      
+    const deleteFromWishlist = async (id) => {       
         try { 
             const fetchURL = "/api/user/wishlist/"+id;
             const wishlistRes = await fetch(fetchURL,{
@@ -57,7 +52,6 @@ export function WishlistProvider ( {children} ) {
            
             const response = await wishlistRes.json();
             const updatedWishlist = [...response.wishlist];
-            // console.log("cart items updated:", updatedWishlist );
          
             setApiData({...apiData, wishlistData: updatedWishlist})
      
