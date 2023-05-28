@@ -4,7 +4,7 @@ import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
 import { LoadingLanding } from "./LoadingLanding";
 import { LandingComponent } from "./LandingComponent";
-import { useErrorContextApp } from "../../APIErrorManagement/error-context";
+import { useErrorContextApp } from "../../context-APIErrorManagement/error-context";
 
 import { LandingCategories } from "./LandingCategories";
 import { Link } from "react-router-dom";
