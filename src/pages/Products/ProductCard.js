@@ -14,28 +14,13 @@ export function ProductCard({
 
     const item = {_id,title,author,price,categoryName,image};
     
-    // console.log("product card item value",item);
-    // console.log("item", _id,title,author,price,categoryName);
-
-    const {addToCart} = useCart(); 
-    const {addToWishlist} = useWishlist();
-
-    // TODO: logic if item present in cart, then button should be go to cart, else add to cart 
-    // TODO: Logic if item added to wishlist then show full heart, use different classname? figure out logic? 
-
-    const { apiData } = useData(); 
-
-    const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
-    // console.log("isPresent in cart:",isPresentInCart);
-
-    const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
-    // console.log("isPresent in wishlist:",isPresentInWishlist);
-
-    
-
     const navigate = useNavigate(); 
-
-
+    const { addToCart } = useCart(); 
+    const { addToWishlist } = useWishlist();
+    const { apiData } = useData(); 
+    
+    const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
+    const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
     
     return (
         <>
