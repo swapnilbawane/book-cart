@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { ProductCard } from "../Products/ProductCard";
 import { Header } from "../../components/Header";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../context/data-context";
 
@@ -18,27 +18,22 @@ export function CategoryDetail() {
         try { 
            const res = await fetch(urlFetch);
            const categoryIndividual = await res.json();      
-           return categoryIndividual;
+           const filterValue = categoryIndividual.category.categoryName;
+           const filterData = apiData.product.products.filter((item)=> item.categoryName === filterValue); 
+           setCategoryData(filterData);
         }
         catch(error) { 
             console.log(error); 
         }
     }
 
-   useEffect(()=> { 
-    (async() => { 
-        const data = await getCategoryData();
-        const filterValue = data.category.categoryName; 
-        const filterData = apiData.product.products.filter((item)=> item.categoryName === filterValue); 
-        // this will give me [] of objects 
-        // map this after setting it to category data 
-        setCategoryData(filterData);
-    })();
-     
-   },[]);
+
+    useEffect(()=> { 
+        getCategoryData(); 
+    },[]);
     
 
-
+   
 return(
 <>
 <Header /> 
