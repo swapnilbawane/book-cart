@@ -3,12 +3,9 @@ import { useData } from "../../context/data-context";
 import { CartCard } from "./CartCard";
 
 export function CartComponent() {
-    const {apiData} = useData(); 
-   
-    // console.log("cart component apiData:", apiData)
-    // console.log("cart component cartData: ", apiData.cartData)
-    // console.log("cart component cart: ", apiData.cartData.cart)
 
+   const {apiData} = useData(); 
+   
    return(
     <div className="cart-component">
     
@@ -18,9 +15,7 @@ export function CartComponent() {
       <div key={item._id+index}>
                     <CartCard {...item} />
             </div> 
-            );
-   
-    
+            ); 
     })
     }
    
@@ -28,11 +23,3 @@ export function CartComponent() {
    );  
 }
 
-// 
-{ /*  apiData?.cartData?.map((item,index)=> { 
-    return (item.qty>0) 
-    ? 
-    (<div key={item._id+index}>
-                <CartCard {...item} />
-        </div>) 
-    : null  */ }  
