@@ -1,5 +1,4 @@
 import { Header } from "../../components/Header";
-import { useAuth } from "../../context/auth-context";
 import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
 import "./Cart.css";
@@ -15,7 +14,7 @@ export function Cart() {
 const { apiData } = useData(); 
 const { totalQuantity }  = useCart();
 
-    return(
+return(
 <>
 <Header /> 
         
@@ -27,8 +26,6 @@ apiData.cartData
 ? 
 <>
 <h3> My Cart ({totalQuantity})</h3>
-{/* apiData.cartData.length>0 ? apiData.cartData.length : 0 */}
-
 
 <div className="cart-items">
 {
@@ -49,6 +46,7 @@ apiData.cartData.length>0
 }
 </div>
 </>
-    );
+
+);
 
 }
