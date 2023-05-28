@@ -2,7 +2,7 @@ import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
 import { useWishlist } from "../../context/wishlist-context";
 import {useNavigate} from "react-router-dom";
-import { useState } from "react";
+
 
 export function CartCard({
 _id,
@@ -14,36 +14,26 @@ image,
 qty    
 }) {
 
-    // const [qtyValue, setQtyValue] = useState(1);
+const item = { _id,title,author,price,categoryName,image};
 
-    const navigate = useNavigate();
-    const item = { _id,title,author,price,categoryName,image};
+const navigate = useNavigate();
+const { removeFromCart, incrementInCart, decrementInCart} = useCart();
+const { addToWishlist } = useWishlist(); 
+const { apiData } = useData(); 
 
-    const { removeFromCart, incrementInCart, decrementInCart} = useCart();
-    const { addToWishlist } = useWishlist(); 
+const isPresentInWishlist = Array.from(apiData.wishlistData).findIndex((product)=> product._id === item._id);
 
-   const { apiData } = useData(); 
-
-   const isPresentInWishlist = Array.from(apiData.wishlistData).findIndex((product)=> product._id === item._id);
-//    console.log(isPresentInWishlist,"present status") 
-   
-//    console.log(isPresentInWishlist<0);
-
-
-    const moveToWishlist = async (item) => { 
+const moveToWishlist = async (item) => { 
         
-    
        if(isPresentInWishlist === -1 ) {
         addToWishlist(item);
         }
 
-        // await removeFromCart(item._id);
-        
     }
 
     return(
-   <>
-   <div className="cart-card-cont">
+<>
+<div className="cart-card-cont">
    
    <div className="cart-card-img">
    <img src={image} alt="cards"/>
@@ -76,7 +66,6 @@ qty
 
     </div>   
 
-
     </div>
 
     <button 
@@ -85,20 +74,14 @@ qty
     > Remove From Cart </button> 
 
     { isPresentInWishlist<0 
-      ?  <button className="cart-card-wishlist"
-    onClick={()=> moveToWishlist(item)}
-    > Move To Wishlist </button>
-    :   <button className="cart-card-wishlist"
-    onClick={()=> navigate('/wishlist')}
-    > Go To Wishlist </button>
-    
+    ?  <button className="cart-card-wishlist" onClick={()=> moveToWishlist(item)}> Move To Wishlist </button>
+    :  <button className="cart-card-wishlist" onClick={()=> navigate('/wishlist')}> Go To Wishlist </button>
     }
     
    </div>
     
 </div>
-        </>
-    );
+</>
+);
 }
 
-// 36 43 
