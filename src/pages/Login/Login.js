@@ -1,29 +1,16 @@
 import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
 import "./Login.css"; 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 
 export function Login() { 
 
-    const { loginAccount, handleRememberMe, handleTestUser, handleSignup } = useAuth();
+    const { loginAccount, handleTestUser, handleSignup } = useAuth();
 
     const [user, setUser] = useState({email: "", password: ""}); 
 
-    // useEffect(()=> {
 
-    //     const savedEmail = localStorage.getItem("email");
-    //     const savedPassword = localStorage.getItem("password");
-
-    //     if(savedEmail & savedPassword) { 
-    //         setUser({...user, email: savedEmail, password: savedPassword}); 
-    //     }
-
-    // },[]);
-    
-
-   
-    
     const updateUser = (e) => { 
      if(e.target.name==="email") { 
         setUser({...user, email: e.target.value});
@@ -33,8 +20,6 @@ export function Login() {
         setUser({...user, password: e.target.value});
      }
     }
-
-
 
     return(
         <> 
@@ -72,28 +57,23 @@ export function Login() {
             </div>
 
             <div className="login-forgot-details">
-              {/* <div className="remember-me"> 
-                <input 
-                type="checkbox"
-                onChange={(event) => handleRememberMe(event,user)}
-                />
-                <label> Remember Me</label>
-              </div> */}
-
-
+            
               <div className="forgot-password">
               <span> Forgot your Password? </span>   
-              </div>  
+              </div> 
+
             </div>
 
             <button 
             className="card-button active-button" 
-            onClick={()=> loginAccount(user)}> 
+            onClick={()=> loginAccount(user)}
+            > 
             Login 
             </button>
 
             <button className="card-button active-button" 
-            onClick={()=> handleTestUser()}> 
+            onClick={()=> handleTestUser()}
+            > 
             Sign in as test user 
             </button>
 
@@ -104,11 +84,9 @@ export function Login() {
                 <i className="material-symbols-outlined"> arrow_forward_ios </i>
             </a>
  
-           
-            
 
         </div>
     </div>    
-        </>
+    </>
     ); 
 }
