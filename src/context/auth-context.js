@@ -31,8 +31,6 @@ export function AuthProvider({children}) {
        body: JSON.stringify(creds)   
        });
 
-       console.log("res from signup:", res);
-       
        const { encodedToken } = await res.json();
        showToastMessage();
        localStorage.setItem("encodedToken",encodedToken); 
@@ -86,6 +84,7 @@ export function AuthProvider({children}) {
    }
 
 
+   // ANCHOR TAG PREVENT DEFAULTS 
    const handleLogout = (event) => { 
     event.preventDefault();
     setIsLoggedIn(false);   
@@ -122,6 +121,8 @@ export function AuthProvider({children}) {
     navigate('/products'); 
    }
 
+
+   // Handle remember me 
    const handleRememberMe = (event, user) => { 
       if(event.target.checked) {
         localStorage.setItem("email",user.email );
