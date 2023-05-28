@@ -5,16 +5,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function ProductDetail() { 
-
+    
     const { _id } = useParams(); 
+    const [productData,setProductData] = useState([]); 
+    
     const urlFetch = "/api/products/"+_id;
-    const [productData,setProductData]=useState([]); 
-
+    
     const getProductData = async() => { 
         try { 
            const res = await fetch(urlFetch);
-           const data1 = await res.json();
-           return data1;
+           const productIndividual = await res.json();
+           return productIndividual;
         }
         catch(error) { 
             console.log(error); 
@@ -25,8 +26,7 @@ export function ProductDetail() {
     (async() => { 
         const data = await getProductData();
         setProductData(data.product);
-    })();
-     
+    })();    
    },[]);
     
 
