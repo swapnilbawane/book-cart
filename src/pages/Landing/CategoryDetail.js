@@ -5,26 +5,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../context/data-context";
 
-
 export function CategoryDetail() {
-    const {apiData} = useData(); 
-    //console.log("categories",apiData);
-    
+
+    const {apiData} = useData();  
     const { _id } = useParams(); 
-   // console.log("id from category ",_id);
 
     const urlFetch = "/api/categories/"+_id;
-    //console.log("url",urlFetch);
 
     const [categoryData,setCategoryData]=useState([]); 
 
     const getCategoryData = async() => { 
         try { 
            const res = await fetch(urlFetch);
-           //console.log(res);
-           const data2 = await res.json();
-           //console.log("data2",data2);
-           return data2;
+           const categoryIndividual = await res.json();      
+           return categoryIndividual;
         }
         catch(error) { 
             console.log(error); 
