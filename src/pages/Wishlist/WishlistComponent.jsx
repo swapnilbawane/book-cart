@@ -7,14 +7,7 @@ export function WishlistComponent() {
 
     const { apiData } = useData(); 
 
-    // console.log("wishlist component apiData:", apiData);
-    // console.log("wishlist component cartData: ", apiData.wishlistData);
-
-
-    return(
-
-      
-          
+    return(         
             <div className="wishlist-component">
 
            {     

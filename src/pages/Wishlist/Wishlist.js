@@ -1,6 +1,5 @@
 import "./Wishlist.css"; 
 import { Header } from "../../components/Header";
-import { useAuth } from "../../context/auth-context";
 import { WishlistComponent } from "./WishlistComponent";
 import { useData } from "../../context/data-context";
 
