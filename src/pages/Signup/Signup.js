@@ -1,10 +1,11 @@
 import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Signup() {
     
-    const { handleTestUser, handleLogin, signUpAccount } = useAuth();
+    const { handleTestUser, signUpAccount } = useAuth();
     
     const [newUser, setNewUser] = useState( 
         {email: "", password: ""}
@@ -76,15 +77,15 @@ export function Signup() {
             onClick={()=> handleTestUser()}> 
             Sign in as test user 
             </button>
+
+            {/* <Link to="/login" className="create-new-account"> */}
             
-            <a href="/login" 
-            className="create-new-account" 
-            onClick={handleLogin}>
+            <Link to="/login" className="create-new-account">
                 Already have an account
                 <i className="material-symbols-outlined"> 
                 arrow_forward_ios 
                 </i>
-            </a>
+            </Link>
 
             
         </div>

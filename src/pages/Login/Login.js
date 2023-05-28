@@ -2,13 +2,13 @@ import { Header } from "../../components/Header";
 import { useAuth } from "../../context/auth-context";
 import "./Login.css"; 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Login() { 
 
-    const { loginAccount, handleTestUser, handleSignup } = useAuth();
+    const { loginAccount, handleTestUser } = useAuth();
 
     const [user, setUser] = useState({email: "", password: ""}); 
-
 
     const updateUser = (e) => { 
      if(e.target.name==="email") { 
@@ -76,12 +76,11 @@ export function Login() {
             Sign in as test user 
             </button>
 
-            <a href="/signup" className="create-new-account"
-            onClick={()=> handleSignup()}
-            >
+
+            <Link to="/signup" className="create-new-account">
                 Create New Account
                 <i className="material-symbols-outlined"> arrow_forward_ios </i>
-            </a>
+            </Link>
  
 
         </div>
