@@ -14,14 +14,17 @@ const [ apiData, setApiData ] = useState({
 
 const { error, setError } = useErrorContextApp();
 console.log("error category",error.category);
+console.log("error cart",error.cart);
+console.log("error wishlist",error.wishlist);
+console.log("error products",error.products);
 
 
 const getData = async () => { 
 try { 
-let data;
-let categoryList; 
-let cartList;
-let wishListResponseData;
+let data=[];
+let categoryList=[]; 
+let cartList=[];
+let wishListResponseData=[];
 
 try {
   const response = await fetch("/api/products"); 
@@ -52,17 +55,24 @@ catch(categoriesError) {
 
 const encodedToken = localStorage.getItem("encodedToken"); 
 
+
 try { 
   const cartResponse = await fetch("/api/user/cart", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'authorization': encodedToken
+      'authorization': `${encodedToken}`
     }
   });
+console.log("cart Response RAW: ", cartResponse);  
 if(cartResponse.status===200) {
-    cartList = await cartResponse.json();   
-}  
+    cartList = await cartResponse.json();
+    cartList = cartList.cart; 
+    console.log("fetching cart from here:",cartList)  
+} 
+else if(cartResponse.status===500)
+{ console.log("cart500:",cartResponse)
+} 
 else { 
   setError({...error, cart: "Cannot fetch cart data, Network is down. Try again later."});
  }
@@ -76,7 +86,7 @@ try {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'authorization': encodedToken
+      'authorization': `${encodedToken}`
 
     }
   });

@@ -13,6 +13,9 @@ import { formatDate, requiresAuth } from "../utils/authUtils";
  * */
 export const getCartItemsHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
+
+  console.log("userid from cart", userId); 
+
   if (!userId) {
     return new Response(
       404,
@@ -23,6 +26,10 @@ export const getCartItemsHandler = function (schema, request) {
     );
   }
   const userCart = schema.users.findBy({ _id: userId }).cart;
+   
+  console.log("user cart now:", userCart);
+
+
   return new Response(200, {}, { cart: userCart });
 };
 
@@ -34,7 +41,7 @@ export const getCartItemsHandler = function (schema, request) {
 
 export const addItemToCartHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
-
+  console.log("userid from cart controller", userId);
 
   try {
     if (!userId) {

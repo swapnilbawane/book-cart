@@ -16,9 +16,12 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter> 
+
     <ErrorProvider>
-    <DataProvider> 
+
     <AuthProvider>
+    <DataProvider> 
+   
     <CartProvider>
     <WishlistProvider>
     
@@ -29,12 +32,14 @@ ReactDOM.render(
 
     
     
-    
     </WishlistProvider>
     </CartProvider>
-    </AuthProvider>
+
     </DataProvider>
-    </ErrorProvider> 
+    </AuthProvider>
+   
+    </ErrorProvider>
+
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

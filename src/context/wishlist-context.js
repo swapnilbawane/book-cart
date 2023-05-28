@@ -9,6 +9,8 @@ export function WishlistProvider ( {children} ) {
     const encodedToken = localStorage.getItem("encodedToken"); 
 
     const wishlistInfo = apiData?.wishlistData;
+    // const wishlistInfo = [];
+    // restore point  const wishlistInfo = apiData?.wishlistData;
 //    console.log("wishlist info: ", wishlistInfo);
     const wishlistQuantity = Array.from(wishlistInfo).reduce((acc,curr)=> acc+1,0);
 

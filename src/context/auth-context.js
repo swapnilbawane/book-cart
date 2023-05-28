@@ -30,6 +30,8 @@ export function AuthProvider({children}) {
        method: 'POST',
        body: JSON.stringify(creds)   
        });
+
+       console.log("res from signup:", res);
        
        const { encodedToken } = await res.json();
        showToastMessage();
@@ -48,7 +50,7 @@ export function AuthProvider({children}) {
        setIsLoggedIn(true); 
     }
     catch(error) { 
-     console.log(error);
+     console.log("signup error",error);
     }
  }
 

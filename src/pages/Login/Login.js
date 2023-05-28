@@ -86,7 +86,11 @@ export function Login() {
               </div>  
             </div>
 
-            <button className="card-button active-button" onClick={()=> loginAccount(user)}> Login </button>
+            <button 
+            className="card-button active-button" 
+            onClick={()=> loginAccount(user)}> 
+            Login 
+            </button>
 
             <button className="card-button active-button" 
             onClick={()=> handleTestUser()}> 

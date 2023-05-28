@@ -10,14 +10,21 @@ export function CartProvider({children}) {
    const navigate = useNavigate(); 
 
     const {apiData, setApiData} = useData();
+    console.log("cart information from context",apiData);
+
     const encodedToken = localStorage.getItem("encodedToken"); 
+    console.log("token in cart", encodedToken)
 
     const cartInfo = apiData?.cartData;
+    // const cartInfo = [];
+    // restore point const cartInfo = apiData?.cartData;
     console.log("api data from cart:", apiData);
     console.log("cart info",cartInfo);
    
-    const totalPrice = Array.from(cartInfo)?.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
-    const totalQuantity = Array.from(cartInfo)?.reduce((acc,curr)=> acc+ (curr.qty > 0 ? curr.qty : 0),0);
+    const totalPrice =cartInfo.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
+    const totalQuantity = cartInfo.reduce((acc,curr)=> acc+ (curr.qty > 0 ? curr.qty : 0),0);
+   // const totalPrice = Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
+   // const totalQuantity = Array.from(cartInfo).reduce((acc,curr)=> acc+ (curr.qty > 0 ? curr.qty : 0),0);
 
     // Array.from(cartInfo).reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     //cartInfo?.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0));

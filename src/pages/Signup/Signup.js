@@ -64,7 +64,8 @@ export function Signup() {
 
             {/* </div> */}
 
-            <button className="card-button active-button"
+            <button 
+            className="card-button active-button"
             onClick={()=> signUpAccount(newUser)}
             > 
             Create New Account 
