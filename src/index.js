@@ -9,7 +9,7 @@ import { AuthProvider } from "./context/auth-context";
 import { CartProvider } from "./context/cart-context";
 import { WishlistProvider } from "./context/wishlist-context";
 import { ErrorProvider } from "./context-APIErrorManagement/error-context";
-
+import { LogoutProvider } from "./context/logout-context";
 // Call make Server
 makeServer();
 
@@ -19,9 +19,12 @@ ReactDOM.render(
 
     <ErrorProvider>
 
+
     <AuthProvider>
     <DataProvider> 
-   
+    <LogoutProvider>
+
+    
     <CartProvider>
     <WishlistProvider>
     
@@ -35,6 +38,7 @@ ReactDOM.render(
     </WishlistProvider>
     </CartProvider>
 
+    </LogoutProvider>
     </DataProvider>
     </AuthProvider>
    

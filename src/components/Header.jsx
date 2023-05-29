@@ -3,10 +3,12 @@ import { useAuth } from "../context/auth-context";
 import { useCart } from "../context/cart-context";
 import { useWishlist } from "../context/wishlist-context";
 import { Link } from "react-router-dom"; 
+import { useLogout } from "../context/logout-context";
 
 export function Header() {
 
-  const {isLoggedIn, handleLogout} = useAuth(); 
+  const {isLoggedIn } = useAuth(); 
+  const { handleLogout} = useLogout(); 
 
   const { totalQuantity} = useCart(); 
   const { wishlistQuantity } = useWishlist(); 

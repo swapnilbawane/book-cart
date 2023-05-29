@@ -3,22 +3,24 @@ import { useContext, useState, createContext } from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useData } from "./data-context";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({children}) { 
 
   const [isLoggedIn ,setIsLoggedIn] = useState(false);
-
   const navigate = useNavigate(); 
   const location = useLocation(); 
 
+  // Toast handler 
   const showToastMessage = () => { 
       toast.success('Logged in !', {
       position: toast.POSITION.TOP_RIGHT
   });
   }
 
+  // Signup Handler 
   const signUpAccount = async (user) => { 
     try {
        const creds = { 
@@ -51,6 +53,7 @@ export function AuthProvider({children}) {
     }
  }
 
+ // Login handler
    const loginAccount = async (user) => { 
       try {
          const creds = { 
@@ -84,54 +87,8 @@ export function AuthProvider({children}) {
    }
 
 
-   // ANCHOR TAG PREVENT DEFAULTS 
-   const handleLogout = (event) => { 
-    event.preventDefault();
-    setIsLoggedIn(false);   
-    navigate('/');
-   }
-
-   const handleLogin = (event) => { 
-    event.preventDefault(); 
-    navigate('/login'); 
-   }
-
-   const handleSignup = (event) => { 
-    event.preventDefault(); 
-    navigate('/signup'); 
-   }
-
-   const handleWishlist = (event) => { 
-    event.preventDefault(); 
-    navigate('/wishlist');
-   }
-
-   const handleCart = (event) =>{ 
-    event.preventDefault(); 
-    navigate('/cart'); 
-   }
-
-   const handleHome = (event) =>{ 
-    event.preventDefault(); 
-    navigate('/'); 
-   }
-
-   const handleHomeCategories = (event) =>{ 
-    event.preventDefault(); 
-    navigate('/products'); 
-   }
-
-
-   // Handle remember me 
-   const handleRememberMe = (event, user) => { 
-      if(event.target.checked) {
-        localStorage.setItem("email",user.email );
-        localStorage.setItem("password", user.password);
-      }
-
-   }
-
-  const handleTestUser = async () => { 
+   // Test user handler 
+   const handleTestUser = async () => { 
     try {
       const creds = { 
        email: "adarshbalika@gmail.com",
@@ -162,9 +119,20 @@ export function AuthProvider({children}) {
    }
 
   }
+   
+   // Handle remember me 
+   const handleRememberMe = (event, user) => { 
+      if(event.target.checked) {
+        localStorage.setItem("email",user.email );
+        localStorage.setItem("password", user.password);
+      }
+
+   }
+
+  
 
     return(
-      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleLogout, handleRememberMe, handleTestUser, handleLogin, handleWishlist, handleCart, handleHome, handleHomeCategories,handleSignup, signUpAccount}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleRememberMe, handleTestUser, signUpAccount}}>
         {children}
       </AuthContext.Provider>
     );
