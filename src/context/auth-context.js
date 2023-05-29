@@ -21,7 +21,7 @@ export function AuthProvider({children}) {
   }
 
   const notFoundToastMessage = () => { 
-    toast.warning('The email you entered is not Registered.', {
+    toast.warning('The email you entered is not Registered. Signup today!', {
     position: toast.POSITION.TOP_RIGHT
 });
 }
@@ -103,6 +103,7 @@ const passwordWrongToastMessage = () => {
 
          else if(res.status===404) { 
           notFoundToastMessage();
+          navigate('/signup');
          }
 
          else if(res.status===401){
