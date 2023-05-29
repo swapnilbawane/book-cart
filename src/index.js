@@ -22,23 +22,23 @@ ReactDOM.render(
 
     <AuthProvider>
     <DataProvider> 
-    <LogoutProvider>
+    
 
     
     <CartProvider>
     <WishlistProvider>
-    
+    <LogoutProvider>
 
     
 
     <App />
 
     
-    
+    </LogoutProvider>
     </WishlistProvider>
     </CartProvider>
 
-    </LogoutProvider>
+   
     </DataProvider>
     </AuthProvider>
    

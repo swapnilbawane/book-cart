@@ -14,11 +14,24 @@ export function AuthProvider({children}) {
   const location = useLocation(); 
 
   // Toast handler 
-  const showToastMessage = () => { 
+  const showLoggedInToastMessage = () => { 
       toast.success('Logged in !', {
       position: toast.POSITION.TOP_RIGHT
   });
   }
+
+  const notFoundToastMessage = () => { 
+    toast.warning('The email you entered is not Registered.', {
+    position: toast.POSITION.TOP_RIGHT
+});
+}
+
+const passwordWrongToastMessage = () => { 
+  toast.error('The credentials you entered are invalid.', {
+  position: toast.POSITION.TOP_RIGHT
+});
+}
+
 
   // Signup Handler 
   const signUpAccount = async (user) => { 
@@ -33,8 +46,10 @@ export function AuthProvider({children}) {
        body: JSON.stringify(creds)   
        });
 
+       console.log("Signup response in auth context:", res); 
+
        const { encodedToken } = await res.json();
-       showToastMessage();
+       showLoggedInToastMessage();
        localStorage.setItem("encodedToken",encodedToken); 
      
        
@@ -65,21 +80,35 @@ export function AuthProvider({children}) {
          method: 'POST',
          body: JSON.stringify(creds)   
          });
-         
-         const { encodedToken } = await res.json();
-         showToastMessage();
-         localStorage.setItem("encodedToken",encodedToken); 
-         
-         
-         if(location?.state?.from?.pathname==="/wishlist") {
-          navigate('/wishlist');
-        } 
-         else if(location?.state?.from?.pathname==="/cart") { 
-          navigate('/cart');
-         }
-         else navigate('/products');
 
-         setIsLoggedIn(true); 
+         console.log("Login response in auth context:", res); 
+         
+         if(res.status===200) { 
+          const { encodedToken } = await res.json();
+          showLoggedInToastMessage();
+          localStorage.setItem("encodedToken",encodedToken); 
+          
+          
+          if(location?.state?.from?.pathname==="/wishlist") {
+           navigate('/wishlist');
+         } 
+          else if(location?.state?.from?.pathname==="/cart") { 
+           navigate('/cart');
+          }
+          else navigate('/products');
+ 
+          setIsLoggedIn(true); 
+
+         }
+
+         else if(res.status===404) { 
+          notFoundToastMessage();
+         }
+
+         else if(res.status===401){
+          passwordWrongToastMessage(); 
+         }
+         
       }
       catch(error) { 
        console.log(error);
@@ -101,7 +130,7 @@ export function AuthProvider({children}) {
       });
       
       const { encodedToken } = await res.json();
-      showToastMessage();
+      showLoggedInToastMessage();
       localStorage.setItem("encodedToken",encodedToken); 
       
       if(location?.state?.from?.pathname==="/wishlist") {

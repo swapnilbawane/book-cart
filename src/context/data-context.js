@@ -19,7 +19,9 @@ const [ apiData, setApiData ] = useState({
 const { error, setError } = useErrorContextApp();
 const { isLoggedIn } = useAuth();
 
+
 console.log("Logged in status from data context:", isLoggedIn);
+console.log("Data from API:", apiData);
 
 // this initializes all the data - product,category,cart and wishlist data 
 const getData = async () => { 
