@@ -7,7 +7,7 @@ export const LogoutContext = createContext();
 
 export function LogoutProvider({children}) { 
 
-const navigate = useNavigate;
+const navigate = useNavigate();
 const { apiData, setApiData } = useData(); 
 const { setIsLoggedIn } = useAuth();
 

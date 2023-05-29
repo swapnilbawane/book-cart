@@ -1,5 +1,6 @@
 import { useState, useContext, createContext, useEffect } from "react"; 
 import { useErrorContextApp } from "../context-APIErrorManagement/error-context";
+import { useAuth } from "./auth-context";
 
 export const DataContext = createContext(); 
 
@@ -13,8 +14,12 @@ const [ apiData, setApiData ] = useState({
     wishlistData:[]
 } ); 
 
+
 // get error variable to set error data 
 const { error, setError } = useErrorContextApp();
+const { isLoggedIn } = useAuth();
+
+console.log("Logged in status from data context:", isLoggedIn);
 
 // this initializes all the data - product,category,cart and wishlist data 
 const getData = async () => { 
@@ -76,67 +81,72 @@ const encodedToken = localStorage.getItem("encodedToken");
 
 // CART RESPONSE 
 
-try { 
-  const cartResponse = await fetch("/api/user/cart", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'authorization': `${encodedToken}`
-    }
-  });
+if(isLoggedIn===true) { 
+  try { 
+    const cartResponse = await fetch("/api/user/cart", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `${encodedToken}`
+      }
+    });
+  
+  if(cartResponse.status===200) {
+      cartList = await cartResponse.json();
+      cartList = cartList.cart;  
+  } 
+  else if(cartResponse.status===404) { 
+    console.log("cart 404:",cartResponse);
+    setError({...error, cart: "404 Response"});
+  }
+  else if(cartResponse.status===500) { 
+    console.log("cart 500:",cartResponse);
+    setError({...error, cart: "500 Response"});
+  } 
+  else { 
+    setError({...error, cart: "Other error code response."});
+   }
+  }
+  catch(cartError) { 
+    setError({...error, cart: "Cannot fetch cart data, Error in fetching backend data. Please contact administrator."});
+  }
+  
+  
+  // WISHLIST RESPONSE  
+  
+  try { 
+    const wishListResponse = await fetch("/api/user/wishlist", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `${encodedToken}`
+  
+      }
+    });
+  if(wishListResponse.status===200) {
+      wishListResponseData = await wishListResponse.json();
+      wishListResponseData = wishListResponseData.wishlist;
+  } 
+  else if(wishListResponse.status===404) { 
+    console.log("wishlist 404:",wishListResponse);
+    setError({...error, wishlist: "404 Response"});
+  }
+  else if(wishListResponse.status===500) { 
+    console.log("wishlist 404:",wishListResponse);
+    setError({...error, wishlist: "500 Response"});
+  }
+  else { 
+    setError({...error, wishlist: "Other error code response."});
+   }
+  
+  }
+  catch(wishlistError) {
+    setError({...error, wishlist: "Cannot fetch wishlist data, Error in fetching backend data. Please contact administrator."});
+  }
 
-if(cartResponse.status===200) {
-    cartList = await cartResponse.json();
-    cartList = cartList.cart;  
-} 
-else if(cartResponse.status===404) { 
-  console.log("cart 404:",cartResponse);
-  setError({...error, cart: "404 Response"});
-}
-else if(cartResponse.status===500) { 
-  console.log("cart 500:",cartResponse);
-  setError({...error, cart: "500 Response"});
-} 
-else { 
-  setError({...error, cart: "Other error code response."});
- }
-}
-catch(cartError) { 
-  setError({...error, cart: "Cannot fetch cart data, Error in fetching backend data. Please contact administrator."});
+  
 }
 
-
-// WISHLIST RESPONSE  
-
-try { 
-  const wishListResponse = await fetch("/api/user/wishlist", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'authorization': `${encodedToken}`
-
-    }
-  });
-if(wishListResponse.status===200) {
-    wishListResponseData = await wishListResponse.json();
-    wishListResponseData = wishListResponseData.wishlist;
-} 
-else if(wishListResponse.status===404) { 
-  console.log("wishlist 404:",wishListResponse);
-  setError({...error, wishlist: "404 Response"});
-}
-else if(wishListResponse.status===500) { 
-  console.log("wishlist 404:",wishListResponse);
-  setError({...error, wishlist: "500 Response"});
-}
-else { 
-  setError({...error, wishlist: "Other error code response."});
- }
-
-}
-catch(wishlistError) {
-  setError({...error, wishlist: "Cannot fetch wishlist data, Error in fetching backend data. Please contact administrator."});
-}
 
 
 setApiData({...apiData, product: productList,category: categoryList, cartData: cartList, wishlistData: wishListResponseData});
