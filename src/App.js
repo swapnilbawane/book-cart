@@ -20,7 +20,7 @@ import { CategoryDetail } from "./pages/Landing/CategoryDetail";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Testing } from "./pages/Products/Testing";
-import { UserProfile } from "./pages/Address/UserProfile";
+import { UserProfile } from "./pages/User/UserProfile";
 
 
 function App() {
