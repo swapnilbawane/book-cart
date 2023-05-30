@@ -31,6 +31,7 @@ let categoryList=[];
 let cartList=[];
 let wishListResponseData=[];
 
+
 // PRODUCTS RESPONSE 
 
 try {

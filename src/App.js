@@ -20,6 +20,7 @@ import { CategoryDetail } from "./pages/Landing/CategoryDetail";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Testing } from "./pages/Products/Testing";
+import { UserProfile } from "./pages/Address/UserProfile";
 
 
 function App() {
@@ -38,6 +39,12 @@ function App() {
       <Route path="/testing" element={<Testing />} /> 
 
       {/* // protected routes */}
+
+      <Route path="/profile" element={
+      <RequiresAuth> 
+      <UserProfile />
+      </RequiresAuth>
+      } /> 
 
       <Route path="/cart" element={
     

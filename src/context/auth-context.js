@@ -9,6 +9,8 @@ export const AuthContext = createContext();
 export function AuthProvider({children}) { 
 
   const [isLoggedIn ,setIsLoggedIn] = useState(false);
+  const [userDetails, setUserDetails] = useState([]); 
+
   const navigate = useNavigate(); 
   const location = useLocation(); 
 
@@ -79,19 +81,25 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
          console.log("Login response in auth context:", res); 
          
          if(res.status===200) { 
-          const { encodedToken } = await res.json();
+           
+          const { foundUser, encodedToken } = await res.json();
+          
+
           showLoggedInToastMessage();
           localStorage.setItem("encodedToken",encodedToken); 
 
           setIsLoggedIn(true); 
-          
-         console.log("location from login:",location?.state?.from?.pathname); 
+          setUserDetails(foundUser);
+       
 
           if(location?.state?.from?.pathname==="/wishlist") {
            navigate('/wishlist');
          } 
           else if(location?.state?.from?.pathname==="/cart") { 
            navigate('/cart');
+          }
+          else if(location?.state?.from?.pathname==="/profile") { 
+            navigate('/profile'); 
           }
           else navigate('/products');
  
@@ -177,7 +185,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
   
 
     return(
-      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleRememberMe, handleTestUser, signUpAccount}}>
+      <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, loginAccount, handleRememberMe, handleTestUser, signUpAccount, userDetails}}>
         {children}
       </AuthContext.Provider>
     );

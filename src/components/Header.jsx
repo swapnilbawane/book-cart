@@ -49,6 +49,17 @@ export function Header() {
 
         <div className="header-profile">
 
+        { isLoggedIn 
+        ? 
+        <Link to="/profile"> 
+           <i className="material-symbols-outlined" id="user-profile">account_circle</i> 
+        </Link>
+        : 
+        <Link to="/profile"> 
+          <i className="material-symbols-outlined" id="no-login" > account_circle </i> 
+        </Link>
+        }
+
           { isLoggedIn 
           ? <Link to="/products" className="login-button" onClick={handleLogout}> Logout </Link>  
           :  <Link to="/login" className="login-button"> Login </Link>
