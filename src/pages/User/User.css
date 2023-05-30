@@ -1,0 +1,18 @@
+.profile-header { 
+    color: blue;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+.address-header { 
+    color: blueviolet;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+.user-details { 
+    color: blueviolet;
+    padding: 1rem;
+    border: 1px solid black;
+    width: 500px;
+}

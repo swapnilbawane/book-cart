@@ -12,9 +12,8 @@ export function UserDetails() {
         </div>
 
         <div className="user-details"> 
-        <h1> {userDetails.firstName} </h1>
-        <h1> {userDetails.lastName} </h1>
-        <h1> {userDetails.email} </h1>
+        <h1> Address </h1>
+      
         </div>
         </>
     ); 
