@@ -82,8 +82,11 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
           const { encodedToken } = await res.json();
           showLoggedInToastMessage();
           localStorage.setItem("encodedToken",encodedToken); 
+
+          setIsLoggedIn(true); 
           
-          
+         console.log("location from login:",location?.state?.from?.pathname); 
+
           if(location?.state?.from?.pathname==="/wishlist") {
            navigate('/wishlist');
          } 
@@ -92,7 +95,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
           }
           else navigate('/products');
  
-          setIsLoggedIn(true); 
+          
 
          }
 

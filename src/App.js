@@ -36,17 +36,19 @@ function App() {
 
       <Route path="/cart" element={
     
-    
+     <RequiresAuth> 
       <Cart /> 
-     
+      </RequiresAuth>
       
       } />
 
 
     <Route path="/wishlist" element={
-     
+
+     <RequiresAuth> 
      <Wishlist />
-    
+     </RequiresAuth>
+     
     } /> 
 
     <Route path="/mockman" element={<Mockman />} /> 
