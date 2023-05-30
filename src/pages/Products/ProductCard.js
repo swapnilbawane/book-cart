@@ -16,7 +16,7 @@ export function ProductCard({
     
     const navigate = useNavigate(); 
     const { addToCart } = useCart(); 
-    const { addToWishlist } = useWishlist();
+    const { addToWishlist, deleteFromWishlist } = useWishlist();
     const { apiData } = useData(); 
     
     const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
@@ -31,7 +31,7 @@ export function ProductCard({
                 {
                   isPresentInWishlist === -1 
                 ? <i className="material-symbols-outlined" onClick={()=> addToWishlist(item)}>favorite</i>
-                : <i className="material-symbols-outlined" id="red-fill" onClick={()=> console.log("wishlisted 2")}>favorite</i>
+                : <i className="material-symbols-outlined" id="red-fill" onClick={()=> deleteFromWishlist(_id)}>favorite</i>
                 }  
                 </div> 
                 <img src={image} alt="testimg" />   

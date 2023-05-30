@@ -18,9 +18,9 @@ export function WishlistCard({
 
         <div className="card-cont">
             <div className="card-img">
-                <div className="card-badge">
+                {/* <div className="card-badge">
                 <i className="red-fav material-symbols-outlined"> favorite </i>
-                </div>
+                </div> */}
                 <img src={image} alt="cards"/>
             </div>
 

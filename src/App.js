@@ -19,6 +19,7 @@ import { CategoryDetail } from "./pages/Landing/CategoryDetail";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Testing } from "./pages/Products/Testing";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route path="/category/:_id" element={<CategoryDetail />} /> 
       <Route path="/login" element={<Login/> } /> 
       <Route path="/signup" element={<Signup />} /> 
+      <Route path="/testing" element={<Testing />} /> 
 
       {/* // protected routes */}
 
