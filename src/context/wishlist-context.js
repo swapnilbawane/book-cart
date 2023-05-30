@@ -27,10 +27,19 @@ export function WishlistProvider ( {children} ) {
             } 
            });
           
-           const response = await wishlistRes.json();
-           const updatedWishlist = [...response.wishlist];
-        
-           setApiData({...apiData, wishlistData: updatedWishlist})
+           if(wishlistRes.status===201) { 
+            const response = await wishlistRes.json();
+            const updatedWishlist = [...response.wishlist];
+         
+            setApiData({...apiData, wishlistData: updatedWishlist})
+           }
+           
+           else if(wishlistRes.status===404) { 
+           console.log("404 Error from Add to wishlist. Email is not registered.");
+           }
+           else if(wishlistRes.status===500) { 
+            console.log("500 Error from Add to wishlist."); 
+           }
     
            }
            catch(error) { 
@@ -50,10 +59,19 @@ export function WishlistProvider ( {children} ) {
              } 
             });
            
-            const response = await wishlistRes.json();
-            const updatedWishlist = [...response.wishlist];
-         
-            setApiData({...apiData, wishlistData: updatedWishlist})
+            if(wishlistRes.status===200) { 
+                const response = await wishlistRes.json();
+                const updatedWishlist = [...response.wishlist];
+                setApiData({...apiData, wishlistData: updatedWishlist})
+            }
+
+            else if(wishlistRes.status===404) { 
+                console.log("404 Error from Remove from wishlist. Email is not registered.");
+            }
+            else if(wishlistRes.status===500) { 
+                console.log("500 Error from Remove from wishlist."); 
+            }
+            
      
             }
             catch(error) { 

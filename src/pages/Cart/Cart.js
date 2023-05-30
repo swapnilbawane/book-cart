@@ -5,6 +5,9 @@ import "./Cart.css";
 import { CartComponent } from "./CartComponent"; 
 import { CheckoutComponent } from "./CheckoutComponent";
 import { LoadingCart } from "./LoadingCart";
+import { EmptyCart } from "./EmptyCart";
+import { useErrorContextApp } from "../../context-APIErrorManagement/error-context";
+import { ErrorPageCart } from "./ErrorPageCart";
 
 // TODO: Make this a protected route 
 // TODO: Have a cart context, that has cart data, add to cart will use 
@@ -13,15 +16,17 @@ export function Cart() {
      
 const { apiData } = useData(); 
 const { totalQuantity }  = useCart();
+const { error } = useErrorContextApp(); 
 
 return(
 <>
 <Header /> 
         
-<div className="cart-cont"> 
-
 {
-
+error.cart === "" 
+? 
+<div className="cart-cont"> 
+{
 apiData.cartData 
 ? 
 <>
@@ -36,7 +41,7 @@ apiData.cartData.length>0
 <CheckoutComponent />
 </>
 : 
-<h1> Your cart is empty. </h1>
+<EmptyCart />
 }    
 </div>
 
@@ -45,6 +50,12 @@ apiData.cartData.length>0
 <LoadingCart /> 
 }
 </div>
+: 
+<ErrorPageCart /> 
+}
+
+
+
 </>
 
 );

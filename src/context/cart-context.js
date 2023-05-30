@@ -35,12 +35,20 @@ export function CartProvider({children}) {
         } 
        });
       
-       const response = await cartres.json();
-       const updatedCart = [...response.cart];
- 
-    
-       setApiData({...apiData, cartData: updatedCart})
+       if(cartres.status===201) { 
+        const response = await cartres.json();
+        const updatedCart = [...response.cart];
+        setApiData({...apiData, cartData: updatedCart})
+       }
 
+    else if(cartres.status===404) { 
+        console.log("Email not registered. Error from Add to cart.");
+    }
+
+    else if(cartres.status===500) { 
+        console.log("500 Error from Add to cart.");
+    }
+       
        }
        catch(error) { 
         console.log(error); 
@@ -59,10 +67,19 @@ export function CartProvider({children}) {
             } 
            });
           
-           const response = await cartres.json();
-           const updatedCart = [...response.cart];
-             
-           setApiData({...apiData, cartData: updatedCart})
+           if(cartres.status===200) { 
+            const response = await cartres.json();
+            const updatedCart = [...response.cart];
+            setApiData({...apiData, cartData: updatedCart});
+           }
+          
+           else if(cartres.status===404) { 
+            console.log("Email not registered. Error from Remove from cart.");
+           }
+
+           else if(cartres.status===500) { 
+            console.log("500 Error from Remove from cart.");
+           }
     
            }
            catch(error) { 
@@ -85,11 +102,20 @@ export function CartProvider({children}) {
              } 
             });
            
-            const response = await cartres.json();
-            const updatedCart = [...response.cart];
-         
-            setApiData({...apiData, cartData: updatedCart});
+            if(cartres.status===200) { 
+                const response = await cartres.json();
+                const updatedCart = [...response.cart];
+                setApiData({...apiData, cartData: updatedCart});
+            }
 
+            else if(cartres.status===404) { 
+                console.log("Email not registered. 404 Error from Increment in Cart function.");
+            }
+
+            else if(cartres.status===500) { 
+                console.log("500 Error from Increment in Cart function. ");
+            }
+            
             }
             catch(error) { 
              console.log(error); 
@@ -116,10 +142,19 @@ export function CartProvider({children}) {
              } 
             });
            
+            if(cartres.status===200) { 
             const response = await cartres.json();
             const updatedCart = [...response.cart];
+            setApiData({...apiData, cartData: updatedCart});
+            } 
+            
+            else if(cartres.status===404) { 
+                console.log("Email not registered. 404 Error from Decrement in Cart function.");
+            }
 
-            setApiData({...apiData, cartData: updatedCart});        
+            else if(cartres.status===500) { 
+                console.log("500 Error from Decrement in Cart function. ");
+            }
         }
      
             }
