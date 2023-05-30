@@ -20,7 +20,7 @@ export function AuthProvider({children}) {
   });
   }
 
-  const notFoundToastMessage = () => { 
+  const emailNotFoundToastMessage = () => { 
     toast.warning('The email you entered is not Registered. Signup today!', {
     position: toast.POSITION.TOP_RIGHT
 });
@@ -121,7 +121,7 @@ const emailExistsToastMessage = () => {
          }
 
          else if(res.status===404) { 
-          notFoundToastMessage();
+          emailNotFoundToastMessage();
           navigate('/signup');
          }
 
@@ -149,19 +149,37 @@ const emailExistsToastMessage = () => {
       body: JSON.stringify(creds)   
       });
       
-      const { encodedToken } = await res.json();
-      showLoggedInToastMessage();
-      localStorage.setItem("encodedToken",encodedToken); 
-      
-      if(location?.state?.from?.pathname==="/wishlist") {
-       navigate('/wishlist');
-     } 
-      else if(location?.state?.from?.pathname==="/cart") { 
-       navigate('/cart');
+      if(res.status===200) { 
+        const { encodedToken } = await res.json();
+        showLoggedInToastMessage();
+        localStorage.setItem("encodedToken",encodedToken); 
+        
+        if(location?.state?.from?.pathname==="/wishlist") {
+         navigate('/wishlist');
+       } 
+        else if(location?.state?.from?.pathname==="/cart") { 
+         navigate('/cart');
+        }
+        else navigate('/products');
+  
+        setIsLoggedIn(true);
       }
-      else navigate('/products');
 
-      setIsLoggedIn(true); 
+      else if(res.status===404) { 
+        // The email you entered is not Registered.
+        emailNotFoundToastMessage();
+        navigate('/signup'); 
+      }
+
+      else if(res.status===401) { 
+        // The credentials you entered are invalid.
+        passwordWrongToastMessage(); 
+      }
+
+      else if(res.status===500) { // error
+        console.log("Login as test user 500 Error.")
+      }
+      
    }
    catch(error) { 
     console.log(error);
