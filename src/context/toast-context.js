@@ -6,6 +6,7 @@ export const ToastContext = createContext();
 
 export function ToastProvider({children}) { 
 
+  // Auth toasts 
     const showLoggedInToastMessage = () => { 
         toast.success('Logged in !', {
         position: toast.POSITION.TOP_RIGHT
@@ -30,10 +31,40 @@ export function ToastProvider({children}) {
   });
   }
 
+// Wishlist toasts 
+   const addedToWishListToast = () => { 
+    toast.success('Item added to wishlist !', {
+    position: toast.POSITION.BOTTOM_RIGHT
+});
+
+}
+
+const removeFromWishListToast = () => { 
+  toast.success('Item removed from wishlist !', {
+  position: toast.POSITION.BOTTOM_RIGHT
+});
+
+}
+
+// Cart toasts 
+const addedToCartToast = () => { 
+  toast.success('Item added to cart !', {
+  position: toast.POSITION.BOTTOM_RIGHT
+});
+
+}
+
+const removedFromCartToast = () => { 
+  toast.success('Item removed from cart !', {
+  position: toast.POSITION.BOTTOM_RIGHT
+});
+
+}
+
 
 
     return(
-         <ToastContext.Provider value={{ showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage }}>
+         <ToastContext.Provider value={{ showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage, addedToWishListToast, removeFromWishListToast, addedToCartToast, removedFromCartToast  }}>
             {children}
          </ToastContext.Provider>
     );

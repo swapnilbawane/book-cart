@@ -1,12 +1,15 @@
 import { createContext, useContext } from "react";
 import { useData } from "./data-context";
+import { useToast } from "./toast-context";
 
 export const WishlistContext = createContext(); 
 
 export function WishlistProvider ( {children} ) { 
 
-    const {apiData, setApiData} = useData();
+    const { addedToWishListToast, removeFromWishListToast } = useToast();
+    const { apiData, setApiData } = useData();
     const encodedToken = localStorage.getItem("encodedToken"); 
+
 
     const wishlistInfo = apiData?.wishlistData;
    
@@ -32,7 +35,8 @@ export function WishlistProvider ( {children} ) {
             const updatedWishlist = [...response.wishlist];
          
             setApiData({...apiData, wishlistData: updatedWishlist})
-           }
+            addedToWishListToast();
+        }
            
            else if(wishlistRes.status===404) { 
            console.log("404 Error from Add to wishlist. Email is not registered.");
@@ -63,6 +67,7 @@ export function WishlistProvider ( {children} ) {
                 const response = await wishlistRes.json();
                 const updatedWishlist = [...response.wishlist];
                 setApiData({...apiData, wishlistData: updatedWishlist})
+                removeFromWishListToast();
             }
 
             else if(wishlistRes.status===404) { 

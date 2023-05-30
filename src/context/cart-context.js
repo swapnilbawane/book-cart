@@ -1,12 +1,14 @@
 import { createContext, useContext } from "react";
 import { useData } from "./data-context";
 import { useNavigate } from "react-router-dom"; 
+import { useToast } from "./toast-context";
 
 export const CartContext = createContext(); 
 
 export function CartProvider({children}) { 
 
    const navigate = useNavigate(); 
+   const { addedToCartToast, removedFromCartToast  } = useToast();
 
     const {apiData, setApiData} = useData();
     const cartInfo = apiData?.cartData;
@@ -39,6 +41,7 @@ export function CartProvider({children}) {
         const response = await cartres.json();
         const updatedCart = [...response.cart];
         setApiData({...apiData, cartData: updatedCart})
+        addedToCartToast(); 
        }
 
     else if(cartres.status===404) { 
@@ -71,7 +74,8 @@ export function CartProvider({children}) {
             const response = await cartres.json();
             const updatedCart = [...response.cart];
             setApiData({...apiData, cartData: updatedCart});
-           }
+            removedFromCartToast();
+        }
           
            else if(cartres.status===404) { 
             console.log("Email not registered. Error from Remove from cart.");
