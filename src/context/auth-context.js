@@ -1,9 +1,8 @@
 
 import { useContext, useState, createContext } from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useData } from "./data-context";
+import { useToast } from "./toast-context";
 
 export const AuthContext = createContext();
 
@@ -13,33 +12,10 @@ export function AuthProvider({children}) {
   const navigate = useNavigate(); 
   const location = useLocation(); 
 
-  // Toast handler 
-  const showLoggedInToastMessage = () => { 
-      toast.success('Logged in !', {
-      position: toast.POSITION.TOP_RIGHT
-  });
-  }
+// Toast handler 
+const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage } = useToast();
 
-  const emailNotFoundToastMessage = () => { 
-    toast.warning('The email you entered is not Registered. Signup today!', {
-    position: toast.POSITION.TOP_RIGHT
-});
-}
-
-const passwordWrongToastMessage = () => { 
-  toast.error('The credentials you entered are invalid.', {
-  position: toast.POSITION.TOP_RIGHT
-});
-}
-
-const emailExistsToastMessage = () => { 
-  toast.warning('This email already exists.. Login today!', {
-  position: toast.POSITION.TOP_RIGHT
-});
-}
-
-
-  // Signup Handler 
+// Signup Handler 
   const signUpAccount = async (user) => { 
     try {
        const creds = { 
@@ -87,7 +63,7 @@ const emailExistsToastMessage = () => {
     }
  }
 
- // Login handler
+// Login handler
    const loginAccount = async (user) => { 
       try {
          const creds = { 
@@ -135,8 +111,7 @@ const emailExistsToastMessage = () => {
       }
    }
 
-
-   // Test user handler 
+// Test user handler 
    const handleTestUser = async () => { 
     try {
       const creds = { 
@@ -187,7 +162,7 @@ const emailExistsToastMessage = () => {
 
   }
    
-   // Handle remember me 
+// Handle remember me 
    const handleRememberMe = (event, user) => { 
       if(event.target.checked) {
         localStorage.setItem("email",user.email );
