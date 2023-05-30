@@ -9,6 +9,7 @@ import { Home } from "./pages/Home/Home";
 import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Products } from "./pages/Products/Products";
+import { Search } from "./pages/Search/Search";
 
 import { RequiresAuth } from "./components/RequiresAuth";
 import { useAuth } from "./context/auth-context";
@@ -19,6 +20,7 @@ import { CategoryDetail } from "./pages/Landing/CategoryDetail";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function App() {
 
   
@@ -26,6 +28,7 @@ function App() {
     <div className="App">
     <Routes> 
       <Route path="/" element={<Home />} />
+      <Route path="/search" element={<Search />} /> 
       <Route path="/products" element={<Products />} /> 
       <Route path="/product/:_id" element={<ProductDetail /> } />  
       <Route path="/category/:_id" element={<CategoryDetail />} /> 

@@ -11,6 +11,7 @@ import { WishlistProvider } from "./context/wishlist-context";
 import { ErrorProvider } from "./context-APIErrorManagement/error-context";
 import { LogoutProvider } from "./context/logout-context";
 import { ToastProvider } from "./context/toast-context";
+import { SearchProvider } from "./context/search-context";
 
 // Call make Server
 makeServer();
@@ -25,7 +26,7 @@ ReactDOM.render(
       
     <AuthProvider>
     <DataProvider> 
-    
+    <SearchProvider>
 
     
     <CartProvider>
@@ -41,7 +42,8 @@ ReactDOM.render(
     </WishlistProvider>
     </CartProvider>
 
-   
+
+   </SearchProvider>
     </DataProvider>
     </AuthProvider>
    

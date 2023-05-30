@@ -62,7 +62,6 @@ const removedFromCartToast = () => {
 }
 
 
-
     return(
          <ToastContext.Provider value={{ showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage, addedToWishListToast, removeFromWishListToast, addedToCartToast, removedFromCartToast  }}>
             {children}

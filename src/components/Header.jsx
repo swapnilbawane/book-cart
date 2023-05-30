@@ -2,17 +2,28 @@ import "./Header.css";
 import { useAuth } from "../context/auth-context";
 import { useCart } from "../context/cart-context";
 import { useWishlist } from "../context/wishlist-context";
-import { Link } from "react-router-dom"; 
+import { Link, Navigate, useNavigate } from "react-router-dom"; 
 import { useLogout } from "../context/logout-context";
+import { useState } from "react";
+import { useData } from "../context/data-context";
+import { useSearch } from "../context/search-context";
 
 export function Header() {
+
+  const navigate = useNavigate(); 
+
+  const { apiData} = useData(); 
+  const { searchHandler } = useSearch(); 
 
   const {isLoggedIn } = useAuth(); 
   const { handleLogout} = useLogout(); 
 
+  const [ search, setSearch ] = useState("");
+
   const { totalQuantity} = useCart(); 
   const { wishlistQuantity } = useWishlist(); 
 
+ 
   
   return (
     <>
@@ -24,11 +35,15 @@ export function Header() {
         <div className="header-search">
           <i className="material-symbols-outlined" id="search"> search </i>
           <input
+
             type="text"
             placeholder="Search"
             className="search-txt"
             spellCheck="false"
             data-ms-editor="true"
+            value={search}
+            onFocus={()=> navigate('/search')}
+            onChange={(event)=> searchHandler(event, search, setSearch)}
           />
         </div>
 

@@ -22,7 +22,6 @@ export function Login() {
 
     return(
         <> 
-        <h1> Login Page. </h1>
         <Header /> 
 
         <div className="login-cont"> 
