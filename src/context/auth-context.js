@@ -32,6 +32,12 @@ const passwordWrongToastMessage = () => {
 });
 }
 
+const emailExistsToastMessage = () => { 
+  toast.warning('This email already exists.. Login today!', {
+  position: toast.POSITION.TOP_RIGHT
+});
+}
+
 
   // Signup Handler 
   const signUpAccount = async (user) => { 
@@ -46,25 +52,38 @@ const passwordWrongToastMessage = () => {
        body: JSON.stringify(creds)   
        });
 
-       console.log("Signup response in auth context:", res); 
+       if(res.status===201) { 
+        console.log("Signup response in auth context:", res); 
 
-       const { encodedToken } = await res.json();
-       showLoggedInToastMessage();
-       localStorage.setItem("encodedToken",encodedToken); 
-     
-       
-       if(location?.state?.from?.pathname==="/wishlist") {
-        navigate('/wishlist');
-      } 
-       else if(location?.state?.from?.pathname==="/cart") { 
-        navigate('/cart');
+        const { encodedToken } = await res.json();
+        showLoggedInToastMessage();
+        localStorage.setItem("encodedToken",encodedToken); 
+      
+        
+        if(location?.state?.from?.pathname==="/wishlist") {
+         navigate('/wishlist');
+       } 
+        else if(location?.state?.from?.pathname==="/cart") { 
+         navigate('/cart');
+        }
+        else navigate('/products');
+ 
+        setIsLoggedIn(true); 
        }
-       else navigate('/products');
 
-       setIsLoggedIn(true); 
+       else if(res.status===422) { 
+        // Email Already Exists.
+        emailExistsToastMessage();
+        navigate('/login');
+       }
+       else if(res.status===500) { 
+        // 500 error 
+        console.log("Error 500 while creating account.")
+       }
+       
     }
     catch(error) { 
-     console.log("signup error",error);
+     console.log("Signup error: ",error);
     }
  }
 
