@@ -1,10 +1,14 @@
 import "./Products.css"; 
+import { FilterPanel2 } from "./FilterPanel2";
+import { AllProducts2 } from "./AllProducts2";
+
+
 
 export function Testing() { 
     return(
         <>
-        <i className="material-symbols-outlined">favorite</i>
-        <i className="material-symbols-outlined" id="red-fill">favorite</i>
+        <FilterPanel2 />
+        <AllProducts2 />
         </>
     ); 
 }

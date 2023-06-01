@@ -12,6 +12,7 @@ import { ErrorProvider } from "./context-APIErrorManagement/error-context";
 import { LogoutProvider } from "./context/logout-context";
 import { ToastProvider } from "./context/toast-context";
 import { SearchProvider } from "./context/search-context";
+import { FilterProvider } from "./context/filter-context";
 
 // Call make Server
 makeServer();
@@ -27,7 +28,7 @@ ReactDOM.render(
     <AuthProvider>
     <DataProvider> 
     <SearchProvider>
-
+    <FilterProvider>
     
     <CartProvider>
     <WishlistProvider>
@@ -41,8 +42,8 @@ ReactDOM.render(
     </LogoutProvider>
     </WishlistProvider>
     </CartProvider>
-
-
+    
+    </FilterProvider>
    </SearchProvider>
     </DataProvider>
     </AuthProvider>
