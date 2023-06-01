@@ -20,7 +20,7 @@ export const products = [
     title: "You are Winner",
     author: "Junaid Qureshi",
     price: "3000",
-    categoryName: "horror",
+    categoryName: "self-help",
     image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
     stars: 2
   },
@@ -38,7 +38,7 @@ export const products = [
     title: "The Tale of Peter Rabbit",
     author: "Beatrix Potter",
     price: "500",
-    categoryName: "fiction",
+    categoryName: "fantasy",
     image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
     stars: 4
   },
@@ -47,7 +47,7 @@ export const products = [
     title: "Jonathan Livingston Seagull",
     author: "Richard Bach",
     price: "400",
-    categoryName: "fiction",
+    categoryName: "non-fiction",
     image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
     stars: 2
   },

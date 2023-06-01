@@ -5,13 +5,15 @@ import { useData } from "../../context/data-context";
 export function FilterPanel2() { 
 
 const { apiData } = useData(); 
-const { filteredData, setFilteredData, radioHandler, starsHandler} = useFilter(); 
+const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, checkBoxHandler} = useFilter(); 
+
+console.log("checkbox data", checkboxData); 
 
 const clearFilterData = () => { 
     setFilteredData(apiData.product.products)
 }
 
-    return(
+return(
 <> 
 
 <div className="filters">
@@ -52,13 +54,39 @@ const clearFilterData = () => {
 <div className="filter-radio">
 
 <div className="filter-category">
-<input type="checkbox" />
-<label> Men Clothing</label>
+<input 
+type="checkbox"
+value="fiction"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Fiction </label>
 </div> 
                     
 <div className="filter-category">
-<input type="checkbox" />
-<label> Men Clothing</label>
+<input 
+type="checkbox"
+value="non-fiction"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Non Fiction </label>
+</div> 
+
+<div className="filter-category">
+<input 
+type="checkbox" 
+value="self-help"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Self Help </label>
+</div> 
+
+<div className="filter-category">
+<input 
+type="checkbox"
+value="fantasy"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Fantasy </label>
 </div> 
 
 </div> 

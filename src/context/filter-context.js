@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const FilterContext = createContext(); 
 
@@ -6,6 +6,48 @@ export function FilterProvider({children}) {
     
    
     const [ filteredData, setFilteredData] = useState([]); 
+    const [checkboxData, setCheckboxData] = useState([]); 
+    const [ originalData, setOriginalData] = useState([]);
+ 
+    const checkboxFilter = () => {
+        let filterData = [];      
+        checkboxData.forEach((item)=> { 
+            const filterItems = originalData.filter((product)=> product.categoryName===item);
+            filterData = [...filterData,...filterItems];
+        });
+
+        console.log("filtered data after checkbox", filterData);
+        
+        if(checkboxData.length>0) { 
+            setFilteredData([...filterData]);
+        }
+        else {
+            setFilteredData([...originalData]);
+         }
+        
+    }
+
+
+    const checkBoxHandler = (event,data) => { 
+
+        const checkboxValue = event.target.value; 
+
+        if(event.target.checked) { 
+
+            if(checkboxData.length===0) 
+            { 
+                setOriginalData(data);
+            }
+
+            setCheckboxData([...checkboxData, checkboxValue]);    
+        }
+        else { 
+           
+            const newCheckboxData = checkboxData.filter((item)=> item!==checkboxValue);
+            setCheckboxData(newCheckboxData); 
+        }
+    }
+
 
     const radioHandler = (event) => { 
         const radioValue = event.target.value;
@@ -24,7 +66,6 @@ export function FilterProvider({children}) {
 
     const starsHandler = (event, data) => { 
         const starsValue = event.target.value;
-        console.log("data",data); 
 
         switch(starsValue) { 
             case "4": 
@@ -52,10 +93,14 @@ export function FilterProvider({children}) {
 
         }
     }
+
+    useEffect(()=> { 
+        checkboxFilter();
+    },[checkboxData]);
    
     return (
     
-        <FilterContext.Provider value={{filteredData, setFilteredData, radioHandler, starsHandler}}>
+        <FilterContext.Provider value={{filteredData, setFilteredData, radioHandler, starsHandler,checkboxData, checkBoxHandler}}>
             {children}
         </FilterContext.Provider>
 

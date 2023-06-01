@@ -40,9 +40,9 @@ filteredData
 {/* <!-- 2. products items starts --> */}
 <div className="products-items">
         {
-           filteredData?.map((item)=> {
+           filteredData?.map((item,index)=> {
             return(
-                <div key={item._id}>
+                <div key={item._id+index}>
                     <ProductCard {...item} /> 
                 </div>
             );
