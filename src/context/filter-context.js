@@ -12,22 +12,50 @@ export function FilterProvider({children}) {
         console.log("radioValue",radioValue);
 
         if(radioValue==="lowtohigh") { 
-            console.log("filter low data", filteredData);
             const lowData = filteredData.sort((a,b)=> Number(a.price)-Number(b.price));
-            console.log(lowData);
             setFilteredData([...lowData]); 
         }
 
         else if(radioValue==="hightolow") { 
             const highData = filteredData.sort((a,b)=> Number(b.price)-Number(a.price));
-            console.log("high", highData);
             setFilteredData([...highData]); 
+        }
+    }
+
+    const starsHandler = (event, data) => { 
+        const starsValue = event.target.value;
+        console.log("data",data); 
+
+        switch(starsValue) { 
+            case "4": 
+            const starfour = data.filter((item)=> item.stars>=4);
+            setFilteredData([...starfour]);
+            break;
+       
+            case "3": 
+            const starthree = data.filter((item)=> item.stars>=3);
+            setFilteredData([...starthree]);
+            break;
+            
+            case "2": 
+            const startwo = data.filter((item)=> item.stars>=2);
+            setFilteredData([...startwo]);
+            break;
+
+            case "1": 
+            const starone = data.filter((item)=> item.stars>=1);
+            setFilteredData([...starone]);
+            break;
+
+            default:
+            console.log("hello default"); 
+
         }
     }
    
     return (
     
-        <FilterContext.Provider value={{filteredData, setFilteredData, radioHandler}}>
+        <FilterContext.Provider value={{filteredData, setFilteredData, radioHandler, starsHandler}}>
             {children}
         </FilterContext.Provider>
 

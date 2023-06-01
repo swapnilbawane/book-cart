@@ -5,7 +5,7 @@ import { useData } from "../../context/data-context";
 export function FilterPanel2() { 
 
 const { apiData } = useData(); 
-const { filteredData, setFilteredData, radioHandler} = useFilter(); 
+const { filteredData, setFilteredData, radioHandler, starsHandler} = useFilter(); 
 
 const clearFilterData = () => { 
     setFilteredData(apiData.product.products)
@@ -76,19 +76,38 @@ const clearFilterData = () => {
 <div className="filter-radio"> 
 
 <div className="filter-category">
-<input type="radio"/> <label>4 Stars & above </label>
+<input 
+type="radio"
+name="rating"
+value="4"
+onChange={(event) => starsHandler(event, apiData.product.products)}
+/> <label>4 Stars & above </label>
 </div>
 
 <div className="filter-category">
-<input type="radio"/> <label>3 Stars & above </label>
+<input 
+type="radio"
+name="rating"
+value="3"
+onChange={(event) => starsHandler(event, apiData.product.products)}
+/> <label>3 Stars & above </label>
 </div>
                             
 <div className="filter-category">
-<input type="radio"/> <label>2 Stars & above </label>
+<input 
+type="radio"
+name="rating"
+value="2"
+onChange={(event) => starsHandler(event, apiData.product.products)}
+/> <label>2 Stars & above </label>
 </div>
 
 <div className="filter-category">
-<input type="radio"/> <label>1 Star & above </label>
+<input type="radio"
+name="rating"
+value="1"
+onChange={(event) => starsHandler(event, apiData.product.products)}
+/> <label>1 Star & above </label>
 </div> 
                             
 </div> 

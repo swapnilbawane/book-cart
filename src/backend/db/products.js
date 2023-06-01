@@ -12,7 +12,8 @@ export const products = [
     author: "Shiv Khera",
     price: "5000",
     categoryName: "non-fiction",
-    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI"
+    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
+    stars: 4
   },
   {
     _id: uuid(),
@@ -20,7 +21,8 @@ export const products = [
     author: "Junaid Qureshi",
     price: "3000",
     categoryName: "horror",
-    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI"
+    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
+    stars: 2
   },
   {
     _id: uuid(),
@@ -28,6 +30,25 @@ export const products = [
     author: "Shiv Khera",
     price: "1000",
     categoryName: "fiction",
-    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI"
+    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
+    stars: 5
+  },
+  {
+    _id: uuid(),
+    title: "The Tale of Peter Rabbit",
+    author: "Beatrix Potter",
+    price: "500",
+    categoryName: "fiction",
+    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
+    stars: 4
+  },
+  {
+    _id: uuid(),
+    title: "Jonathan Livingston Seagull",
+    author: "Richard Bach",
+    price: "400",
+    categoryName: "fiction",
+    image: "https://fastly.picsum.photos/id/807/200/200.jpg?hmac=Y8gayvNItiQYxP_Pd-2un9GH09XuyJdIZOQPw6K9QsI",
+    stars: 2
   },
 ];
