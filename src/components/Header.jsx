@@ -29,7 +29,8 @@ export function Header() {
     <>
       <div className="header-cont">
         <h3>
-        <Link to="/" className="brand-name"> MyShopping Site </Link>
+        <Link to="/" className="brand-name"> El-kart </Link>
+        
         </h3>
 
         <div className="header-search">

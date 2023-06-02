@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { useAuth } from "../../context/auth-context";
 
 export function ProductCard({
     _id,
@@ -18,9 +19,12 @@ export function ProductCard({
     const { addToCart } = useCart(); 
     const { addToWishlist, deleteFromWishlist } = useWishlist();
     const { apiData } = useData(); 
+    const { isLoggedIn } = useAuth(); 
     
     const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
     const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
+
+    
     
     return (
         <>
@@ -42,10 +46,13 @@ export function ProductCard({
                 <b> Rs.{price} </b>
                 </div>
 
-                { isPresentInCart === -1 
-                ? <button className="card-button active-button" onClick={()=> addToCart(item)}> Add to Cart</button>
+                {  
+                isPresentInCart === -1 
+                ? <button className="card-button active-button" onClick={()=> isLoggedIn ? addToCart(item) : navigate("/login") }> Add to Cart</button>
                 : <button className="card-button active-button" onClick={()=> navigate('/cart')}> Go to Cart</button>
                 }
+                
+                
         </div>
         </>
     );
