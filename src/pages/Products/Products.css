@@ -206,6 +206,13 @@ i.material-icons-outlined {
     grid-template-areas: "filter products";
 }
 
+.single-cont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 2rem 8rem;
+    gap: 10px;
+}
 
 
 

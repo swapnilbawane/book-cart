@@ -136,7 +136,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
       });
       
       if(res.status===200) { 
-        const { encodedToken } = await res.json();
+        const { foundUser, encodedToken } = await res.json();
         showLoggedInToastMessage();
         localStorage.setItem("encodedToken",encodedToken); 
         
@@ -148,7 +148,9 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
         }
         else navigate('/products');
   
+
         setIsLoggedIn(true);
+        setUserDetails(foundUser);
       }
 
       else if(res.status===404) { 

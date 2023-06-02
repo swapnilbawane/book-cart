@@ -33,7 +33,7 @@ export function ProductDetail() {
     return (
         <> 
        <Header /> 
-       <ProductCard {...productData} />
+       <ProductCard {...productData} singleProduct/>
        <Link to="/products"> Browse other products </Link> 
         </>
     );
