@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom"; 
 import Mockman from "mockman-js";
 
-import { Login } from "./pages/Login/Login.js";
+import { Login } from "./pages/Login/Login";
 import { Signup } from "./pages/Signup/Signup";
 import { Home } from "./pages/Home/Home";
 import { Cart } from "./pages/Cart/Cart";
