@@ -1,0 +1,398 @@
+
+```
+import { createContext, useContext, useEffect, useState } from "react";
+
+export const FilterContext = createContext(); 
+
+export function FilterProvider({children}) {
+    
+   
+    const [ filteredData, setFilteredData] = useState([]); 
+    const [checkboxData, setCheckboxData] = useState([]); 
+    const [ originalData, setOriginalData] = useState([]);
+
+// state value that set the checked status of all inputs 
+   const [ filterInputs, setFilterInputs ] = useState({ 
+   price: 100, 
+   fiction: false,
+   nonfiction: false,
+   fantasy: false,
+   selfhelp: false, 
+   biography false,
+   rating4: false,
+   rating3: false,
+   rating2: false,
+   rating1: false,
+   sortbylow: false
+   sortbyhigh: false 
+   });
+ 
+    const checkboxFilter = () => {
+        let filterData = [];      
+        checkboxData.forEach((item)=> { 
+            const filterItems = originalData.filter((product)=> product.categoryName===item);
+            filterData = [...filterData,...filterItems];
+        });
+
+        console.log("filtered data after checkbox", filterData);
+        
+        if(checkboxData.length>0) { 
+            setFilteredData([...filterData]);
+        }
+        else {
+            setFilteredData([...originalData]);
+         }
+        
+    }
+
+
+    const checkBoxHandler = (event,data) => { 
+
+        const checkboxValue = event.target.value; 
+        console.log("cbvalue",checkboxValue);
+
+        if(event.target.checked) { 
+
+            if(checkboxData.length===0) 
+            { 
+                setOriginalData(data);
+            }
+
+            setCheckboxData([...checkboxData, checkboxValue]);    
+        }
+        else { 
+           
+            const newCheckboxData = checkboxData.filter((item)=> item!==checkboxValue);
+            setCheckboxData(newCheckboxData); 
+        }
+    }
+
+
+    const radioHandler = (event) => { 
+        const radioValue = event.target.value;
+        console.log("radioValue",radioValue);
+
+        if(radioValue==="lowtohigh") { 
+            const lowData = filteredData.sort((a,b)=> Number(a.price)-Number(b.price));
+            setFilteredData([...lowData]); 
+        }
+
+        else if(radioValue==="hightolow") { 
+            const highData = filteredData.sort((a,b)=> Number(b.price)-Number(a.price));
+            setFilteredData([...highData]); 
+        }
+    }
+
+    const starsHandler = (event, data) => { 
+        const starsValue = event.target.value;
+
+        switch(starsValue) { 
+            case "4": 
+            const starfour = data.filter((item)=> item.stars>=4);
+            setFilteredData([...starfour]);
+            break;
+       
+            case "3": 
+            const starthree = data.filter((item)=> item.stars>=3);
+            setFilteredData([...starthree]);
+            break;
+            
+            case "2": 
+            const startwo = data.filter((item)=> item.stars>=2);
+            setFilteredData([...startwo]);
+            break;
+
+            case "1": 
+            const starone = data.filter((item)=> item.stars>=1);
+            setFilteredData([...starone]);
+            break;
+
+            default:
+            console.log("hello default"); 
+
+        }
+    }
+
+    useEffect(()=> { 
+        checkboxFilter(); // this function should contain the filter logic 
+    },[checkboxData]); // this should contain state values of all inputs 
+   
+    return (
+    
+        <FilterContext.Provider value={{filteredData, setFilteredData, radioHandler, starsHandler,checkboxData, checkBoxHandler}}>
+            {children}
+        </FilterContext.Provider>
+
+    ); 
+}
+
+export const useFilter = () => useContext(FilterContext); 
+
+```
+
+
+```
+
+const [ filteredData, setFilteredData] = useState([]); 
+const [ originalData, setOriginalData] = useState([]);
+const [checkboxData, setCheckboxData] = useState([]); 
+
+const initialState = { 
+   price: 100, 
+   fiction: false,
+   nonfiction: false,
+   fantasy: false,
+   selfhelp: false, 
+   biography false,
+   rating4: false,
+   rating3: false,
+   rating2: false,
+   rating1: false,
+   sortbylow: false,
+   sortbyhigh: false 
+   }
+
+// state value that set the checked status of all inputs 
+   const [ filterInputs, setFilterInputs ] = useState(initialState);
+
+const filterData = () => {
+
+let totalFilterValue = []; 
+// check price value and sort --> sort 
+by initialstate.price 
+totalFilterValue = [...originalData].filter((item)=> item.price>=filterInputs.price); 
+
+// check checkbox value and sort 
+if(checkboxData.length>0) { 
+let checkboxFilter = [] 
+checkboxData.forEach((item)=> { 
+            const filterItems = totalFilterValue.filter((product)=> product.categoryName===item);
+            if(filterItems.length>0) { 
+            checkboxFilter = [...checkboxFilter,...filterItems];
+            }  
+      }
+  
+totalFilterValue = [...checkboxFilter]; 
+}
+ 
+// check rating value and sort 
+ if(filterInput.rating4 || filterInput.rating3 || filterInput.rating2 || filterInput.rating1) 
+ { 
+ if(filterInput.rating4) { totalFilterValue = totalFilterValue.filter((item)=> item.rating > =4 ); }
+ else if(filterInput.rating3) { totalFilterValue = totalFilterValue.filter((item)=> item.rating > =4 ); }
+ else if(filterInput.rating2) { totalFilterValue = totalFilterValue.filter((item)=> item.rating > =4 ); }
+ else if(filterInput.rating1 ) { totalFilterValue = totalFilterValue.filter((item)=> item.rating > =4 ); }
+ }
+  
+// check sort by value and sort 
+if(filterInput.sortbylow || filterInput.sortbyhigh) { 
+
+}
+
+
+if(totalFilterValue.length>0)
+{
+setFilteredData([...totalFilterValue]); 
+}
+else 
+{
+// handle no filtered data on view, clear the filter or click here to view all products.  
+}
+
+}
+
+const priceHandler= (event) =>. {
+const priceValue = event.target.value;
+setFilterInputs({...filterInputs, price: priceValue }) 
+}
+
+
+const checkBoxHandler = (event) => { 
+        
+        const checkboxValue = event.target.value; 
+        console.log("cbvalue",checkboxValue);
+
+        if(event.target.checked) {         
+             switch(checkboxValue) {
+             
+             case "fiction": 
+             setFilterInputs({...filterInputs, fiction: true });
+             setCheckboxData([...checkboxData, checkboxValue]);  
+             break; 
+     
+             case "non-fiction": 
+             setFilterInputs({...filterInputs, nonfiction: true });
+             setCheckboxData([...checkboxData, checkboxValue]);   
+             break; 
+             
+             case "fantasy": 
+             setFilterInputs({...filterInputs, fantasy: true });
+             setCheckboxData([...checkboxData, checkboxValue]);   
+             break;
+              
+             case "self-help": 
+             setFilterInputs({...filterInputs, selfhelp: true });
+             setCheckboxData([...checkboxData, checkboxValue]);   
+             break; 
+
+             case "biography": 
+             setFilterInputs({...filterInputs, biography: true });
+             setCheckboxData([...checkboxData, checkboxValue]);   
+             break;  
+
+             default: 
+             console.log("default value of checked is true: checkbox handler");
+
+             }
+             
+        }
+        else { 
+            switch(checkboxValue) {
+             
+             case "fiction": 
+             setFilterInputs({...filterInputs, fiction: false });
+             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);  
+             break; 
+     
+             case "non-fiction": 
+             setFilterInputs({...filterInputs, nonfiction: false });
+             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
+             break; 
+             
+             case "fantasy": 
+             setFilterInputs({...filterInputs, fantasy: false });
+             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
+             break;
+              
+             case "self-help": 
+             setFilterInputs({...filterInputs, selfhelp: false });
+             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
+             break; 
+
+             case "biography": 
+             setFilterInputs({...filterInputs, biography: false });
+             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
+             break;  
+
+             default: 
+             console.log("default value of checked is true: checkbox handler");
+
+             }
+        }
+        
+    }
+
+
+  const ratingsHandler = (event) => { 
+        const ratingsValue = event.target.value;
+
+        switch(ratingsValue) { 
+            case "4": 
+            setFilterInputs({...filterInputs, rating4: true })  
+            break;
+       
+            case "3": 
+            setFilterInputs({...filterInputs, rating3: true }) 
+            break;
+            
+            case "2": 
+            setFilterInputs({...filterInputs, rating2: true }) 
+            break;
+
+            case "1": 
+            setFilterInputs({...filterInputs, rating1: true }) 
+            break;
+
+            default:
+            console.log("default value of checked is true: checkbox handler"); 
+        }
+    }
+
+
+
+ useEffect(()=> { 
+        filterData(); // this function should contain the filter logic 
+    },[filterInputs]); // this should contain state values of all inputs 
+
+
+return (
+        <FilterContext.Provider value={{filteredData, 
+        setFilteredData, 
+        checkboxData, 
+        ratingsHandler,
+        
+        checkBoxHandler,
+        radioHandler}}>
+
+            {children}
+
+       </FilterContext.Provider>
+
+    );
+
+```
+
+
+
+```
+import { filterInputs } = useFilter(); 
+
+<input 
+type="checkbox"
+value="fiction"
+checked={filterInputs.fiction}
+onChange={checkBoxHandler}
+/>
+<label> Fiction</label>
+</div> 
+```
+
+
+```
+import { filterInputs } = useFilter(); 
+
+<div className="filter-category">
+<input 
+type="radio"
+value="4"
+checked={filterInputs.rating4}
+onChange={ratingsHandler}
+/> 
+
+<label>4 Stars & above </label>
+</div>
+```
+
+```
+import { filterInputs } = useFilter(); 
+
+<div className="filter-category">
+<input 
+type="radio"
+value="lowtohigh"
+checked={filterInputs.sortbylow}
+onChange={sortHandler}
+/>
+<label> Price- Low to High </label>
+</div>
+```
+
+```
+import { filterInputs } = useFilter(); 
+
+<div className="filter-range-input">
+<input 
+type="range" 
+list="tickmark" 
+min="100" 
+max="500" 
+value={filterInputs.price}
+step="50"
+onChange={priceHandler} // set State 
+className="filter-price-input" />
+</div>
+```
+
+```
+
+```

@@ -5,9 +5,10 @@ import { useData } from "../../context/data-context";
 export function FilterPanel() { 
 
     const { apiData } = useData();
-    const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, checkBoxHandler} = useFilter();
+    const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, setCheckboxData, checkBoxHandler} = useFilter();
 
     const clearFilterData = () => { 
+     
         setFilteredData(apiData.product.products)
     }
 
