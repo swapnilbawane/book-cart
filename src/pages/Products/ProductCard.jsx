@@ -75,8 +75,7 @@ export function ProductCard({
                 </div>
 
                 <div className="card-details">
-                <div> <Link to={`/product/`+_id}> {title} </Link> </div>
-                <b> Rs.{price} </b>
+                <div> <h2> {title} </h2> </div>
                 </div>
 
                
@@ -84,14 +83,31 @@ export function ProductCard({
                 
         </div>
     
-       <div>
-        <h1> {title} </h1> 
-        <h2> {author} </h2>
-       {  
+       <div className="product-details">
+
+        <div className="product-text"> 
+        <h2> Title: {title} </h2>
+        <h2> By: {author}  </h2> 
+        <h2> Price: Rs. {price}  </h2> 
+        <h2> Category: {categoryName}  </h2>  
+        </div>
+         
+        <div className="product-addtocart">
+               {  
                 isPresentInCart === -1 
                 ? <button className="card-button active-button" onClick={()=> isLoggedIn ? addToCart(item) : navigate("/login") }> Add to Cart</button>
                 : <button className="card-button active-button" onClick={()=> navigate('/cart')}> Go to Cart</button>
-                }
+                }   
+        </div> 
+
+        <div className="product-addtowishlist">
+               {
+                  isPresentInWishlist === -1 
+                ? <button className="card-button active-button" onClick={()=> addToWishlist(item)}>Add to Wishlist </button>
+                : <button className="card-button active-button" onClick={()=> deleteFromWishlist(_id)}>Remove from Wishlist </button>
+                }  
+        </div>   
+                               
        </div>
         
         </div>

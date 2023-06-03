@@ -1,17 +1,28 @@
 import "./Products.css"; 
+import { useFilter } from "../../context/filter-context";
+import { useData } from "../../context/data-context";
 
 export function FilterPanel() { 
+
+    const { apiData } = useData();
+    const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, checkBoxHandler} = useFilter();
+
+    const clearFilterData = () => { 
+        setFilteredData(apiData.product.products)
+    }
+
+
     return(
 <> 
 
 <div className="filters">
 
-{/* <!-- filter head starts --> */}
+
 <div className="filter-head">
 <b>Filters</b>
-<span>Clear</span>
+<span onClick={clearFilterData} className="clear">Clear</span>
 </div>
-{/* <!-- filter head ends --> */}
+
 
 {/* <!-- Filter main content starts --> */}
 <div className="filter-content">
@@ -22,13 +33,13 @@ export function FilterPanel() {
 <h4> Price </h4>
 
 <div className="price-range-num">
-<span>50</span>
-<span>150</span>
-<span>200</span>
+<span>100</span>
+<span>300</span>
+<span>500</span>
 </div>
 
 <div className="filter-range-input">
-<input type="range" list="tickmark" min="300" max="3100" step="200" className="filter-price-input" />
+<input type="range" list="tickmark" min="100" max="500" step="50" className="filter-price-input" />
 </div>
 
 </div>
@@ -42,13 +53,49 @@ export function FilterPanel() {
 <div className="filter-radio">
 
 <div className="filter-category">
-<input type="checkbox" />
-<label> Men Clothing</label>
+
+<input 
+type="checkbox"
+value="fiction"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Fiction</label>
 </div> 
                     
 <div className="filter-category">
-<input type="checkbox" />
-<label> Men Clothing</label>
+<input 
+type="checkbox" 
+value="non-fiction"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Non Fiction </label>
+</div> 
+
+<div className="filter-category">
+<input 
+type="checkbox"
+value="fantasy"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Fantasy </label>
+</div> 
+
+<div className="filter-category">
+<input 
+type="checkbox"
+value="self-help"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Self-help </label>
+</div> 
+
+<div className="filter-category">
+<input 
+type="checkbox"
+value="biography"
+onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+/>
+<label> Biography </label>
 </div> 
 
 </div> 

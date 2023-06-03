@@ -211,12 +211,19 @@ i.material-icons-outlined {
     align-items: flex-start;
     flex-direction: row;
     padding: 2rem 8rem;
-    gap: 10px;
+    gap: 80px;
 }
 
+.product-details { 
+    display: flex;
+    align-items:stretch;
+    flex-direction: column;
+    gap: 20px;
+}
 
-
-
+.clear:hover { 
+cursor: pointer;
+}
 
 
 

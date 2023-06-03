@@ -31,6 +31,7 @@ export function FilterProvider({children}) {
     const checkBoxHandler = (event,data) => { 
 
         const checkboxValue = event.target.value; 
+        console.log("cbvalue",checkboxValue);
 
         if(event.target.checked) { 
 
