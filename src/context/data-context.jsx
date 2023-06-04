@@ -44,6 +44,8 @@ const { isLoggedIn } = useAuth();
 console.log("Data Context: Logged in status:", isLoggedIn);
 console.log("Data Context: Data from API:", apiData);
 
+
+
 // this initializes all the data - product,category,cart and wishlist data 
 const getData = async () => { 
 try { 

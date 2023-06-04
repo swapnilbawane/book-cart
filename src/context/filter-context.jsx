@@ -5,7 +5,7 @@ export const FilterContext = createContext();
 
 export function FilterProvider({children}) {
 
-    const { apiData, filterInput, setFilterInput, originalData } = useData(); 
+    const { apiData, filterInput, setFilterInput, originalData, initialState} = useData(); 
    
     console.log("Filter Context: filter API Data at start of function: ",apiData);
 
@@ -24,9 +24,15 @@ export function FilterProvider({children}) {
         console.log("Filter Context: original data from filterdata function",originalData);
 
         // check price value and sort --> sort by initialstate.price 
-        let totalFilterValue = []; 
-        totalFilterValue = (apiData?.product?.products || []).filter((item)=> item.price>=filterInput?.price); 
+        let totalFilterValue = apiData?.product?.products || []; 
+
+        console.log("price value:",totalFilterValue); 
+
+        totalFilterValue = totalFilterValue.filter((item)=> Number(item.price)>=Number(filterInput?.price)); 
+
+        console.log("Filter Context: Applied price filter: totalFilterValue data from filterdata function",totalFilterValue);
         
+        console.log("before checkbox:",totalFilterValue);
         // check checkbox value and sort 
         if(checkboxData.length>0) 
         { 
@@ -42,15 +48,30 @@ export function FilterProvider({children}) {
             
         totalFilterValue = [...checkboxFilter]; 
         }
+        console.log("after checkbox:",totalFilterValue);
          
         // check rating value and sort 
-         if(filterInput?.rating4 || filterInput?.rating3 || filterInput?.rating2 || filterInput?.rating1) 
+         if(filterInput.rating4 || filterInput.rating3 || filterInput.rating2 || filterInput.rating1) 
          { 
-         if(filterInput?.rating4) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=4 ); }
-         else if(filterInput.rating3) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=3 ); }
-         else if(filterInput.rating2) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=2 ); }
-         else if(filterInput.rating1 ) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=1 ); }
+         if(filterInput.rating4) { 
+        totalFilterValue = totalFilterValue.sort((a,b)=> b.rating-a.rating);
+        totalFilterValue = totalFilterValue.filter((item)=> item.rating >=4 ); 
+        }
+         else if(filterInput.rating3) { 
+            totalFilterValue = totalFilterValue.sort((a,b)=> b.rating-a.rating); 
+            totalFilterValue = totalFilterValue.filter((item)=> item.rating >=3 ); 
+        }
+         else if(filterInput.rating2) { 
+            totalFilterValue = totalFilterValue.sort((a,b)=> b.rating-a.rating);
+            totalFilterValue = totalFilterValue.filter((item)=> item.rating >=2 ); 
+        }
+         else if(filterInput.rating1 ) { 
+            totalFilterValue = totalFilterValue.sort((a,b)=> b.rating-a.rating);
+            totalFilterValue = totalFilterValue.filter((item)=> item.rating >=1 ); 
+        }
          }
+
+         console.log("Filter Context: Applied rating filter: totalFilterValue data from filterdata function",totalFilterValue);
           
         // check sort by value and sort 
         if(filterInput.sortbylow || filterInput.sortbyhigh) { 
@@ -70,6 +91,7 @@ export function FilterProvider({children}) {
         
         if(totalFilterValue.length>0)
         {
+        console.log("last data:",totalFilterValue)
         setFilteredData([...totalFilterValue]); 
         }
         else { console.log("Filter Context: Reached empty filtered data length section. At the end of filterData function.")}
@@ -92,7 +114,9 @@ export function FilterProvider({children}) {
              
              case "fiction":    
              setFilterInput({...filterInput, fiction: true });
-             setCheckboxData([...checkboxData, checkboxValue]);  
+             setCheckboxData([...checkboxData, checkboxValue]);
+             // event.target.checked
+               
              break; 
      
              case "non-fiction": 
@@ -159,26 +183,48 @@ export function FilterProvider({children}) {
 
     const ratingsHandler = (event) => { 
         const ratingsValue = event.target.value;
+       
+        console.log("checkedvalue",event.target.checked);
 
         switch(ratingsValue) { 
             case "4": 
-            setFilterInput({...filterInput, rating4: true })  
+            console.log("4");
+            setFilterInput({...filterInput, 
+                rating4: true,
+                rating3: false,
+                rating2: false,
+                rating1: false   });  
             break;
        
             case "3": 
-            setFilterInput({...filterInput, rating3: true }) 
+            console.log("3");
+            setFilterInput({...filterInput, 
+                rating4: false,
+                rating3: true,
+                rating2: false,
+                rating1: false   }); 
             break;
             
             case "2": 
-            setFilterInput({...filterInput, rating2: true }) 
+            console.log("2");
+            setFilterInput({...filterInput, 
+                rating4: false,
+                rating3: false,
+                rating2: true,
+                rating1: false   }); 
             break;
 
             case "1": 
-            setFilterInput({...filterInput, rating1: true }) 
+            console.log("1");
+            setFilterInput({...filterInput, 
+                rating4: false,
+                rating3: false,
+                rating2: false,
+                rating1: true }); 
             break;
 
             default:
-            console.log("Filter Context: checkboxhandler : default value of checked is true: "); 
+            console.log("Filter Context: checkboxhandler : default area reached."); 
         }
     }
 
@@ -186,14 +232,26 @@ export function FilterProvider({children}) {
         const radioValue = event.target.value;
         
         if(radioValue==="lowtohigh") {
-            setFilterInput({...filterInput, sortbylow: true })  
+            setFilterInput({...filterInput, sortbylow: true, sortbyhigh:false })  
              
         }
 
         else if(radioValue==="hightolow") { 
-            setFilterInput({...filterInput, sortbyhigh: true }) 
+            setFilterInput({...filterInput, sortbyhigh: true, sortbylow: false }) 
         }
     }
+
+    const clearFilterData = () => { 
+        const setToOriginalData = [...apiData.product.products];
+        console.log("Filter Context: setToOriginalData at start of clearFilterData function: ",setToOriginalData);
+
+        setFilterInput(initialState);
+        setCheckboxData([]);
+      console.log("Filter Context: setToOriginalData at end of clearFilterData function: "
+      );
+
+      // setFilteredData(setToOriginalData);
+      }
 
     useEffect(()=> { 
         filterData();
@@ -208,7 +266,8 @@ export function FilterProvider({children}) {
             priceHandler,
             checkBoxHandler,
             ratingsHandler,
-            sortHandler
+            sortHandler,
+            clearFilterData
             }}>
 
             {children}

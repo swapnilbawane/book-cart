@@ -5,14 +5,10 @@ import { useEffect } from "react";
 
 export function FilterPanel() { 
 
-    const { apiData, filterInput, initialState, setFilterInput } = useData();
-    const { setFilteredData, priceHandler, checkBoxHandler, ratingsHandler, sortHandler} = useFilter();
+    const { filterInput } = useData();
+    const { setFilteredData, priceHandler, checkBoxHandler, ratingsHandler, sortHandler,clearFilterData} = useFilter();
 
-    const clearFilterData = () => { 
-     
-        setFilteredData(apiData.product.products);
-        // setFilterInput(initialState);
-    }
+   
 
     // console.log("filterpanel filterinput",filterInput);
     
@@ -134,25 +130,31 @@ onChange={checkBoxHandler}
 <div className="filter-radio"> 
 
 <div className="filter-category">
+
 <input 
 type="radio"
 name="ratings"
 value="4"
 checked={filterInput?.rating4}
 onChange={ratingsHandler}
-/> 
-<label>4 Stars & above </label>
+/>  
+
+<label>
+4 Stars & above </label>
 </div>
 
 <div className="filter-category">
+
+
 <input 
 type="radio"
 name="ratings"
 value="3"
 checked={filterInput?.rating3}
 onChange={ratingsHandler}
-/> 
-<label>3 Stars & above </label>
+/>
+<label>
+3 Stars & above </label>
 </div>
                             
 <div className="filter-category">
@@ -162,8 +164,8 @@ name="ratings"
 value="2"
 checked={filterInput?.rating2}
 onChange={ratingsHandler}
-/> 
-<label>2 Stars & above </label>
+/>  
+<label> 2 Stars & above </label>
 </div>
 
 <div className="filter-category">
@@ -173,8 +175,8 @@ name="ratings"
 value="1"
 checked={filterInput?.rating1}
 onChange={ratingsHandler}
-/> 
-<label>1 Star & above </label>
+/>  
+<label> 1 Star & above </label>
 </div> 
                             
 </div> 
