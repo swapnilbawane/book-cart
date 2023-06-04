@@ -13,7 +13,7 @@ export const products = [
     price: "200",
     categoryName: "fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/The%20Jungle%20Book.png",
-    stars: 4.5 },
+    rating: 4.5 },
     
     
     { _id: uuid(),
@@ -22,7 +22,7 @@ export const products = [
     price: "390",
     categoryName: "fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/Shantaram.png",
-    stars: 4 },
+    rating: 4 },
     
     
     { _id: uuid(),
@@ -31,7 +31,7 @@ export const products = [
     price: "350",
     categoryName: "fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/The%20White%20Tiger.png",
-    stars: 4.5 },
+    rating: 4.5 },
     
     
     { _id: uuid(),
@@ -40,7 +40,7 @@ export const products = [
     price: "220",
     categoryName: "fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/Life%20of%20Pi.png",
-    stars: 5 },
+    rating: 5 },
     
     
     { _id: uuid(),
@@ -49,7 +49,7 @@ export const products = [
     price: "200",
     categoryName: "fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/The%20Glass%20Palace.png",
-    stars: 4 },
+    rating: 4 },
     
     
     { _id: uuid(),
@@ -58,7 +58,7 @@ export const products = [
     price: "400",
     categoryName: "non-fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701281/Book%20Cart/Maximum%20City.png",
-    stars: 4 },
+    rating: 4 },
     
     { _id: uuid(),
     title: "The Ocean of Churn: How the Indian Ocean Shaped Human History",
@@ -66,7 +66,7 @@ export const products = [
     price: "350",
     categoryName: "non-fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701281/Book%20Cart/Ocean%20of%20Churn.png",
-    stars: 4 },
+    rating: 4 },
     
     { _id: uuid(),
     title: "Two Lives",
@@ -74,7 +74,7 @@ export const products = [
     price: "310",
     categoryName: "non-fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701281/Book%20Cart/Two%20Lives.png",
-    stars: 4.5 },
+    rating: 4.5 },
     
     { _id: uuid(),
     title: "Awakening Bharat Mata: The Political Beliefs of the Indian Right",
@@ -82,7 +82,7 @@ export const products = [
     price: "299",
     categoryName: "non-fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Awakening%20Bharat%20Mata.png",
-    stars: 4.6 },
+    rating: 4.6 },
     
     { _id: uuid(),
     title: "The Man Who Saved India",
@@ -90,7 +90,7 @@ export const products = [
     price: "399",
     categoryName: "non-fiction",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701281/Book%20Cart/The%20Man%20Who%20Saved%20India.png",
-    stars: 4.8 },
+    rating: 4.8 },
      
     { _id: uuid(),
     title: "The Two Towers",
@@ -98,7 +98,7 @@ export const products = [
     price: "499",
     categoryName: "fantasy",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701281/Book%20Cart/The%20Two%20Towers.png",
-    stars: 5 },
+    rating: 5 },
     
     { _id: uuid(),
     title: "The BFG",
@@ -106,7 +106,7 @@ export const products = [
     price: "225",
     categoryName: "fantasy",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701285/Book%20Cart/The%20BFG.png",
-    stars: 4.9 },
+    rating: 4.9 },
     
     { _id: uuid(),
     title: "The Song of Achilles",
@@ -114,7 +114,7 @@ export const products = [
     price: "199",
     categoryName: "fantasy",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701284/Book%20Cart/The%20Song%20of%20Achilles.png",
-    stars: 4.7 },
+    rating: 4.7 },
     
     { _id: uuid(),
     title: "Mary Poppins",
@@ -122,7 +122,7 @@ export const products = [
     price: "200",
     categoryName: "fantasy",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701284/Book%20Cart/Mary%20Poppins.png",
-    stars: 4.6 },
+    rating: 4.6 },
     
     { _id: uuid(),
     title: "The Fellowship of the Rings",
@@ -130,7 +130,7 @@ export const products = [
     price: "500",
     categoryName: "fantasy",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701284/Book%20Cart/The%20Fellowship%20of%20the%20Ring.png",
-    stars: 5 },
+    rating: 5 },
     
     { _id: uuid(),
     title: "The Way of Zen",
@@ -138,7 +138,7 @@ export const products = [
     price: "220",
     categoryName: "self-help",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701286/Book%20Cart/The%20Way%20of%20Zen.png",
-    stars: 5 },
+    rating: 5 },
     
     { _id: uuid(),
     title: "Think and Grow Rich",
@@ -146,7 +146,7 @@ export const products = [
     price: "100",
     categoryName: "self-help",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701282/Book%20Cart/Think%20and%20Grow%20Rich.png",
-    stars: 4 },
+    rating: 4 },
     
     { _id: uuid(),
     title: "The Power of Positive Thinking",
@@ -154,7 +154,7 @@ export const products = [
     price: "180",
     categoryName: "self-help",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701284/Book%20Cart/The%20Power%20of%20Positive%20Thinking.png",
-    stars: 3 },
+    rating: 3 },
     
     { _id: uuid(),
     title: "The Illustrated Tao Te Ching",
@@ -162,7 +162,7 @@ export const products = [
     price: "400",
     categoryName: "self-help",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Tao%20Te%20Ching%20Illustrated.png",
-    stars: 3 },
+    rating: 3 },
     
     { _id: uuid(),
     title: "Man's Search for Meaning",
@@ -170,7 +170,7 @@ export const products = [
     price: "150",
     categoryName: "self-help",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Mans%20Search%20For%20Meaning.png",
-    stars: 4 },
+    rating: 4 },
     
     { _id: uuid(),
     title: "Steve Jobs",
@@ -178,7 +178,7 @@ export const products = [
     price: "310",
     categoryName: "biography",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Steve%20Jobs.png",
-    stars: 2 },
+    rating: 2 },
     
     { _id: uuid(),
     title: "Einstein: His Life and Universe",
@@ -186,7 +186,7 @@ export const products = [
     price: "280",
     categoryName: "biography",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Einstein.png",
-    stars: 2 },
+    rating: 2 },
     
     { _id: uuid(),
     title: "The King's Speech",
@@ -194,7 +194,7 @@ export const products = [
     price: "250",
     categoryName: "biography",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Kings%20Speech.png",
-    stars: 3 },
+    rating: 3 },
     
     { _id: uuid(),
     title: "A Beautiful Mind",
@@ -202,7 +202,7 @@ export const products = [
     price: "310",
     categoryName: "biography",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/A%20Beautiful%20Mind.png",
-    stars: 1 },
+    rating: 1 },
     
     { _id: uuid(),
     title: "Tuesdays with Morrie",
@@ -210,7 +210,7 @@ export const products = [
     price: "200",
     categoryName: "biography",
     image: "https://res.cloudinary.com/djhnar3ju/image/upload/v1685701283/Book%20Cart/Tuesdays%20with%20Morrie.png",
-    stars: 1 }
+    rating: 1 }
     
 
 

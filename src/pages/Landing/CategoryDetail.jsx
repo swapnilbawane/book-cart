@@ -25,7 +25,7 @@ export function CategoryDetail() {
                setCategoryData(filterData);
             }
             catch(error) { 
-                console.log(error); 
+                console.log("Category Detail error message: ",error); 
             }
         }
 

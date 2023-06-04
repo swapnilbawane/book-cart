@@ -1,16 +1,22 @@
 import "./Products.css"; 
 import { useFilter } from "../../context/filter-context";
 import { useData } from "../../context/data-context";
+import { useEffect } from "react";
 
 export function FilterPanel() { 
 
-    const { apiData } = useData();
-    const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, setCheckboxData, checkBoxHandler} = useFilter();
+    const { apiData, filterInput, initialState, setFilterInput } = useData();
+    const { setFilteredData, priceHandler, checkBoxHandler, ratingsHandler, sortHandler} = useFilter();
 
     const clearFilterData = () => { 
      
-        setFilteredData(apiData.product.products)
+        setFilteredData(apiData.product.products);
+        // setFilterInput(initialState);
     }
+
+    // console.log("filterpanel filterinput",filterInput);
+    
+
 
 
     return(
@@ -40,7 +46,16 @@ export function FilterPanel() {
 </div>
 
 <div className="filter-range-input">
-<input type="range" list="tickmark" min="100" max="500" step="50" className="filter-price-input" />
+<input 
+type="range" 
+list="tickmark" 
+min="100" 
+max="500" 
+value={filterInput?.price}
+step="50" 
+onChange={priceHandler} 
+className="filter-price-input" 
+/>
 </div>
 
 </div>
@@ -58,7 +73,8 @@ export function FilterPanel() {
 <input 
 type="checkbox"
 value="fiction"
-onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+checked={filterInput?.fiction}
+onChange={checkBoxHandler}
 />
 <label> Fiction</label>
 </div> 
@@ -67,7 +83,8 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <input 
 type="checkbox" 
 value="non-fiction"
-onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+checked={filterInput?.nonfiction}
+onChange={checkBoxHandler}
 />
 <label> Non Fiction </label>
 </div> 
@@ -76,7 +93,8 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <input 
 type="checkbox"
 value="fantasy"
-onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+checked={filterInput?.fantasy}
+onChange={checkBoxHandler}
 />
 <label> Fantasy </label>
 </div> 
@@ -85,7 +103,8 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <input 
 type="checkbox"
 value="self-help"
-onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+checked={filterInput?.selfhelp}
+onChange={checkBoxHandler}
 />
 <label> Self-help </label>
 </div> 
@@ -94,7 +113,8 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <input 
 type="checkbox"
 value="biography"
-onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
+checked={filterInput?.biography}
+onChange={checkBoxHandler}
 />
 <label> Biography </label>
 </div> 
@@ -114,26 +134,53 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <div className="filter-radio"> 
 
 <div className="filter-category">
-<input type="radio"/> <label>4 Stars & above </label>
+<input 
+type="radio"
+name="ratings"
+value="4"
+checked={filterInput?.rating4}
+onChange={ratingsHandler}
+/> 
+<label>4 Stars & above </label>
 </div>
 
 <div className="filter-category">
-<input type="radio"/> <label>3 Stars & above </label>
+<input 
+type="radio"
+name="ratings"
+value="3"
+checked={filterInput?.rating3}
+onChange={ratingsHandler}
+/> 
+<label>3 Stars & above </label>
 </div>
                             
 <div className="filter-category">
-<input type="radio"/> <label>2 Stars & above </label>
+<input 
+type="radio"
+name="ratings"
+value="2"
+checked={filterInput?.rating2}
+onChange={ratingsHandler}
+/> 
+<label>2 Stars & above </label>
 </div>
 
 <div className="filter-category">
-<input type="radio"/> <label>1 Star & above </label>
+<input 
+type="radio"
+name="ratings"
+value="1"
+checked={filterInput?.rating1}
+onChange={ratingsHandler}
+/> 
+<label>1 Star & above </label>
 </div> 
                             
 </div> 
 {/* <!-- 3a. filter radio over      --> */}
                         
 {/* <!-- 3a. Ratings over --> */}
-
 
 
 {/* <!-- 3b. Sort by start --> */}
@@ -144,12 +191,24 @@ onChange={(event)=> checkBoxHandler(event,apiData.product.products)}
 <div className="filter-radio"> 
 
 <div className="filter-category">
-<input type="radio"/>
+<input 
+type="radio"
+value="lowtohigh"
+name="sort"
+checked={filterInput?.sortbylow}
+onChange={sortHandler}
+/>
 <label> Price- Low to High </label>
 </div>
                                 
 <div className="filter-category">
-<input type="radio"/>
+<input 
+type="radio"
+value="hightolow"
+name="sort"
+checked={filterInput?.sortbyhigh}
+onChange={sortHandler}
+/>
 <label> Price- High to Low </label>
 </div>    
 

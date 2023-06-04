@@ -5,27 +5,36 @@ export const FilterContext = createContext();
 
 export function FilterProvider({children}) {
 
-    const { apiData, filterInput, setFilterInput, originalData } = useData(); 
-   
-    console.log("Filter Context: filter API Data at start of function: ",apiData);
-
- 
+    const { apiData } = useData(); 
+    const [ originalData, setOriginalData] = useState([]);
+    
     const [ filteredData, setFilteredData] = useState([]); 
     const [checkboxData, setCheckboxData] = useState([]); 
     
     
-    // state value that set the checked status of all inputs 
+    const initialState = { 
+       price: "100", 
+       fiction: false,
+       nonfiction: false,
+       fantasy: false,
+       selfhelp: false, 
+       biography: false,
+       rating4: false,
+       rating3: false,
+       rating2: false,
+       rating1: false,
+       sortbylow: false,
+       sortbyhigh: false 
+       }
     
-    console.log("Filter Context: filterinput data at start of function",filterInput);
+    // state value that set the checked status of all inputs 
+    const [ filterInput, setFilterInput ] = useState(initialState);
     
     const filterData = () => {
 
-        console.log("Filter Context: Entered filterData function..")
-        console.log("Filter Context: original data from filterdata function",originalData);
-
         // check price value and sort --> sort by initialstate.price 
         let totalFilterValue = []; 
-        totalFilterValue = (apiData?.product?.products || []).filter((item)=> item.price>=filterInput?.price); 
+        totalFilterValue = [...originalData].filter((item)=> item.price>=filterInput.price); 
         
         // check checkbox value and sort 
         if(checkboxData.length>0) 
@@ -44,9 +53,9 @@ export function FilterProvider({children}) {
         }
          
         // check rating value and sort 
-         if(filterInput?.rating4 || filterInput?.rating3 || filterInput?.rating2 || filterInput?.rating1) 
+         if(filterInput.rating4 || filterInput.rating3 || filterInput.rating2 || filterInput.rating1) 
          { 
-         if(filterInput?.rating4) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=4 ); }
+         if(filterInput.rating4) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=4 ); }
          else if(filterInput.rating3) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=3 ); }
          else if(filterInput.rating2) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=2 ); }
          else if(filterInput.rating1 ) { totalFilterValue = totalFilterValue.filter((item)=> item.rating >=1 ); }
@@ -72,7 +81,6 @@ export function FilterProvider({children}) {
         {
         setFilteredData([...totalFilterValue]); 
         }
-        else { console.log("Filter Context: Reached empty filtered data length section. At the end of filterData function.")}
         
 }
     
@@ -84,13 +92,12 @@ export function FilterProvider({children}) {
     const checkBoxHandler = (event) => { 
         
         const checkboxValue = event.target.value; 
-        console.log("Filter Context: Checkbox value registered as at start of checkboxHandler: ",checkboxValue);
-        console.log("Filter Context: Checkboxdata at start of checkboxHandler:", checkboxData);
+        console.log("cbvalue",checkboxValue);
 
         if(event.target.checked) {         
              switch(checkboxValue) {
              
-             case "fiction":    
+             case "fiction": 
              setFilterInput({...filterInput, fiction: true });
              setCheckboxData([...checkboxData, checkboxValue]);  
              break; 
@@ -116,7 +123,7 @@ export function FilterProvider({children}) {
              break;  
 
              default: 
-             console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
+             console.log("default value of checked is true: checkbox handler");
 
              }
              
@@ -150,7 +157,7 @@ export function FilterProvider({children}) {
              break;  
 
              default: 
-             console.log("Filter Context: Checkbox handler: Default value of checked is false: ");
+             console.log("default value of checked is true: checkbox handler");
 
              }
         }
@@ -178,7 +185,7 @@ export function FilterProvider({children}) {
             break;
 
             default:
-            console.log("Filter Context: checkboxhandler : default value of checked is true: "); 
+            console.log("default value of checked is true: checkbox handler"); 
         }
     }
 
@@ -196,13 +203,14 @@ export function FilterProvider({children}) {
     }
 
     useEffect(()=> { 
+        setOriginalData(apiData.product.products);
         filterData();
-    },[filterInput]);
+    },[filterInput,apiData]);
 
     return (
     
         <FilterContext.Provider value={{
-            filteredData,
+            filteredData, 
             setFilteredData,
             checkboxData,  
             priceHandler,

@@ -7,7 +7,7 @@ export function FilterPanel2() {
 const { apiData } = useData(); 
 const { filteredData, setFilteredData, radioHandler, starsHandler, checkboxData, checkBoxHandler} = useFilter(); 
 
-console.log("checkbox data", checkboxData); 
+console.log("Filter Panel2: checkboxdata at start of function", checkboxData); 
 
 const clearFilterData = () => { 
     setFilteredData(apiData.product.products)

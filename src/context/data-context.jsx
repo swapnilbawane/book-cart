@@ -7,6 +7,23 @@ export const DataContext = createContext();
 export function DataProvider({children}) { 
 
   // set initial data 
+
+  const initialState = { 
+    price: "100", 
+    fiction: false,
+    nonfiction: false,
+    fantasy: false,
+    selfhelp: false, 
+    biography: false,
+    rating4: false,
+    rating3: false,
+    rating2: false,
+    rating1: false,
+    sortbylow: false,
+    sortbyhigh: false 
+    }
+
+
 const [ apiData, setApiData ] = useState({
     product:[],
     category:[],
@@ -15,13 +32,17 @@ const [ apiData, setApiData ] = useState({
 } ); 
 
 
+const [ filterInput, setFilterInput ] = useState(initialState);
+const [ originalData, setOriginalData] = useState([]);
+
+
 // get error variable to set error data 
 const { error, setError } = useErrorContextApp();
 const { isLoggedIn } = useAuth();
 
 
-console.log("Logged in status from data context:", isLoggedIn);
-console.log("Data from API:", apiData);
+console.log("Data Context: Logged in status:", isLoggedIn);
+console.log("Data Context: Data from API:", apiData);
 
 // this initializes all the data - product,category,cart and wishlist data 
 const getData = async () => { 
@@ -40,11 +61,11 @@ try {
       productList = await productsResponse.json();
    }
    else if(productsResponse.status===404) { 
-    console.log("product 404:",productsResponse) 
+    console.log("Data Context: product 404:",productsResponse) 
     setError({...error, products: "404 productsResponse"});
   }
    else if(productsResponse.status===500) { 
-    console.log("product 500:",productsResponse) 
+    console.log("Data Context: product 500:",productsResponse) 
     setError({...error, products: "500 productsResponse"});
   }  
    else { 
@@ -63,11 +84,11 @@ if(categoriesResponse.status===200) {
     categoryList = await categoriesResponse.json();   
 }
 else if(categoriesResponse.status===404) { 
-  console.log("categories 404:",categoriesResponse);
+  console.log("Data Context:categories 404:",categoriesResponse);
   setError({...error, category: "404 Response"});
 }
 else if(categoriesResponse.status===500) { 
-  console.log("categories 500:",categoriesResponse);
+  console.log("Data Context:categories 500:",categoriesResponse);
   setError({...error, category: "500 Response"});
 } 
 else { 
@@ -99,11 +120,11 @@ if(isLoggedIn===true) {
       cartList = cartList.cart;  
   } 
   else if(cartResponse.status===404) { 
-    console.log("cart 404:",cartResponse);
+    console.log("Data Context: cart 404:",cartResponse);
     setError({...error, cart: "404 Response"});
   }
   else if(cartResponse.status===500) { 
-    console.log("cart 500:",cartResponse);
+    console.log("Data Context: cart 500:",cartResponse);
     setError({...error, cart: "500 Response"});
   } 
   else { 
@@ -131,11 +152,11 @@ if(isLoggedIn===true) {
       wishListResponseData = wishListResponseData.wishlist;
   } 
   else if(wishListResponse.status===404) { 
-    console.log("wishlist 404:",wishListResponse);
+    console.log("Data Context: wishlist 404:",wishListResponse);
     setError({...error, wishlist: "404 Response"});
   }
   else if(wishListResponse.status===500) { 
-    console.log("wishlist 404:",wishListResponse);
+    console.log("Data Context: wishlist 404:",wishListResponse);
     setError({...error, wishlist: "500 Response"});
   }
   else { 
@@ -151,12 +172,14 @@ if(isLoggedIn===true) {
 }
 
 
-
+console.log("Data Context: Products after API Call:",productList );
+console.log("Data Context: Filter input after API call:",filterInput);
 setApiData({...apiData, product: productList,category: categoryList, cartData: cartList, wishlistData: wishListResponseData});
+setOriginalData(productList);
 
 }
 catch(error) { 
-console.log("Error: data-context: caught by main try block:",error);
+console.log("Error: Data Context: caught by main try block:",error);
 }
 
 }
@@ -168,7 +191,7 @@ getData();
 },[]);
 
 return (
-<DataContext.Provider value={{apiData, setApiData}}>
+<DataContext.Provider value={{apiData, setApiData, initialState,filterInput, setFilterInput,originalData, setOriginalData}}>
     {children}
 </DataContext.Provider>
 

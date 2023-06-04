@@ -39,15 +39,15 @@ export function WishlistProvider ( {children} ) {
         }
            
            else if(wishlistRes.status===404) { 
-           console.log("404 Error from Add to wishlist. Email is not registered.");
+           console.log("Wishlist context: 404 Error from Add to wishlist. Email is not registered.");
            }
            else if(wishlistRes.status===500) { 
-            console.log("500 Error from Add to wishlist."); 
+            console.log("Wishlist context: 500 Error from Add to wishlist."); 
            }
     
            }
            catch(error) { 
-            console.log(error); 
+            console.log("Wishlist context error message:",error); 
            }
 
     }
@@ -71,16 +71,16 @@ export function WishlistProvider ( {children} ) {
             }
 
             else if(wishlistRes.status===404) { 
-                console.log("404 Error from Remove from wishlist. Email is not registered.");
+                console.log("Wishlist context: 404 Error from Remove from wishlist. Email is not registered.");
             }
             else if(wishlistRes.status===500) { 
-                console.log("500 Error from Remove from wishlist."); 
+                console.log("Wishlist context: 500 Error from Remove from wishlist."); 
             }
             
      
             }
             catch(error) { 
-             console.log(error); 
+             console.log("Wishlist context error message 2:",error); 
             }
 
     }

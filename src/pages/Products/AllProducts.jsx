@@ -11,11 +11,14 @@ export function AllProducts() {
 
 const {apiData} = useData();
 
-const { filteredData, setFilteredData } = useFilter();
+const { filteredData, setFilteredData} = useFilter();
 
 useEffect(()=> { 
-    setFilteredData(apiData.product.products)
+    setFilteredData(apiData.product.products) 
     },[apiData]);
+
+    console.log("All Products: filtereddata: ", filteredData);
+    console.log("All Products: apidata: ",apiData);
 
 
 return (

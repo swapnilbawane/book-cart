@@ -31,7 +31,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
        });
 
        if(res.status===201) { 
-        console.log("Signup response in auth context:", res); 
+        console.log("AuthContext - Signup response", res); 
 
         const { encodedToken } = await res.json();
         showLoggedInToastMessage();
@@ -56,12 +56,12 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
        }
        else if(res.status===500) { 
         // 500 error 
-        console.log("Error 500 while creating account.")
+        console.log("Auth Context: Error 500 while creating account.")
        }
        
     }
     catch(error) { 
-     console.log("Signup error: ",error);
+     console.log("Auth Context: Signup error: ",error);
     }
  }
 
@@ -78,7 +78,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
          body: JSON.stringify(creds)   
          });
 
-         console.log("Login response in auth context:", res); 
+         console.log("Auth Context: Login response:", res); 
          
          if(res.status===200) { 
            
@@ -118,7 +118,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
          
       }
       catch(error) { 
-       console.log(error);
+       console.log("Auth context error",error);
       }
    }
 
@@ -165,12 +165,12 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
       }
 
       else if(res.status===500) { // error
-        console.log("Login as test user 500 Error.")
+        console.log("Auth context: Login as test user 500 Error.")
       }
       
    }
    catch(error) { 
-    console.log(error);
+    console.log("Auth Context error:",error);
    }
 
   }

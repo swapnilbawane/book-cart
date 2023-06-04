@@ -1,0 +1,112 @@
+import { createContext, useContext, useEffect, useState } from "react";
+
+
+export const FilterContext = createContext(); 
+
+export function FilterProvider({children}) {
+    
+   
+    const [ filteredData, setFilteredData] = useState([]); 
+    const [checkboxData, setCheckboxData] = useState([]); 
+    const [ originalData, setOriginalData] = useState([]);
+ 
+    const checkboxFilter = () => {
+        let filterData = [];      
+        checkboxData.forEach((item)=> { 
+            const filterItems = originalData.filter((product)=> product.categoryName===item);
+            filterData = [...filterData,...filterItems];
+        });
+
+        console.log("Filter Context: filtered data after applying filter to all checkbox items:", filterData);
+        
+        if(checkboxData.length>0) { 
+            setFilteredData([...filterData]);
+        }
+        else {
+            setFilteredData([...originalData]);
+         }
+        
+    }
+
+
+    const checkBoxHandler = (event,data) => { 
+
+        const checkboxValue = event.target.value; 
+        console.log("cbvalue",checkboxValue);
+
+        if(event.target.checked) { 
+
+            if(checkboxData.length===0) 
+            { 
+                setOriginalData(data);
+            }
+
+            setCheckboxData([...checkboxData, checkboxValue]);    
+        }
+        else { 
+           
+            const newCheckboxData = checkboxData.filter((item)=> item!==checkboxValue);
+            setCheckboxData(newCheckboxData); 
+        }
+    }
+
+
+    const sortHandler = (event) => { 
+        const radioValue = event.target.value;
+        console.log("radioValue",radioValue);
+
+        if(radioValue==="lowtohigh") { 
+            const lowData = filteredData.sort((a,b)=> Number(a.price)-Number(b.price));
+            setFilteredData([...lowData]); 
+        }
+
+        else if(radioValue==="hightolow") { 
+            const highData = filteredData.sort((a,b)=> Number(b.price)-Number(a.price));
+            setFilteredData([...highData]); 
+        }
+    }
+
+    const starsHandler = (event, data) => { 
+        const starsValue = event.target.value;
+
+        switch(starsValue) { 
+            case "4": 
+            const starfour = data.filter((item)=> item.stars>=4);
+            setFilteredData([...starfour]);
+            break;
+       
+            case "3": 
+            const starthree = data.filter((item)=> item.stars>=3);
+            setFilteredData([...starthree]);
+            break;
+            
+            case "2": 
+            const startwo = data.filter((item)=> item.stars>=2);
+            setFilteredData([...startwo]);
+            break;
+
+            case "1": 
+            const starone = data.filter((item)=> item.stars>=1);
+            setFilteredData([...starone]);
+            break;
+
+            default:
+            console.log("hello default"); 
+
+        }
+    }
+
+    useEffect(()=> { 
+        checkboxFilter();
+    },[checkboxData]);
+   
+    return (
+    
+        <FilterContext.Provider value={{filteredData, setFilteredData, sortHandler, starsHandler,checkboxData, checkBoxHandler}}>
+            {children}
+        </FilterContext.Provider>
+
+    ); 
+}
+
+export const useFilter = () => useContext(FilterContext); 

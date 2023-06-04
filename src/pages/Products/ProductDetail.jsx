@@ -18,7 +18,7 @@ export function ProductDetail() {
            return productIndividual;
         }
         catch(error) { 
-            console.log(error); 
+            console.log("Product Detail error message: ",error); 
         }
     }
 

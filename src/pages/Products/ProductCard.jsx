@@ -11,6 +11,7 @@ export function ProductCard({
     price,
     categoryName,
     image,
+    rating,
     singleProduct
 }) { 
 
@@ -25,7 +26,7 @@ export function ProductCard({
     const isPresentInCart = Array.from(apiData?.cartData).findIndex((item)=>item._id === _id);
     const isPresentInWishlist = Array.from(apiData?.wishlistData).findIndex((item)=>item._id === _id);
 
-    console.log("singleproduct",singleProduct);
+    console.log("Product Card: Singleproduct true or false value: ONLY comes",singleProduct);
     
     return (
         <>
@@ -48,6 +49,7 @@ export function ProductCard({
             <div className="card-details">
             <div> <Link to={`/product/`+_id}> {title} </Link> </div>
             <b> Rs.{price} </b>
+            <b> Ratings: {rating}/5 </b>
             </div>
 
             {  
