@@ -11,44 +11,47 @@ export function FilterProvider({children}) {
 
  
     const [ filteredData, setFilteredData] = useState([]); 
-    const [checkboxData, setCheckboxData] = useState([]); 
+    // const [checkboxData, setCheckboxData] = useState([]); 
     
     
     // state value that set the checked status of all inputs 
     
-    console.log("Filter Context: filterinput data at start of function",filterInput);
+    // console.log("Filter Context: filterinput data at start of function",filterInput);
     
     const filterData = () => {
 
-        console.log("Filter Context: Entered filterData function..")
-        console.log("Filter Context: original data from filterdata function",originalData);
+        // console.log("Filter Context: Entered filterData function..")
+        // console.log("Filter Context: original data from filterdata function",originalData);
 
         // check price value and sort --> sort by initialstate.price 
         let totalFilterValue = apiData?.product?.products || []; 
 
-        console.log("price value:",totalFilterValue); 
+        // console.log("price value:",totalFilterValue); 
 
         totalFilterValue = totalFilterValue.filter((item)=> Number(item.price)>=Number(filterInput?.price)); 
 
-        console.log("Filter Context: Applied price filter: totalFilterValue data from filterdata function",totalFilterValue);
-        
-        console.log("before checkbox:",totalFilterValue);
+        // console.log("Filter Context: Applied price filter: totalFilterValue data from filterdata function",totalFilterValue);
+        // console.log("before checkbox:",totalFilterValue);
         // check checkbox value and sort 
-        if(checkboxData.length>0) 
+
+        if(filterInput.checkboxData.length>0) 
         { 
         let checkboxFilter = []; 
         
-        checkboxData?.forEach((item)=> { 
+        filterInput?.checkboxData?.forEach((item)=> { 
         const filterItems = totalFilterValue.filter((product)=> product.categoryName===item);
                     
         if(filterItems.length>0) { 
         checkboxFilter = [...checkboxFilter,...filterItems];
-        }  
+        }
+
         });
             
+
         totalFilterValue = [...checkboxFilter]; 
         }
-        console.log("after checkbox:",totalFilterValue);
+       
+        // console.log("after checkbox:",totalFilterValue);
          
         // check rating value and sort 
          if(filterInput.rating4 || filterInput.rating3 || filterInput.rating2 || filterInput.rating1) 
@@ -105,90 +108,77 @@ export function FilterProvider({children}) {
 
     const checkBoxHandler = (event) => { 
         
-        const checkboxValue = event.target.value; 
-        console.log("Filter Context: Checkbox value registered as at start of checkboxHandler: ",checkboxValue);
-        console.log("Filter Context: Checkboxdata at start of checkboxHandler:", checkboxData);
+        const checkboxValue = event.target.value;
+        const checkedValue = event.target.checked;
 
-        if(event.target.checked) {         
-             switch(checkboxValue) {
-             
-             case "fiction":    
-             setFilterInput({...filterInput, fiction: true });
-             setCheckboxData([...checkboxData, checkboxValue]);
-             // event.target.checked
-               
-             break; 
+        console.log("event checked", checkedValue, checkboxValue);
+
+            if(event.target.checked) { 
+                switch(checkboxValue) {
+                    case "fiction":
+                            setFilterInput({...filterInput, fiction: true, checkboxData: [...filterInput.checkboxData,checkboxValue] });
+                    break; 
+            
+                    case "non-fiction": 
+                        setFilterInput({...filterInput, nonfiction: true, checkboxData: [...filterInput.checkboxData,checkboxValue] });
+                    break; 
+                    
+                    case "fantasy":
+                    setFilterInput({...filterInput, fantasy: true, checkboxData: [...filterInput.checkboxData,checkboxValue] });
+                    break;
+                     
+                    case "self-help":
+                    setFilterInput({...filterInput, selfhelp: true, checkboxData: [...filterInput.checkboxData,checkboxValue] });
+                    break; 
+            
+                    case "biography": 
+                    setFilterInput({...filterInput, biography: true, checkboxData: [...filterInput.checkboxData,checkboxValue] });
+                    break;  
+            
+                    default: 
+                    console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
+            
+                    }
+            } // if 
+
+            else { 
+                switch(checkboxValue) 
+                { 
+                    case "fiction":
+                            setFilterInput({...filterInput, fiction: false, checkboxData: [...filterInput.checkboxData.filter((item)=> item!==checkboxValue)]  });
+                    break; 
+            
+                    case "non-fiction": 
+                    setFilterInput({...filterInput, nonfiction: false, checkboxData: [...filterInput.checkboxData.filter((item)=> item!==checkboxValue)] });
+                    break; 
+                    
+                    case "fantasy":
+                            setFilterInput({...filterInput, fantasy: false, checkboxData: [...filterInput.checkboxData.filter((item)=> item!==checkboxValue)] });
+                    break;
+                     
+                    case "self-help":
+                            setFilterInput({...filterInput, selfhelp: false, checkboxData: [...filterInput.checkboxData.filter((item)=> item!==checkboxValue)] });          
+                    break; 
+            
+                    case "biography": 
+                        setFilterInput({...filterInput, biography: false, checkboxData: [...filterInput.checkboxData.filter((item)=> item!==checkboxValue)] });
+                    break;  
+            
+                    default: 
+                    console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
+                }
+        } // else 
+
      
-             case "non-fiction": 
-             setFilterInput({...filterInput, nonfiction: true });
-             setCheckboxData([...checkboxData, checkboxValue]);   
-             break; 
-             
-             case "fantasy": 
-             setFilterInput({...filterInput, fantasy: true });
-             setCheckboxData([...checkboxData, checkboxValue]);   
-             break;
-              
-             case "self-help": 
-             setFilterInput({...filterInput, selfhelp: true });
-             setCheckboxData([...checkboxData, checkboxValue]);   
-             break; 
-
-             case "biography": 
-             setFilterInput({...filterInput, biography: true });
-             setCheckboxData([...checkboxData, checkboxValue]);   
-             break;  
-
-             default: 
-             console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
-
-             }
-             
-        }
-        else { 
-            switch(checkboxValue) {
-             
-             case "fiction": 
-             setFilterInput({...filterInput, fiction: false });
-             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);  
-             break; 
-     
-             case "non-fiction": 
-             setFilterInput({...filterInput, nonfiction: false });
-             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
-             break; 
-             
-             case "fantasy": 
-             setFilterInput({...filterInput, fantasy: false });
-             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
-             break;
-              
-             case "self-help": 
-             setFilterInput({...filterInput, selfhelp: false });
-             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
-             break; 
-
-             case "biography": 
-             setFilterInput({...filterInput, biography: false });
-             setCheckboxData([...checkboxData.filter((item)=> item!==checkboxValue)]);    
-             break;  
-
-             default: 
-             console.log("Filter Context: Checkbox handler: Default value of checked is false: ");
-
-             }
-        }
-        
-    }
+   }
 
     const ratingsHandler = (event) => { 
         const ratingsValue = event.target.value;
        
-        console.log("checkedvalue",event.target.checked);
+        // console.log("checkedvalue",event.target.checked);
 
         switch(ratingsValue) { 
-            case "4": 
-            console.log("4");
+            case "4":   
             setFilterInput({...filterInput, 
                 rating4: true,
                 rating3: false,
@@ -197,7 +187,6 @@ export function FilterProvider({children}) {
             break;
        
             case "3": 
-            console.log("3");
             setFilterInput({...filterInput, 
                 rating4: false,
                 rating3: true,
@@ -206,7 +195,6 @@ export function FilterProvider({children}) {
             break;
             
             case "2": 
-            console.log("2");
             setFilterInput({...filterInput, 
                 rating4: false,
                 rating3: false,
@@ -215,7 +203,6 @@ export function FilterProvider({children}) {
             break;
 
             case "1": 
-            console.log("1");
             setFilterInput({...filterInput, 
                 rating4: false,
                 rating3: false,
@@ -232,26 +219,31 @@ export function FilterProvider({children}) {
         const radioValue = event.target.value;
         
         if(radioValue==="lowtohigh") {
-            setFilterInput({...filterInput, sortbylow: true, sortbyhigh:false })  
-             
+            setFilterInput({...filterInput, 
+                sortbylow: true, 
+                sortbyhigh:false 
+            })        
         }
 
         else if(radioValue==="hightolow") { 
-            setFilterInput({...filterInput, sortbyhigh: true, sortbylow: false }) 
+            setFilterInput({...filterInput, 
+                sortbyhigh: true, 
+                sortbylow: false 
+            }) 
         }
     }
 
     const clearFilterData = () => { 
-        const setToOriginalData = [...apiData.product.products];
-        console.log("Filter Context: setToOriginalData at start of clearFilterData function: ",setToOriginalData);
-
+        
         setFilterInput(initialState);
-        setCheckboxData([]);
-      console.log("Filter Context: setToOriginalData at end of clearFilterData function: "
-      );
+        // setCheckboxData([]);
+        // const setToOriginalData = [...apiData.product.products];
+        // console.log("Filter Context: setToOriginalData at start of clearFilterData function: ",setToOriginalData);
 
+      // console.log("Filter Context: setToOriginalData at end of clearFilterData function: ");
       // setFilteredData(setToOriginalData);
-      }
+       
+    }
 
     useEffect(()=> { 
         filterData();
@@ -261,8 +253,7 @@ export function FilterProvider({children}) {
     
         <FilterContext.Provider value={{
             filteredData,
-            setFilteredData,
-            checkboxData,  
+            setFilteredData, 
             priceHandler,
             checkBoxHandler,
             ratingsHandler,

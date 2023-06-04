@@ -20,7 +20,8 @@ export function DataProvider({children}) {
     rating2: false,
     rating1: false,
     sortbylow: false,
-    sortbyhigh: false 
+    sortbyhigh: false,
+    checkboxData: [] 
     }
 
 
