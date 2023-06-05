@@ -34,7 +34,7 @@ body {
 
 .price-range-num {
     justify-content: space-between;
-    color: #b2b2b2;
+    color: #660808cf;
 }
 
 .filter-range-input {
@@ -45,6 +45,7 @@ body {
 
 .filter-price-input {
     width: 100%;
+    
 }
 
 .filter-radio {

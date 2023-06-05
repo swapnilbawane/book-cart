@@ -28,7 +28,8 @@ export function FilterProvider({children}) {
 
         // console.log("price value:",totalFilterValue); 
 
-        totalFilterValue = totalFilterValue.filter((item)=> Number(item.price)>=Number(filterInput?.price)); 
+        totalFilterValue = totalFilterValue.filter((item)=> Number(item.price)>=Number(filterInput?.price));
+        totalFilterValue = [...totalFilterValue.sort((a,b)=> a.price-b.price)]; 
 
         // console.log("Filter Context: Applied price filter: totalFilterValue data from filterdata function",totalFilterValue);
         // console.log("before checkbox:",totalFilterValue);
