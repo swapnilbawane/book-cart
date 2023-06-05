@@ -101,6 +101,11 @@ body {
 .card-cont, .card-details {
     flex-direction: column;
     width: 240px;
+    height: 451px;
+}
+
+.card-details { 
+    justify-content: center;
 }
 
 .card-img {
