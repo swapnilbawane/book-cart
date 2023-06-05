@@ -42,7 +42,7 @@ i#fav.material-symbols-outlined {
     gap: 2rem;
 }
 
-.card-img, .card-cont, .card-badge, .card-details {
+.card-img, .card-cont-wishlist, .card-badge, .card-details {
     display: flex;
     align-items: center;
 }
@@ -77,13 +77,24 @@ i#fav.material-symbols-outlined {
     width: auto;
 }
 
-.card-cont, .card-details {
+
+/* .card-cont-wishlist { 
+    height: 660px;
+} */
+
+.card-cont-wishlist, .card-details {
     flex-direction: column;
     width: 240px;
 }
 
-.card-details {
+.card-details-wishlist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 1rem 2rem;
+    height: 130px;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-button {

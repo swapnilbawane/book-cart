@@ -16,7 +16,7 @@ export function WishlistCard({
     return(
         <>
 
-        <div className="card-cont">
+        <div className="card-cont-wishlist">
             <div className="card-img">
                 {/* <div className="card-badge">
                 <i className="red-fav material-symbols-outlined"> favorite </i>
@@ -24,7 +24,7 @@ export function WishlistCard({
                 <img src={image} alt="cards"/>
             </div>
 
-            <div className="card-details">
+            <div className="card-details-wishlist">
                 <div> {title} </div>
                 <b> Rs. {price} </b>
             </div>
