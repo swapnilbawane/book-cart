@@ -16,6 +16,8 @@ This ecommerce app has following features:
 
 ## Home Page
 ![Homefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/d7e84d46-3977-4803-a47f-2e90fa888aac)
+![Homefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/a9ad14f3-a587-4d1d-a4ff-e662417ab284)
+
 
 ## Products Page
 ![Productsfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/c7505499-2ab3-4752-94dc-3048c2763d5b)
