@@ -11,6 +11,9 @@ export function LandingComponent() {
         <>
 
         <div className="landing-comp"> 
+
+        <div className="landing-sample-div"> 
+                    </div>
      
                     <div className="landing-head">           
                             
@@ -29,8 +32,7 @@ export function LandingComponent() {
                         
                     </div> 
                     
-                    <div className="landing-sample-div"> 
-                    </div>
+                    
                         
                     <div className="landing-collection">
                     

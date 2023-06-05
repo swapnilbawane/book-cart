@@ -1,4 +1,5 @@
-@import"https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
 body {
     font-family: Poppins,sans-serif;
@@ -110,4 +111,5 @@ i#fav.material-symbols-outlined {
 
   .brand-name { 
     background: url(https://asset.cloudinary.com/djhnar3ju/59200458798b006e01691ed38b0e2f7a);
+    font-family: 'Berkshire Swash', cursive;
 }

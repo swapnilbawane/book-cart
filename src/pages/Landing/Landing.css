@@ -30,25 +30,56 @@ body {
     gap: 1.5rem;
 }
 
-.landing-head-item {
+/* .landing-head-item {
     background: url(https://fastly.picsum.photos/id/849/250/140.jpg?hmac=h5Jy0eUg58TVDe-wPAXcGDWx_4udVgTxNmDsAo1pzms) top center;
     width: 250px;
     height: 140px;
-}
+} */
 
+
+.landing-head-item {
+    background-color: #fa2074;
+    color: white;
+    /* text-decoration-color: white; */
+    width: 250px;
+    height: 140px;
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
 
 
 .landing-item-label {
     text-align: center;
-    width: 100%;
-    background-color: #ddfc2d;
+    width: 50%;
+    background-color: white;
+    cursor: pointer;
+    margin: 0 2rem;
+    padding: 0.2rem 2rem;
+    border-radius: 10px;
 }
+
+/* 
+.landing-item-label {
+text-align: center;
+width: 100%;
+background-color: rgb(117, 72, 72);
+background-color: #ddfc2d;
+/* color: white; */
+/* border-radius: 16px;
+
+
+ } */
+
+
+
 
 .landing-sample-div {
     background-color: #c4c4c4;
-    background: url(https://res.cloudinary.com/djhnar3ju/image/upload/c_fit,r_0,w_691/v1685646510/Elkart/El_-_kart_do76bm.png);
+    background: url(https://res.cloudinary.com/djhnar3ju/image/upload/v1685954337/Book%20Cart/Home%20page%20main%20banner.png);
     width: 100%;
     height: 691px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .landing-collection {
