@@ -54,13 +54,13 @@ export function Login() {
                />
             </div>
 
-            <div className="login-forgot-details">
+            {/* <div className="login-forgot-details">
             
               <div className="forgot-password">
               <span> Forgot your Password? </span>   
               </div> 
 
-            </div>
+            </div> */}
 
             <button 
             className="card-button active-button" 

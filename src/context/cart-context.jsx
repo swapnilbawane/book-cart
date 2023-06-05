@@ -18,7 +18,7 @@ export function CartProvider({children}) {
     const totalPrice =cartInfo.reduce((acc,curr)=> acc+Number(curr.price)*curr.qty,0);
     const totalQuantity = cartInfo.reduce((acc,curr)=> acc+ (curr.qty > 0 ? curr.qty : 0),0);
    
-    const discount = 10;
+    const discount = (10*(totalPrice*totalQuantity))/100;
     const deliveryCharges = 49; 
 
 
