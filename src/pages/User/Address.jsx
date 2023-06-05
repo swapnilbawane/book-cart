@@ -11,7 +11,7 @@ export function Address() {
         <ProfileHeader /> 
 
         <div className="user-details"> 
-        <h1> Address </h1>
+        <p> <b className="strong"> Address </b>  </p>
       
         </div>
         </>
