@@ -2,7 +2,10 @@
 
 - The project is built with Mockbee as backend and ReactJS, Vanilla CSS. 
 
-This ecommerce app has following features: 
+## Project is live at 
+https://book-cart-reactv1.netlify.app/
+
+**This ecommerce app has following features: **
 - Products Listing page
 - Single Products page
 - Search Products page 
