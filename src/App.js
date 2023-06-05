@@ -21,7 +21,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Testing } from "./pages/Products/Testing";
 import { UserProfile } from "./pages/User/UserProfile";
-
+import { AddressProfile } from "./pages/User/AddressProfile";
 
 function App() {
 
@@ -43,6 +43,12 @@ function App() {
       <Route path="/profile" element={
       <RequiresAuth> 
       <UserProfile />
+      </RequiresAuth>
+      } /> 
+
+<Route path="/address" element={
+      <RequiresAuth> 
+      <AddressProfile />
       </RequiresAuth>
       } /> 
 

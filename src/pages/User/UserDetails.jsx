@@ -1,21 +1,33 @@
 import { useAuth } from "../../context/auth-context";
 import "./User.css"; 
+import { ProfileHeader } from "./ProfileHeader";
 
 export function UserDetails() { 
 
     const { userDetails} = useAuth(); 
     return(
         <> 
-        <div>
-        <span className="profile-header"> Profile Information </span>
-        <span className="address-header"> Addresses </span>
-        </div>
-
+        
+        <ProfileHeader /> 
         <div className="user-details"> 
-        <h1> {userDetails.firstName} </h1>
-        <h1> {userDetails.lastName} </h1>
-        <h1> {userDetails.email} </h1>
+        <p> 
+            <b className="strong"> First name: </b> 
+            {userDetails.firstName}
+        </p>  
+
+        <p> 
+        <b className="strong"> Last name: </b>
+            {userDetails.lastName} 
+        </p>
+
+
+        <p> 
+        <b className="strong"> Email id: </b>
+            {userDetails.email} 
+        </p>
+        
         </div>
+    
         </>
     ); 
 }

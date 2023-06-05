@@ -1,3 +1,13 @@
+.profile-container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 4rem;
+}
+
+
 .profile-header { 
     color: blue;
     padding: 1rem;
@@ -10,9 +20,25 @@
     border: 1px solid black;
 }
 
+
 .user-details { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin: auto;
+
     color: blueviolet;
     padding: 1rem;
     border: 1px solid black;
     width: 500px;
 }
+
+.strong{
+    font-size: 20px;
+}
+
+
+
+

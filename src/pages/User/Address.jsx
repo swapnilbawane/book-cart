@@ -1,15 +1,14 @@
 import { useAuth } from "../../context/auth-context";
+import { ProfileHeader } from "./ProfileHeader";
 import "./User.css"; 
 
-export function UserDetails() { 
+export function Address() { 
 
     const { userDetails} = useAuth(); 
+
     return(
         <> 
-        <div>
-        <span className="profile-header"> Profile Information </span>
-        <span className="address-header"> Addresses </span>
-        </div>
+        <ProfileHeader /> 
 
         <div className="user-details"> 
         <h1> Address </h1>
