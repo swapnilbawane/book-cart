@@ -245,6 +245,70 @@ export function FilterProvider({children}) {
        
     }
 
+    const checkBoxCategoryHandler = (category) => { 
+     
+    const isPresent = filterInput.checkboxData.findIndex((item)=> item===category); 
+
+      if(isPresent === -1) 
+      { 
+        switch(category) {
+            case "fiction":
+                    setFilterInput({...filterInput, fiction: true, checkboxData: [...filterInput.checkboxData,category] });
+            break; 
+    
+            case "non-fiction": 
+                setFilterInput({...filterInput, nonfiction: true, checkboxData: [...filterInput.checkboxData,category] });
+            break; 
+            
+            case "fantasy":
+            setFilterInput({...filterInput, fantasy: true, checkboxData: [...filterInput.checkboxData,category] });
+            break;
+             
+            case "self-help":
+            setFilterInput({...filterInput, selfhelp: true, checkboxData: [...filterInput.checkboxData,category] });
+            break; 
+    
+            case "biography": 
+            setFilterInput({...filterInput, biography: true, checkboxData: [...filterInput.checkboxData,category] });
+            break;  
+    
+            default: 
+            console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
+    
+            }
+        } // if over 
+        else {
+                switch(category) {
+                    case "fiction":
+                            setFilterInput({...filterInput, fiction: true, checkboxData: [...filterInput.checkboxData] });
+                    break; 
+            
+                    case "non-fiction": 
+                        setFilterInput({...filterInput, nonfiction: true, checkboxData: [...filterInput.checkboxData] });
+                    break; 
+                    
+                    case "fantasy":
+                    setFilterInput({...filterInput, fantasy: true, checkboxData: [...filterInput.checkboxData] });
+                    break;
+                     
+                    case "self-help":
+                    setFilterInput({...filterInput, selfhelp: true, checkboxData: [...filterInput.checkboxData] });
+                    break; 
+            
+                    case "biography": 
+                    setFilterInput({...filterInput, biography: true, checkboxData: [...filterInput.checkboxData] });
+                    break;  
+            
+                    default: 
+                    console.log("Filter Context: Checkbox handler reached the end: Default value of checked is true. ");
+            
+                    }
+            } // else over 
+      } // 
+
+        
+ 
+    
     useEffect(()=> { 
         filterData();
     },[filterInput]);
@@ -258,7 +322,8 @@ export function FilterProvider({children}) {
             checkBoxHandler,
             ratingsHandler,
             sortHandler,
-            clearFilterData
+            clearFilterData,
+            checkBoxCategoryHandler
             }}>
 
             {children}

@@ -19,7 +19,7 @@ export function LandingComponent() {
                     apiData?.category?.categories?.map((item) => { return (
                     <div key={item._id}>    
                     <LandingCategories {...item} />
-                    <Link to={"/category/"+item._id}> Explore </Link>
+                    {/* <Link to={"/category/"+item._id}> Explore </Link> */}
                     </div> 
                     );
                     
