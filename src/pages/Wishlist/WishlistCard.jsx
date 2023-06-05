@@ -1,6 +1,6 @@
 import { useWishlist } from "../../context/wishlist-context";
 import "./Wishlist.css";
-
+import { Link } from "react-router-dom";
 
 export function WishlistCard({
     _id,
@@ -25,11 +25,10 @@ export function WishlistCard({
             </div>
 
             <div className="card-details-wishlist">
-                <div> {title} </div>
+                <div> <Link to={`/product/`+_id}> {title} </Link> </div>
                 <b> Rs. {price} </b>
             </div>
 
-            {/* <button className="card-button"> Add To Cart </button> */}
             
             <button className="card-button"
             onClick={()=> deleteFromWishlist(_id)}

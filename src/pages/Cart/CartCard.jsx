@@ -2,7 +2,7 @@ import { useCart } from "../../context/cart-context";
 import { useData } from "../../context/data-context";
 import { useWishlist } from "../../context/wishlist-context";
 import {useNavigate} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export function CartCard({
 _id,
@@ -42,7 +42,7 @@ const moveToWishlist = async (item) => {
    <div className="cart-card-details-cont">
 
     <div className="cart-card-details">
-    <h3> {title} </h3>
+    <h3> <Link to={`/product/`+_id}> {title} </Link> </h3>
 
     <div className="cart-card-price">
      <h2> Rs.{price} </h2>
@@ -50,7 +50,7 @@ const moveToWishlist = async (item) => {
     
     <div className="cart-card-single"> 
     <div className="cart-card-price">
-        <h4> <s> By:{author} </s></h4>
+        <h4> <s> {author} </s></h4>
         <h4>{categoryName}</h4>
     </div>
 
