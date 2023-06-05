@@ -95,7 +95,14 @@ background-color: #ddfc2d;
 
 .blank-space {
     background-color: #fff;
-    background: url(https://fastly.picsum.photos/id/813/150/200.jpg?hmac=l6sGjg_gxurRznPExOENArkwAx03yKFnOf_B2VN6wo0);
+    background: url(https://res.cloudinary.com/djhnar3ju/image/upload/v1685973655/Book%20Cart/Yuval%20Noah%20Harari.png);
+    height: 10rem;
+    width: 10rem;
+}
+
+.blank-space2 {
+    background-color: #fff;
+    background: url(https://res.cloudinary.com/djhnar3ju/image/upload/v1685974802/Book%20Cart/Ruskin%20Bond%20New.png);
     height: 10rem;
     width: 10rem;
 }
@@ -103,7 +110,7 @@ background-color: #ddfc2d;
 .landing-collection-item {
     padding: 2rem;
     gap: 2rem;
-    background: rgba(196,196,196,.7);
+    background: #ffababb3
 }
 
 

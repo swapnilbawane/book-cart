@@ -78,7 +78,7 @@ export function Header() {
                 shopping_cart
               </i>
             </div>
-            <label> Cart </label>
+            
           </Link>
 
         </div>

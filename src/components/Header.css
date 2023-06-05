@@ -84,11 +84,11 @@ body {
 }
 
 i#shopping-cart.material-symbols-outlined { 
-    color: #9a9a9a;
+    color: #881808bf;
 }
 
 i#fav.material-symbols-outlined { 
-    color: #9a9a9a;
+    color: #881808bf;
 }
 
 #no-login.material-symbols-outlined {
@@ -97,7 +97,7 @@ i#fav.material-symbols-outlined {
     'wght' 400,
     'GRAD' 0,
     'opsz' 48;
-    color: #9a9a9a;
+    color: #881808bf;
   }
 
  #user-profile.material-symbols-outlined {
@@ -106,7 +106,7 @@ i#fav.material-symbols-outlined {
     'wght' 400,
     'GRAD' 0,
     'opsz' 48;
-    color: blue;
+    color: #881808;
   }
 
   .brand-name { 

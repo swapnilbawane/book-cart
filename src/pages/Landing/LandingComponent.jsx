@@ -39,16 +39,16 @@ export function LandingComponent() {
                         <div className="landing-collection-item"> 
                             <div className="blank-space"> </div>
                             <div> 
-                            <p> NEW ARRIVALS </p> 
-                            <h3> Best of Yuval Harari </h3>  
+                            <p> COMING UP THIS JUNE </p> 
+                            <h3> Best of Yuval Noah Harari </h3>  
                             <p> Check out critically acclaimed books from bestselling author </p>
                             </div>
                             </div>
                         
                         <div className="landing-collection-item"> 
-                                <div className="blank-space"> </div>
+                                <div className="blank-space2"> </div>
                                 <div> 
-                                <p> NEW ARRIVALS </p> 
+                                <p> COMING UP THIS JULY </p> 
                                 <h3> Ruskin Bond's Full Collection </h3>  
                                 <p> Cosy yourself with warmth of stories by Ruskin Bond. Entire set now available. </p>
                                 </div>
