@@ -33,7 +33,7 @@ export function FilterPanel() {
 {/* <!--1. filter price start --> */}
 <div className="filter-price">
 
-<h4> Price </h4>
+<h4> Price (select minimum) </h4>
 
 <div className="price-range-num">
 <span>100</span>
