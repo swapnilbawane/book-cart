@@ -51,7 +51,7 @@ body {
 }
 
 .header-profile .login-button {
-    background: #9A9A9A;
+    background: #881808bf;
     font-family: Poppins;
     font-style: normal;
     font-weight: 700;
@@ -112,4 +112,5 @@ i#fav.material-symbols-outlined {
   .brand-name { 
     background: url(https://asset.cloudinary.com/djhnar3ju/59200458798b006e01691ed38b0e2f7a);
     font-family: 'Berkshire Swash', cursive;
+    color: #88180894;
 }
