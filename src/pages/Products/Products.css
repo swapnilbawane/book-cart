@@ -105,7 +105,8 @@ body {
 
 .card-img {
     justify-content: center;
-    background: rgba(196,196,196,.5);
+    /* #8818081c */
+    background: #8818081c;
     width: 13rem;
     height: 15rem;
     position: relative;
@@ -197,7 +198,7 @@ i.material-icons-outlined {
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    background-color: #9a9a9a;
+    background-color: #881808bf;
 }
 
 .pl-cont {

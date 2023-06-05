@@ -93,6 +93,14 @@ background-color: #ddfc2d;
     background: rgba(196,196,196,.7);
 }
 
+.category-banner{ 
+    background: url(https://res.cloudinary.com/djhnar3ju/image/upload/v1685977492/Book%20Cart/EXPLORE_CATEGORIES_1.png);
+    width: 100%;
+    height: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .blank-space {
     background-color: #fff;
     background: url(https://res.cloudinary.com/djhnar3ju/image/upload/v1685973655/Book%20Cart/Yuval%20Noah%20Harari.png);

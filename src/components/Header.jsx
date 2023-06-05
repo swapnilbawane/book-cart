@@ -50,6 +50,10 @@ export function Header() {
 
         <div className="header-profile">
 
+        <Link to="/products"> 
+        <i className="material-symbols-outlined" id="explore" onClick={()=>navigate('/products')}>explore</i> 
+        </Link> 
+
         { isLoggedIn 
         ? 
         <Link to="/profile"> 

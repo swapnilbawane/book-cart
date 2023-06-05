@@ -44,15 +44,14 @@ const moveToWishlist = async (item) => {
     <div className="cart-card-details">
     <h3> {title} </h3>
 
-    <div>
-
     <div className="cart-card-price">
-     <h2> {price} </h2>
-     <h4> <s>{author}{categoryName} </s></h4>
+     <h2> Rs.{price} </h2>
     </div>
     
+    <div className="cart-card-single"> 
     <div className="cart-card-price">
-        <h4>50% off</h4>
+        <h4> <s> By:{author} </s></h4>
+        <h4>{categoryName}</h4>
     </div>
 
     <div className="cart-cart-quantity-cont">
@@ -64,7 +63,9 @@ const moveToWishlist = async (item) => {
      </div>  
     </div>
 
-    </div>   
+    </div> 
+
+     
 
     </div>
 

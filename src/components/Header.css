@@ -109,6 +109,15 @@ i#fav.material-symbols-outlined {
     color: #881808;
   }
 
+  #explore.material-symbols-outlined{ 
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+    color: #881808;
+  }
+
   .brand-name { 
     background: url(https://asset.cloudinary.com/djhnar3ju/59200458798b006e01691ed38b0e2f7a);
     font-family: 'Berkshire Swash', cursive;

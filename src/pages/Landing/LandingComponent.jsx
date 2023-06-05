@@ -14,6 +14,9 @@ export function LandingComponent() {
 
         <div className="landing-sample-div"> 
                     </div>
+
+                    <div className="category-banner"> 
+                    </div>
      
                     <div className="landing-head">           
                             

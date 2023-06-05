@@ -64,6 +64,7 @@ i#fav2.material-symbols-outlined {
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem 2rem;
+    gap: 5px;
 }
 
 .cart-card-details {
@@ -123,7 +124,7 @@ i#fav2.material-symbols-outlined {
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    background-color: #9a9a9a;
+    background-color: #881808bf;
 }
 
 
@@ -161,13 +162,13 @@ i#fav2.material-symbols-outlined {
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    background-color: #9a9a9a;
+    background-color: #881808bf;
 }
 
 .cart-card-wishlist {
-    background-color: #fff;
+    background-color: #88180821;
     border: 1px solid #9A9A9A;
-    color: #9a9a9a;
+    color: #6f5959;
     margin: 0;
 }
 
@@ -177,7 +178,11 @@ i#fav2.material-symbols-outlined {
     gap: 40px;
 }
 
-
+.cart-card-single { 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 
 
