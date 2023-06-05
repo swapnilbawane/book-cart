@@ -140,17 +140,19 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
         showLoggedInToastMessage();
         localStorage.setItem("encodedToken",encodedToken); 
         
-        if(location?.state?.from?.pathname==="/wishlist") {
-         navigate('/wishlist');
-       } 
-        else if(location?.state?.from?.pathname==="/cart") { 
-         navigate('/cart');
-        }
-        else navigate('/products');
-  
 
         setIsLoggedIn(true);
         setUserDetails(foundUser);
+
+        if(location?.state?.from?.pathname==="/wishlist") {
+          navigate('/wishlist');
+        } 
+         else if(location?.state?.from?.pathname==="/cart") { 
+          navigate('/cart');
+         }
+         else navigate('/products');
+
+
       }
 
       else if(res.status===404) { 
