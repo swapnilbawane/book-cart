@@ -61,9 +61,14 @@ const removedFromCartToast = () => {
 
 }
 
+const placeOrder = () => { 
+  toast.success('Feature not yet there. Thanks for shopping !', {
+    position: toast.POSITION.TOP_RIGHT
+  });
+}
 
     return(
-         <ToastContext.Provider value={{ showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage, addedToWishListToast, removeFromWishListToast, addedToCartToast, removedFromCartToast  }}>
+         <ToastContext.Provider value={{ showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastMessage,emailExistsToastMessage, addedToWishListToast, removeFromWishListToast, addedToCartToast, removedFromCartToast, placeOrder  }}>
             {children}
          </ToastContext.Provider>
     );

@@ -1,10 +1,12 @@
 import { useData } from "../../context/data-context";
 import { useCart } from "../../context/cart-context";
+import { useToast } from "../../context/toast-context";
 
 export function CheckoutComponent() { 
 
   const { apiData } = useData(); 
   const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart(); 
+  const { placeOrder } = useToast(); 
 
     return(
     <>
@@ -31,11 +33,11 @@ export function CheckoutComponent() {
      <hr/>
      <div className="cart-price-flex">
      <h4> TOTAL AMOUNT </h4> 
-     <h4> Rs {totalPrice-discount-deliveryCharges} </h4>   
+     <h4> Rs {totalPrice-discount+deliveryCharges} </h4>   
      </div>
      <hr/>
      <p>You will save Rs {discount} on this order </p>
-     <button className="cart-card-button active-button"> Place Order</button>
+     <button className="cart-card-button active-button" onClick={placeOrder}> Place Order</button>
  </div>
    : <h1> Error adding to cart. Remove item from cart and try again. </h1>
     }
