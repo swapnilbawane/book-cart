@@ -114,7 +114,6 @@ i#fav.material-symbols-outlined {
     display: flex;
     flex-direction: row;
     gap: 40px;
-
     flex-wrap: wrap;
     /* height: 400px; */
     align-content: space-between;

@@ -4,6 +4,7 @@ import { useSearch } from "../../context/search-context";
 import { ProductCard } from "../Products/ProductCard";
 import { NoResultsSearch } from "./NoResultsSearch";
 import '../Products/Products.css';
+import "./Search.css";
 
 export function Search() {
 
@@ -16,7 +17,7 @@ export function Search() {
            {
             searchResults.length>0 
             ?
-            <div>
+            <div className="search-component">
            {
             searchResults.map((item,index)=> { 
                 return (
