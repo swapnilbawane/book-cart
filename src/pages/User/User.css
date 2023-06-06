@@ -46,6 +46,8 @@
     align-items: flex-start;
     border: 1px solid black;
     padding: 1rem;
+    align-content: stretch;
+    justify-content: space-evenly;
 }
 
 .button-address, .button-deleteadd { 
