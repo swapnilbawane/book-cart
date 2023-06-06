@@ -31,19 +31,21 @@ ReactDOM.render(
     <SearchProvider>
     <FilterProvider>
     
+     <AddressProvider> 
     <CartProvider>
     <WishlistProvider>
     <LogoutProvider>
-    <AddressProvider> 
+   
     
 
     <App />
     
 
-    </AddressProvider>
+    
     </LogoutProvider>
     </WishlistProvider>
     </CartProvider>
+    </AddressProvider>
     
     </FilterProvider>
    </SearchProvider>

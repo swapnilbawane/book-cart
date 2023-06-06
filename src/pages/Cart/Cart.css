@@ -190,8 +190,6 @@ i#fav2.material-symbols-outlined {
     flex-direction: column;
     width: 350px;
     align-items: flex-start;
-    
-    padding: 1rem;
     align-content: stretch;
     justify-content: space-evenly;
 }
@@ -204,7 +202,7 @@ flex-direction: column;
 .order-details{ 
 display: flex;
 flex-direction: row;
-gap: 10px;
+gap: 40px;
 padding: 5rem;
 }
 
@@ -212,6 +210,9 @@ padding: 5rem;
 display: flex;
 flex-direction: column;
 border: 1px solid black;
+padding: 1rem;
+align-items: flex-start;
+justify-content: center;
 }
 
 .cart-card{ 
@@ -219,5 +220,7 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: flex-start;
+border: 1px solid black;
+padding: 1rem;
 
 }

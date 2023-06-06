@@ -22,6 +22,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Testing } from "./pages/Products/Testing";
 import { UserProfile } from "./pages/User/UserProfile";
 import { AddressProfile } from "./pages/User/AddressProfile";
+import { OrderSummary } from "./pages/Cart/OrderSummary";
+
 
 function App() {
 
@@ -60,6 +62,13 @@ function App() {
       
       } />
 
+    <Route path="/ordersummary" element={
+    
+    <RequiresAuth> 
+     <OrderSummary /> 
+     </RequiresAuth>
+     
+     } />
 
     <Route path="/wishlist" element={
 
