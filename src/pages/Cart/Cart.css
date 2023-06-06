@@ -27,7 +27,7 @@ i#fav2.material-symbols-outlined {
 .cart-items {
     display: flex;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-around;
     gap: 0;
 }
@@ -184,5 +184,40 @@ i#fav2.material-symbols-outlined {
     gap: 15px;
 }
 
+/* Added for order summary */
+.address-single-checkout { 
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    align-items: flex-start;
+    
+    padding: 1rem;
+    align-content: stretch;
+    justify-content: space-evenly;
+}
 
+.order-container { 
+display: flex;
+flex-direction: column;
+}
 
+.order-details{ 
+display: flex;
+flex-direction: row;
+gap: 10px;
+padding: 5rem;
+}
+
+.address-card{ 
+display: flex;
+flex-direction: column;
+border: 1px solid black;
+}
+
+.cart-card{ 
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+
+}
