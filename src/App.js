@@ -23,7 +23,7 @@ import { Testing } from "./pages/Products/Testing";
 import { UserProfile } from "./pages/User/UserProfile";
 import { AddressProfile } from "./pages/User/AddressProfile";
 import { OrderSummary } from "./pages/Cart/OrderSummary";
-
+import { CheckoutPage } from "./pages/Cart/CheckoutPage";
 
 function App() {
 
@@ -66,6 +66,14 @@ function App() {
     
     <RequiresAuth> 
      <OrderSummary /> 
+     </RequiresAuth>
+     
+     } />
+
+  <Route path="/checkout" element={
+    
+    <RequiresAuth> 
+     <CheckoutPage /> 
      </RequiresAuth>
      
      } />
