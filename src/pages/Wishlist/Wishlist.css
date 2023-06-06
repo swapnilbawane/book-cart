@@ -16,12 +16,14 @@ i.material-symbols-outlined {
   'FILL' 1,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 48
+  'opsz' 48;
+  cursor: pointer;
 }
 
 i#fav.material-symbols-outlined { 
     font-variation-settings: 'FILL' 0; 
     color: #881808bf;
+    cursor: pointer;
 
 }
 

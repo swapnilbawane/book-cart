@@ -13,7 +13,7 @@ body {
 i#fav2.material-symbols-outlined {
     font-variation-settings: 'FILL' 0;   
     color: #9a9a9a;
-
+    cursor: pointer;
 }
 
 .cart-cont {
