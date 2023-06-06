@@ -22,7 +22,9 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
     try {
        const creds = { 
         email: user.email,
-        password: user.password
+        password: user.password,
+        firstName: user.firstName,
+        lastName: user.lastName
        }
         
        const res = await fetch("/api/auth/signup", {
