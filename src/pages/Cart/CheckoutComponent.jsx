@@ -39,7 +39,7 @@ export function CheckoutComponent() {
      </div>
      <hr/>
      <p>You will save Rs {discount} on this order </p>
-     <button className="cart-card-button active-button" onClick={()=>navigate('/ordersummary')}> Place Order</button>
+     <button className="cart-card-button active-button" onClick={()=>navigate('/ordersummary')}> Proceed to checkout </button>
  </div>
    : <h1> Error adding to cart. Remove item from cart and try again. </h1>
     }
