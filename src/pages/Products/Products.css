@@ -45,6 +45,7 @@ body {
 
 .filter-price-input {
     width: 100%;
+    cursor: pointer;
     
 }
 
@@ -232,5 +233,8 @@ i.material-icons-outlined {
 cursor: pointer;
 }
 
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
 
 
