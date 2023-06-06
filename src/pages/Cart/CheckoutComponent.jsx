@@ -1,9 +1,11 @@
 import { useData } from "../../context/data-context";
 import { useCart } from "../../context/cart-context";
 import { useToast } from "../../context/toast-context";
+import { useNavigate } from "react-router-dom";
 
 export function CheckoutComponent() { 
 
+  const navigate = useNavigate();
   const { apiData } = useData(); 
   const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart(); 
   const { placeOrder } = useToast(); 
