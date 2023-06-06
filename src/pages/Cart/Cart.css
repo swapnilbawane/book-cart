@@ -27,7 +27,7 @@ i#fav2.material-symbols-outlined {
 .cart-items {
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     gap: 0;
 }
