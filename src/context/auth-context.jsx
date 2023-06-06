@@ -35,7 +35,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
        if(res.status===201) { 
         console.log("AuthContext - Signup response", res); 
 
-        const { encodedToken } = await res.json();
+        const { createdUser, encodedToken } = await res.json();
         showLoggedInToastMessage();
         localStorage.setItem("encodedToken",encodedToken); 
       
@@ -48,7 +48,9 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
         }
         else navigate('/products');
  
-        setIsLoggedIn(true); 
+        setIsLoggedIn(true);
+        setUserDetails(createdUser);
+         
        }
 
        else if(res.status===422) { 

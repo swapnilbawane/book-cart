@@ -13,6 +13,7 @@ import { LogoutProvider } from "./context/logout-context";
 import { ToastProvider } from "./context/toast-context";
 import { SearchProvider } from "./context/search-context";
 import { FilterProvider } from "./context/filter-context";
+import { AddressProvider } from "./context/address-context";
 
 // Call make Server
 makeServer();
@@ -33,12 +34,13 @@ ReactDOM.render(
     <CartProvider>
     <WishlistProvider>
     <LogoutProvider>
-
+    <AddressProvider> 
     
 
     <App />
-
     
+
+    </AddressProvider>
     </LogoutProvider>
     </WishlistProvider>
     </CartProvider>
