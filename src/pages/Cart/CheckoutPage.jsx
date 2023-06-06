@@ -20,7 +20,7 @@ export function CheckoutPage() {
        
         <div className="order-container"> 
 
-        <h1> Order Summary. </h1>  
+        <h1> Checkout Page </h1>  
   
         <div class="order-details"> 
         
@@ -32,14 +32,11 @@ export function CheckoutPage() {
         addresses.map((item,index)=> { 
             return (
                 <div key={index} className="address-single-checkout">
-                <label> 
-                    <input type="radio"/>
+                <label htmlFor="address"> 
+                <input type="radio" name="address" />
                 <p> { item.buildingName }, {item.flatNumber}  </p>
-                
                 <p> {item.locality},  {item.area} </p>
-             
-                <p> {item.city} </p>
-                <p> Pincode: {item.pinCode} </p>
+                <p> {item.city}, Pincode: {item.pinCode} </p>
                 </label>
                 </div>
             ); 
