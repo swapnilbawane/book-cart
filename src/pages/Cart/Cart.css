@@ -175,6 +175,7 @@ i#fav2.material-symbols-outlined {
     border: 1px solid #9A9A9A;
     color: #6f5959;
     margin: 0;
+    cursor: pointer;
 }
 
 .cart-component { 
