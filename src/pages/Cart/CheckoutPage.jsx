@@ -33,10 +33,9 @@ export function CheckoutPage() {
             return (
                 <div key={index} className="address-single-checkout">
                 <label htmlFor="address"> 
-                <input type="radio" name="address" />
-                <p> { item.buildingName }, {item.flatNumber}  </p>
-                <p> {item.locality},  {item.area} </p>
-                <p> {item.city}, Pincode: {item.pinCode} </p>
+                <input type="radio" name="address" /> 
+                <span> { item.buildingName }, {item.flatNumber}; {item.locality},  {item.area} ; {item.city}, Pincode: {item.pinCode} </span> 
+                
                 </label>
                 </div>
             ); 
