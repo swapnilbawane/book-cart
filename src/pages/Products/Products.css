@@ -194,6 +194,7 @@ i.material-icons-outlined {
 
 .active-button {
     background-color: #3b82f6;
+    cursor: pointer;
 }
 
 .card-button {
@@ -206,6 +207,7 @@ i.material-icons-outlined {
     font-style: normal;
     font-weight: 600;
     background-color: #881808bf;
+    cursor: pointer;
 }
 
 .pl-cont {

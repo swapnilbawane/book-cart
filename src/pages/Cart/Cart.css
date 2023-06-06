@@ -149,6 +149,11 @@ i#fav2.material-symbols-outlined {
 
 .active-button {
     background-color: #3b82f6;
+    cursor: pointer;
+}
+
+.cart-card-button { 
+    cursor: pointer;
 }
 
 .cart-card-button, .cart-card-wishlist {
