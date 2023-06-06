@@ -237,4 +237,7 @@ input[type="checkbox"]:hover {
     cursor: pointer;
 }
 
+input[type="radio"]:hover {
+    cursor: pointer;
+}
 
