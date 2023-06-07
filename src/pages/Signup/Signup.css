@@ -88,3 +88,6 @@ body {
     color: #000;
 }
 
+.showHidePassword { 
+    cursor: pointer;  
+}

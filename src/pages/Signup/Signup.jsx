@@ -8,8 +8,13 @@ export function Signup() {
     const { handleTestUser, signUpAccount } = useAuth();
     
     const [newUser, setNewUser] = useState( 
-        { email: "", password: "", firstName: "", lastName: "", confirmPassword:"" }
+        { email: "", password: "", firstName: "", lastName: "", confirmPassword:"", protectedPassword:"", protectedConfirmPassword:""  }
     );
+
+    const [ toggle, setToggle ] = useState({  
+        password: true,  
+        confirmPassword: false  
+        }) 
     
     const updateNewUser = (e) => { 
         if(e.target.name==="first-name") { 
@@ -25,11 +30,15 @@ export function Signup() {
          }
 
          else if (e.target.name==="password") { 
-            setNewUser({...newUser, password: e.target.value});
+
+            const protectedPasswordFirst = Array.from(e.target.value).map((item)=> '*').join("");
+            setNewUser({...newUser, password: e.target.value, protectedPassword:protectedPasswordFirst });
          }
 
          else if (e.target.name==="confirm-password") { 
-            setNewUser({...newUser, confirmPassword: e.target.value});
+            const protectedPasswordSecond = Array.from(e.target.value).map((item)=> '*').join("");
+            console.log("target value",e.target.value,"protected",protectedPasswordSecond);
+            setNewUser({...newUser, confirmPassword: e.target.value, protectedConfirmPassword: protectedPasswordSecond });
          }
        }
 
@@ -89,7 +98,7 @@ export function Signup() {
                placeholder="************" 
                spellCheck="false" 
                data-ms-editor="true"
-               value={newUser.password}
+               value={toggle ? newUser.password : newUser.protectedPassword}
                onChange={updateNewUser}
                />
             </div>
@@ -102,20 +111,16 @@ export function Signup() {
                placeholder="************" 
                spellCheck="false" 
                data-ms-editor="true"
-               value={newUser.confirmPassword}
+               value={toggle ? newUser.confirmPassword : newUser.protectedConfirmPassword}
                onChange={updateNewUser}
                />
             </div>
 
-            {/* <div className="login-forgot-details">
-              <div className="remember-me"> 
-                <input type="checkbox" />
-                <label> I accept all Terms & Conditions </label>
-              </div> */}
+            <div className="showHidePassword" 
+            onClick={()=>setToggle(!toggle)}> { toggle ? <span> Hide Password </span> : <span> Show Password </span>  }  
+            </div>
 
-
-            {/* </div> */}
-
+        
            { 
            newUser.password.length > 0 && newUser.password === newUser.confirmPassword 
            ? 
