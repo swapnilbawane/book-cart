@@ -5,7 +5,7 @@
 ## Project is live at 
 https://book-cart-reactv1.netlify.app/
 
-**This ecommerce app has following features: **
+## This ecommerce app has following features:
 - Products Listing page
 - Single Products page
 - Search Products page 
