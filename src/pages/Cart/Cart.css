@@ -230,3 +230,8 @@ border: 1px solid black;
 padding: 1rem;
 
 }
+
+
+input[type="radio"] {
+    margin: 0;
+}

@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { useAddress } from "../../context/address-context";
 import "./Cart.css";
 import { useAuth } from "../../context/auth-context";
+import { Link } from "react-router-dom";
 
 
 export function OrderSummary() { 
@@ -61,6 +62,8 @@ export function OrderSummary() {
         </div>
             
         </div> 
+
+        <Link to="/checkout"> Checkout Page </Link>
     
         </div>
         </> 

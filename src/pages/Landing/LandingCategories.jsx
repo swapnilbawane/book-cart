@@ -14,7 +14,7 @@ export function LandingCategories({
         <>
         <Link to="/products">
         <div className="landing-head-item">
-        <div className="landing-item-label"> <Link to='/products' onClick={()=> checkBoxCategoryHandler(categoryName)}> {categoryName}</Link> </div>
+        <div className="landing-item-label">  <Link to='/products' onClick={()=> checkBoxCategoryHandler(categoryName)}> {categoryName}</Link> </div>
         </div>
         </Link>
         </>

@@ -3,6 +3,8 @@ import { useContext, useState, createContext } from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { useToast } from "./toast-context";
+import axios from "axios";
+
 
 export const AuthContext = createContext();
 
@@ -82,7 +84,7 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
          body: JSON.stringify(creds)   
          });
 
-         console.log("Auth Context: Login response:", res); 
+        //  console.log("Auth Context: Login response:", res); 
          
          if(res.status===200) { 
            
@@ -133,11 +135,16 @@ const { showLoggedInToastMessage, emailNotFoundToastMessage, passwordWrongToastM
        email: "adarshbalika@gmail.com",
        password: "adarshbalika"
       }
+
+      console.log("creds",creds);
        
       const res = await fetch("/api/auth/login", {
-      method: 'POST',
-      body: JSON.stringify(creds)   
-      });
+        method: 'POST',
+        body: JSON.stringify(creds)   
+        });
+      
+      
+      console.log("response from test user",res);
       
       if(res.status===200) { 
         const { foundUser, encodedToken } = await res.json();
