@@ -18,35 +18,43 @@ https://book-cart-reactv1.netlify.app/
 
 
 ## Home Page
-![Homefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/d7e84d46-3977-4803-a47f-2e90fa888aac)
-![Homefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/a9ad14f3-a587-4d1d-a4ff-e662417ab284)
+![Homefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/f9ac71a7-ba55-4cff-9863-a5059e268208)
 
 
 ## Products Page
-![Productsfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/c7505499-2ab3-4752-94dc-3048c2763d5b)
+![Productsfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/03afb458-49cd-4d40-b7fb-3f19c420d46c)
+
 
 ## Single Products Page
-![SingleProductfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/ec23e912-befc-47cd-b5f5-ba2858c4779f)
+![SingleProductfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/7b191d9d-1e8f-4d7c-9f08-df48e93f4086)
+
 
 ## Login Page
-![LoginPagefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/c30129ce-2b52-44b9-8ff2-0669e6574589)
+![LoginPageFinal2](https://github.com/swapnilbawane/book-cart/assets/90078330/3c534a15-9c72-4b8d-8df1-cef73db8d724)
+
 
 ## Signup Page
-![SignupPagefinal](https://github.com/swapnilbawane/book-cart/assets/90078330/94637387-1604-4b46-9135-6726731083de)
+![SignupPageFinal2](https://github.com/swapnilbawane/book-cart/assets/90078330/5009da44-a631-4adb-80be-b74b4cb3a238)
+
 
 ## Search Page
-![SearchFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/5ec120d7-92ca-45b1-8538-a5f1e6b2a3d5)
+![SearchFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/b6da9e55-80fa-49fe-ad92-212090d767c2)
 
-## Products Page 
-![ProductsFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/d68f0274-dda3-4576-9c3a-37000a854afb)
 
 ## Filter Page 
-![FilterFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/2ce47269-49f7-4e17-b68b-96712e91c4f5)
+![FilterApplied](https://github.com/swapnilbawane/book-cart/assets/90078330/de1ed855-9f49-4652-8f0e-30cfcaac0476)
+
 
 ## Wishlist Page
-![Wishlistfinal](https://github.com/swapnilbawane/book-cart/assets/90078330/79329c5e-a357-4397-980a-354bfa6fdfee)
+![Wishlistfinal2](https://github.com/swapnilbawane/book-cart/assets/90078330/2e0f14e5-c850-4e5f-9ac0-ee5b0a3093b1)
 
 ## Cart Checkout Page
-![CartCheckoutFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/3f25e949-632a-4d3b-b1af-fd4e0d886a4c)
+![CartCheckoutFinal](https://github.com/swapnilbawane/book-cart/assets/90078330/78387635-bc2f-4e82-92b1-1c9ab8a8b321)
+
+## Order Summary Page
+![OrderSummary](https://github.com/swapnilbawane/book-cart/assets/90078330/06c58afb-ad32-4ec6-8758-216ed3fa76ca)
+
+
+
 
 
