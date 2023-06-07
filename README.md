@@ -10,7 +10,8 @@ https://book-cart-reactv1.netlify.app/
 - Single Products page
 - Search Products page 
 - Cart management - Add, delete or change quantity of items in cart. 
-- Wishlist management - Add and remove items from wishlist. 
+- Wishlist management - Add and remove items from wishlist.
+- Checkout page with order summary  
 - Private routes for Login, Signup, wishlist and cart.
 - This website uses useState, useContext and React Router for routing. 
 - Filter products by price, rating, category.
