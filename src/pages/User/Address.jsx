@@ -30,8 +30,8 @@ export function Address() {
         })
         }
 
-        <button className="button-address"> Add Address </button> 
-        <button className="button-deleteadd"> Delete Address </button>
+        {/* <button className="button-address"> Add Address </button> 
+        <button className="button-deleteadd"> Delete Address </button> */}
         
         </div>
         </>

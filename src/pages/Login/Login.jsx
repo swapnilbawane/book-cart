@@ -8,7 +8,8 @@ export function Login() {
 
     const { loginAccount, handleTestUser } = useAuth();
 
-    const [user, setUser] = useState({email: "", password: ""}); 
+    const [user, setUser] = useState({email: "", password: "",protectPassword: ""}); 
+    const [toggle, setToggle] = useState(true);
 
     const updateUser = (e) => { 
      if(e.target.name==="email") { 
@@ -16,7 +17,8 @@ export function Login() {
      }
 
      else if (e.target.name==="password") { 
-        setUser({...user, password: e.target.value});
+        const protectedPassword = Array.from(e.target.value).map((item)=> '*').join("");
+        setUser({...user, password: e.target.value, protectPassword: protectedPassword});
      }
     }
 
@@ -49,9 +51,10 @@ export function Login() {
                placeholder="************" 
                spellCheck={false} 
                data-ms-editor={true} 
-               value={user.password} 
+               value={toggle ? user.password : user.protectPassword } 
                onChange={updateUser}
                />
+               <div className="showHidePassword" onClick={()=>setToggle(!toggle)}> { toggle ? <span> Hide Password </span> : <span> Show Password </span>  }  </div>
             </div>
 
             {/* <div className="login-forgot-details">
