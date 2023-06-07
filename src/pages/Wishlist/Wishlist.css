@@ -125,3 +125,11 @@ i#fav.material-symbols-outlined {
 h1 { 
     text-align: center;
 }
+
+.button-container { 
+    display:flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 10px;
+    cursor:pointer;
+}
