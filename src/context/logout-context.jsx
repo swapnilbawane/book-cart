@@ -10,23 +10,28 @@ export const LogoutContext = createContext();
 export function LogoutProvider({children}) { 
 
 const navigate = useNavigate();
-const { apiData } = useData(); 
+const { apiData,setApiData } = useData(); 
 const { setIsLoggedIn } = useAuth();
 const { removeFromCart } = useCart();
 const { deleteFromWishlist } = useWishlist(); 
 
  // Logout handler 
- const handleLogout = () => { 
+ const handleLogout = (cartData) => { 
     
-    localStorage.removeItem("encodedToken");
+    console.log("cart data length:",apiData.cartData.length );
 
-    setIsLoggedIn(false); 
-    
+    if(cartData.length===1){
+    removeFromCart(cartData[0]._id);
+    }
+
     if(apiData.cartData.length>0) { 
         apiData?.cartData?.forEach((item) => {
+            console.log(item);
             removeFromCart(item._id);
           });
     }
+
+    console.log("cart data length after:",apiData.cartData.length );
     
     if(apiData.wishlistData.length>0) { 
         apiData?.wishlistData?.forEach((item) => {
@@ -34,6 +39,8 @@ const { deleteFromWishlist } = useWishlist();
           });
     }
 
+    localStorage.removeItem("encodedToken");
+    setIsLoggedIn(false); 
     navigate('/');
    
    }

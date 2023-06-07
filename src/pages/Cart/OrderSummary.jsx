@@ -23,7 +23,7 @@ export function OrderSummary() {
 
         <h1> Order Summary. </h1>  
   
-        <div class="order-details"> 
+        <div className="order-details"> 
         
         <div className="address-card"> 
         <p> <b> Items will be delivered to this address: </b> </p>
@@ -63,7 +63,7 @@ export function OrderSummary() {
             
         </div> 
 
-        <Link to="/checkout"> Checkout Page </Link>
+        {/* <Link to="/checkout"> Checkout Page </Link> */}
     
         </div>
         </> 

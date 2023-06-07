@@ -5,14 +5,25 @@ import { useAddress } from "../../context/address-context";
 import "./Cart.css";
 import { useAuth } from "../../context/auth-context";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 
 export function CheckoutPage() { 
 
     const { apiData }= useData(); 
     const { userDetails } = useAuth(); 
-
+    const [checkoutAddress, setCheckoutAddress] = useState([]); 
+    const [ radioValue, setRadioValue] = useState(false);
+ 
     const { totalPrice, discount, deliveryCharges, totalQuantity} = useCart();
     const { addresses } = useAddress();
+
+
+    const radioEffect = (event,item) => { 
+    console.log("item 2",event.target.checked);
+    setRadioValue(event.target.checked);
+    setCheckoutAddress(item);
+    }
 
     return(
         <> 
@@ -33,7 +44,15 @@ export function CheckoutPage() {
             return (
                 <div key={index} className="address-single-checkout">
                 <label htmlFor="address"> 
-                <input type="radio" name="address" className="checkout-address" /> 
+
+                <input 
+                key={index}
+                type="radio" 
+                name="address" 
+                className="checkout-address" 
+                checked={radioValue}
+                onChange={(event)=>radioEffect(event,item)}
+                /> 
                 <span> { item.buildingName }, {item.flatNumber}; {item.locality},  {item.area},  {item.city}, Pincode: {item.pinCode} </span> 
                 
                 </label>
@@ -57,6 +76,12 @@ export function CheckoutPage() {
         }
          <p> <b> Total items ordered: </b> {totalQuantity} </p>
          <p> <b> Total Cart Price:</b> Rs.{totalPrice-discount+deliveryCharges} </p>
+         <p> Checkout Address: </p>
+         { 
+         Array.from(checkoutAddress).map((item)=> { 
+            return(<> {item} ,  </>);
+         })
+         }
         </div>
             
         </div> 

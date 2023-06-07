@@ -66,7 +66,7 @@ export function Header() {
         }
 
           { isLoggedIn 
-          ? <Link to="/products" className="login-button" onClick={handleLogout}> Logout </Link>  
+          ? <Link to="/products" className="login-button" onClick={()=> handleLogout(apiData.cartData)}> Logout </Link>  
           :  <Link to="/login" className="login-button"> Login </Link>
           }
 
